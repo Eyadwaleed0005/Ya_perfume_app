@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ya_perfume/app/routes/app_routes.dart';
+import 'package:ya_perfume/app/routes/route_names.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,9 +27,8 @@ class MyApp extends StatelessWidget {
           title: 'YA Perfume',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(),
-          home: const Scaffold(body: Center(child: Text('YA Perfume'))),
-          /* initialRoute: RouteNames.home,
-          onGenerateRoute: AppRoutes.generateRoute, */
+          initialRoute: RouteNames.questions,
+          onGenerateRoute: AppRoutes.generateRoute,
         );
       },
     );
