@@ -1,0 +1,17 @@
+<svg width="390" height="606" viewBox="0 0 390 606" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="World / Cumulative layers">
+<g id="Age / Dial" opacity="0.35">
+<g id="Group">
+<path id="Vector" opacity="0.4" d="M94.1143 192.4C104.025 174.306 118.62 159.211 136.369 148.695C154.119 138.18 174.37 132.631 195 132.631C215.63 132.631 235.881 138.18 253.631 148.695C271.38 159.211 285.975 174.306 295.886 192.4M87.5143 321.571C97.1147 341.965 112.319 359.207 131.351 371.283C150.384 383.36 172.459 389.772 195 389.772C217.541 389.772 239.616 383.36 258.649 371.283C277.681 359.207 292.885 341.965 302.486 321.571" stroke="url(#paint0_linear_266_708)" stroke-width="1.88571" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<path id="Selected age" d="M169.24 256.456V251.528H220.76V256.456H169.24Z" fill="#F1D58A"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_266_708" x1="87.5143" y1="132.631" x2="340.585" y2="344.2" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F1D58A"/>
+<stop offset="0.48" stop-color="#C9A44E"/>
+<stop offset="1" stop-color="#A98134"/>
+</linearGradient>
+</defs>
+</svg>

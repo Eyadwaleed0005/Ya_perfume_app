@@ -8,7 +8,7 @@ class AppTextStyle {
 
   static const String notoSansArabic = 'NotoSansArabic';
 
-  static TextStyle font36TextPrimarySemiBoldNoto() {
+  static TextStyle font36textPrimarySemiBoldNoto() {
     return TextStyle(
       fontSize: 36.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -17,7 +17,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font16TextDarkSemiBoldNoto() {
+  static TextStyle font16textDarkSemiBoldNoto() {
     return TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -89,15 +89,6 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font34textPrimarySemiBoldNoto() {
-    return TextStyle(
-      fontSize: 34.sp,
-      fontWeight: FontWeightHelper.semiBold,
-      fontFamily: notoSansArabic,
-      color: AppColors.textPrimary,
-    );
-  }
-
   static TextStyle font34textUltraBlackSemiBoldNoto() {
     return TextStyle(
       fontSize: 34.sp,
@@ -125,7 +116,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextPrimaryMediumNoto() {
+  static TextStyle font18textPrimaryMediumNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.medium,
@@ -134,7 +125,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextUltraBlackMediumNoto() {
+  static TextStyle font18textUltraBlackMediumNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.medium,
@@ -143,7 +134,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextUltraBlackBoldNoto() {
+  static TextStyle font18textUltraBlackBoldNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -152,7 +143,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextPrimarySemiBoldNoto() {
+  static TextStyle font18textPrimarySemiBoldNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -161,7 +152,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font56TextAccentMediumNoto() {
+  static TextStyle font56textAccentMediumNoto() {
     return TextStyle(
       fontSize: 56.sp,
       fontWeight: FontWeightHelper.medium,
@@ -170,7 +161,19 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font16TextAccentMediumNoto() {
+  static TextStyle font16textAccentUnderLineMediumNoto() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.medium,
+      fontFamily: notoSansArabic,
+      color: AppColors.textAccent,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.textAccent,
+      decorationThickness: 1.5,
+    );
+  }
+
+  static TextStyle font16textAccentMediumNoto() {
     return TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.medium,
@@ -179,7 +182,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font15TextMutedMediumNoto() {
+  static TextStyle font15textMutedMediumNoto() {
     return TextStyle(
       fontSize: 15.sp,
       fontWeight: FontWeightHelper.medium,
@@ -188,7 +191,19 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font17TextAccentMediumNoto() {
+  static TextStyle font17textAccentUnderLineMediumNoto() {
+    return TextStyle(
+      fontSize: 17.sp,
+      fontWeight: FontWeightHelper.medium,
+      fontFamily: notoSansArabic,
+      color: AppColors.textAccent,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.textAccent, // تحديد لون الخط تحت النص
+      decorationThickness: 1.5,
+    );
+  }
+
+  static TextStyle font17textAccentMediumNotoUnderLine() {
     return TextStyle(
       fontSize: 17.sp,
       fontWeight: FontWeightHelper.medium,
@@ -197,7 +212,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font21TextPrimaryRegularNoto() {
+  static TextStyle font21textPrimaryRegularNoto() {
     return TextStyle(
       fontSize: 21.sp,
       fontWeight: FontWeightHelper.regular,
@@ -206,7 +221,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextPrimaryRegularNoto() {
+  static TextStyle font18textPrimaryRegularNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -215,7 +230,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font34TextPrimarySemiBoldNoto() {
+  static TextStyle font34textPrimarySemiBoldNoto() {
     return TextStyle(
       fontSize: 34.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -224,7 +239,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font18TextMutedRegularNoto() {
+  static TextStyle font18textMutedRegularNoto() {
     return TextStyle(
       fontSize: 18.sp,
       fontWeight: FontWeightHelper.regular,
@@ -233,7 +248,16 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font16TextMutedMediumNoto() {
+  static TextStyle font16textMutedRegularNoto() {
+    return TextStyle(
+      fontSize: 16.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: notoSansArabic,
+      color: AppColors.textMuted,
+    );
+  }
+
+  static TextStyle font16textMutedMediumNoto() {
     return TextStyle(
       fontSize: 16.sp,
       fontWeight: FontWeightHelper.medium,
@@ -242,7 +266,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font20TextPrimaryRegularNoto() {
+  static TextStyle font20textPrimaryRegularNoto() {
     return TextStyle(
       fontSize: 20.sp,
       fontWeight: FontWeightHelper.regular,
@@ -251,7 +275,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font21TextPrimaryMediumNoto() {
+  static TextStyle font21textPrimaryMediumNoto() {
     return TextStyle(
       fontSize: 21.sp,
       fontWeight: FontWeightHelper.medium,
@@ -260,7 +284,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font25TextAccentSemiBoldNoto() {
+  static TextStyle font25textAccentSemiBoldNoto() {
     return TextStyle(
       fontSize: 25.sp,
       fontWeight: FontWeightHelper.semiBold,
@@ -269,7 +293,7 @@ class AppTextStyle {
     );
   }
 
-  static TextStyle font17TextMutedMediumNoto() {
+  static TextStyle font17textMutedMediumNoto() {
     return TextStyle(
       fontSize: 17.sp,
       fontWeight: FontWeightHelper.medium,

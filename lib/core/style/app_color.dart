@@ -30,6 +30,7 @@ abstract class AppColors {
   static const Color textVeryDarkGrayishBlue = veryDarkGrayishBlue;
 
   // ===== Border & Divider Tokens =====
+  static const Color borderDefault = pureWhite;
   static const Color borderSubtle = Color(0x24FFFFFF);
   static const Color borderAccent = goldAccent;
   static const Color borderFocus = goldAccentLight;
