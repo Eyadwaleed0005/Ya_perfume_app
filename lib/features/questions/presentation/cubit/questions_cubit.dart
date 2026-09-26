@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ya_perfume/app/routes/app_images_routes.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
+import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
 import 'package:ya_perfume/features/questions/data/models/question_model.dart';
 
@@ -439,6 +440,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             ],
           ),
         ],
+        selectedThemeType: null,
       ),
     );
   }
@@ -520,7 +522,19 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       selected.add(optionId);
     }
 
-    emit(state.copyWith(selectedOptions: selected));
+    AppThemeType? themeType = state.selectedThemeType;
+    if (currentQuestion.id == '3') {
+      if (selected.contains('1')) {
+        themeType = AppThemeType.light;
+      } else if (selected.contains('2')) {
+        themeType = AppThemeType.dark;
+      } else if (selected.contains('3')) {
+        themeType = AppThemeType.normal;
+      }
+    }
+    emit(
+      state.copyWith(selectedOptions: selected, selectedThemeType: themeType),
+    );
   }
 
   void next() {

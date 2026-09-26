@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ya_perfume/core/theme/app_theme.dart';
+import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_background.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body.dart';
@@ -14,27 +16,19 @@ class QuestionsScreenContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionsCubit, QuestionsState>(
       builder: (context, state) {
+        AppThemeType effectiveThemeType =
+            state.selectedThemeType ?? AppThemeType.normal;
+        AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
         final cubit = context.read<QuestionsCubit>();
-        final question = cubit.currentQuestion;
-        final selectedOption = cubit.selectedOption;
         return SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 64.w),
             child: Stack(
               children: [
-                // الخلفية
                 QuestionBackground(
-                  backGroundColor:
-                      selectedOption?.backGroundColor ??
-                      question.initailBackGroundColor!,
-
-                  primaryColor:
-                      selectedOption?.primaryColor ??
-                      question.initailPrimaryColor!,
-
-                  secondaryColor:
-                      selectedOption?.secondaryColor ??
-                      question.initailSecondaryColor!,
+                  backGroundColor: theme.background,
+                  primaryColor: theme.primary.withValues(alpha: 0.14),
+                  secondaryColor: theme.secondary,
                 ),
 
                 Column(
@@ -42,9 +36,10 @@ class QuestionsScreenContent extends StatelessWidget {
                     QuestionHeader(
                       currentIndex: state.currentIndex + 1,
                       totalQuestions: state.questions.length,
+                      state: state,
                     ),
 
-                    QuestionBody(cubit: cubit),
+                    QuestionBody(cubit: cubit, state: state),
                   ],
                 ),
 
@@ -56,6 +51,7 @@ class QuestionsScreenContent extends StatelessWidget {
                   onNext: () => cubit.next(),
                   onPrevious: () => cubit.previous(),
                   onSkip: () => cubit.skip(),
+                  state: state,
                 ),
               ],
             ),

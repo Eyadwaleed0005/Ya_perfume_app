@@ -7,10 +7,12 @@ import 'package:ya_perfume/core/style/app_color.dart';
 class CircularButterFly extends StatelessWidget {
   final double height;
   final double width;
+  final Color background;
   const CircularButterFly({
     super.key,
     required this.height,
     required this.width,
+    required this.background,
   });
 
   @override
@@ -19,7 +21,7 @@ class CircularButterFly extends StatelessWidget {
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: AppColors.bgCanvas,
+        color: background,
         shape: BoxShape.circle,
         border: Border.all(color: AppColors.goldAccent, width: 1.w),
       ),

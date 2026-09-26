@@ -3,17 +3,23 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
+import 'package:ya_perfume/core/theme/app_theme.dart';
+import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_options.dart';
 
 class QuestionBody extends StatelessWidget {
   final QuestionsCubit cubit;
-  const QuestionBody({super.key, required this.cubit});
+  final QuestionsState state;
+  const QuestionBody({super.key, required this.cubit, required this.state});
 
   @override
   Widget build(BuildContext context) {
     final question = cubit.currentQuestion;
     final selectedOption = cubit.selectedOption;
+    AppThemeType themeType = state.selectedThemeType ?? AppThemeType.normal;
+    AppThemeColors theme = AppTheme.fromType(themeType);
+
     return Expanded(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -23,7 +29,6 @@ class QuestionBody extends StatelessWidget {
             flex: 1,
             child: Container(
               decoration: BoxDecoration(color: Colors.transparent),
-
               child: SvgPicture.asset(
                 selectedOption?.image ?? question.initailImage!,
                 alignment: Alignment.topCenter,
@@ -31,9 +36,7 @@ class QuestionBody extends StatelessWidget {
               ),
             ),
           ),
-
           horizontalSpace(16),
-
           Expanded(
             flex: 2,
             child: AnimatedSwitcher(
@@ -56,69 +59,64 @@ class QuestionBody extends StatelessWidget {
                   verticalSpace(8),
                   Text(
                     cubit.currentQuestion.title,
-                    style: AppTextStyle.font15textAccentRegularNoto(),
+                    style: AppTextStyle.font15textAccentRegularNoto().copyWith(
+                      color: theme.title,
+                    ),
                     textAlign: TextAlign.right,
                   ),
-
                   verticalSpace(16),
-
                   Text(
                     cubit.currentQuestion.questionText,
-                    style: AppTextStyle.font34textPrimarySemiBoldNoto(),
+                    style: AppTextStyle.font34textPrimarySemiBoldNoto()
+                        .copyWith(color: theme.textPrimary),
                     textAlign: TextAlign.right,
                   ),
-
                   verticalSpace(16),
-
                   Text(
                     cubit.currentQuestion.note,
-                    style: AppTextStyle.font17textMutedRegularNoto(),
+                    style: AppTextStyle.font17textMutedRegularNoto().copyWith(
+                      color: theme.textSecondary,
+                    ),
                     textAlign: TextAlign.right,
                   ),
-
                   verticalSpace(8),
-
-                  Expanded(
-                    child: QuestionOptions(
-                      options: cubit.currentQuestion.options,
-                      selectedOptions: cubit.state.selectedOptions,
-                      questionData: cubit.currentQuestion,
-                    ),
-                  ),
-
+                  Expanded(child: QuestionOptions(cubit: cubit)),
                   if (cubit.currentQuestion.id == '5') ...[
                     verticalSpace(16),
-
                     InkWell(
                       onTap: () {
                         if (cubit.state.families.isEmpty) {
                           return;
                         }
-
                         Navigator.of(context).pushNamed(
                           RouteNames.fragranceFamilies,
-                          arguments: cubit.state.families,
+                          arguments: {
+                            'families': cubit.state.families,
+                            'themeType': cubit.state.selectedThemeType,
+                          },
                         );
                       },
                       child: Text(
                         'تعرف على الفروق بين العائلات العطرية',
                         style:
-                            AppTextStyle.font16textAccentUnderLineMediumNoto(),
+                            AppTextStyle.font16textAccentUnderLineMediumNoto()
+                                .copyWith(
+                                  color: theme.title,
+                                  decorationColor: theme.title,
+                                ),
                         textAlign: TextAlign.right,
                       ),
                     ),
-
                     verticalSpace(8),
-
                     cubit.state.showInfo
                         ? Text(
                             '.يمكنك اختيار عائلتين كحد أقصى. ألغِ أحد الاختيارات لإضافة عائلة أخرى',
-                            style: AppTextStyle.font16textAccentMediumNoto(),
+                            style: AppTextStyle.font16textAccentMediumNoto()
+                                .copyWith(color: theme.title),
                             textAlign: TextAlign.right,
                           )
                         : const SizedBox.shrink(),
                   ],
-
                   verticalSpace(80),
                 ],
               ),

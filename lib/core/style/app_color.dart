@@ -12,6 +12,9 @@ abstract class AppColors {
   static const Color mutedGray = Color(0xFFC7C7CC);
   static const Color ultraBlack = Color(0xFF050506);
   static const Color veryDarkGrayishBlue = Color(0xFF4D4D55);
+  static const Color darkAutumnBrown = Color(0xFF74551E);
+  static const Color darkBlue = Color(0xFF1B3550);
+  static const Color redOchre = Color(0xFFA98134);
 
   // ===== Semantic Background Colors =====
   static const Color bgCanvas = ultraBlack;
@@ -28,10 +31,29 @@ abstract class AppColors {
   static const Color textDark = darkBrown;
   static const Color textUltraBlack = ultraBlack;
   static const Color textVeryDarkGrayishBlue = veryDarkGrayishBlue;
+  static const Color textDarkAutumnBrown = darkAutumnBrown;
 
   // ===== Border & Divider Tokens =====
   static const Color borderDefault = pureWhite;
   static const Color borderSubtle = Color(0x24FFFFFF);
   static const Color borderAccent = goldAccent;
   static const Color borderFocus = goldAccentLight;
+  static const Color borderDark = ultraBlack;
+  static const Color borderRedOchre = redOchre;
+
+  // ===== UI Specific Design Colors (From Images) =====
+  // خلفية النمط العادي (Normal Mode Background - الكريمي الفاتح)
+  static const Color normalBackground = bgCanvas;
+  static const Color normalCardBackground = bgSurface;
+  static const Color normalCardBorder = borderDefault;
+
+  // خلفية النمط الداكن (Dark Mode Background - الأسود الداكن)
+  static const Color darkBackground = bgSurface;
+  static const Color darkCardBackground = bgSurfaceRaised;
+  static const Color darkCardBorder = borderDefault;
+
+  // خلفية النمط الفاتح (Light Mode Background - الأبيض النقي الكلاسيكي)
+  static const Color lightBackground = offWhite;
+  static const Color lightCardBackground = pureWhite;
+  static const Color lightCardBorder = borderDefault;
 }

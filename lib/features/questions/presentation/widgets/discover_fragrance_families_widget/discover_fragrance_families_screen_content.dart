@@ -3,6 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
+import 'package:ya_perfume/core/theme/app_theme.dart';
+import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/before_the_families_widgets/circular_butter_fly.dart';
@@ -11,20 +13,26 @@ import 'package:ya_perfume/features/questions/presentation/widgets/questions_wid
 
 class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
   final List<FragranceFamily> families;
+  final AppThemeType? themeType;
+
   const DiscoverFragranceFamiliesScreenContent({
     super.key,
     required this.families,
+    this.themeType,
   });
 
   @override
   Widget build(BuildContext context) {
+    AppThemeType effectiveThemeType = themeType ?? AppThemeType.normal;
+    AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
+
     return SafeArea(
       child: Stack(
         children: [
           QuestionBackground(
-            backGroundColor: AppColors.ultraBlack,
-            primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-            secondaryColor: AppColors.goldAccent,
+            backGroundColor: theme.background,
+            primaryColor: theme.primary.withValues(alpha: 0.14),
+            secondaryColor: theme.secondary,
           ),
 
           Padding(
@@ -36,7 +44,9 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                   alignment: Alignment.topLeft,
                   child: Text(
                     'YA  PERFUME',
-                    style: AppTextStyle.font18TextAccentMediumNoto(),
+                    style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
+                      color: theme.textSecondary,
+                    ),
                   ),
                 ),
                 verticalSpace(16),
@@ -44,20 +54,26 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    CircularButterFly(width: 80.w, height: 80.h),
+                    CircularButterFly(
+                      width: 80.w,
+                      height: 80.h,
+                      background: theme.background,
+                    ),
                     const Spacer(),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
                           'تعرّف على العائلات العطرية',
-                          style: AppTextStyle.font34textPrimarySemiBoldNoto(),
+                          style: AppTextStyle.font34textPrimarySemiBoldNoto()
+                              .copyWith(color: theme.textPrimary),
                           textDirection: TextDirection.rtl,
                         ),
                         verticalSpace(8),
                         Text(
                           'أمثلة بسيطة تساعدك على تصوّر كل طابع واختيار ما يناسب ذوقك.',
-                          style: AppTextStyle.font18textMutedRegularNoto(),
+                          style: AppTextStyle.font18textMutedRegularNoto()
+                              .copyWith(color: theme.textSecondary),
                           textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                         ),
@@ -77,7 +93,7 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                       mainAxisSpacing: 16.h,
                       childAspectRatio: 250 / 180,
                       children: families.map((entry) {
-                        return FamilyCard(family: entry);
+                        return FamilyCard(family: entry, themeType: themeType);
                       }).toList(),
                     ),
                   ),
@@ -93,8 +109,8 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                   },
                   width: 260.w,
                   height: 40.h,
-                  background: AppColors.goldAccent,
-                  foreground: AppColors.textDark,
+                  background: theme.primaryButton,
+                  foreground: AppColors.textUltraBlack,
                 ),
 
                 verticalSpace(24),
