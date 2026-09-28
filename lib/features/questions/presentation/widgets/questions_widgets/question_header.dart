@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
@@ -29,7 +30,7 @@ class QuestionHeader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
-            'YA  PERFUME',
+            'app_name'.tr(),
             textAlign: TextAlign.center,
             style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
               color: theme.title,
@@ -42,7 +43,7 @@ class QuestionHeader extends StatelessWidget {
           ),
 
           Text(
-            'السؤال $currentIndex من $totalQuestions',
+            'question_progress'.tr(args: ['$currentIndex', '$totalQuestions']),
             textAlign: TextAlign.center,
             style: AppTextStyle.font16textMutedMediumNoto().copyWith(
               color: theme.textSecondary,

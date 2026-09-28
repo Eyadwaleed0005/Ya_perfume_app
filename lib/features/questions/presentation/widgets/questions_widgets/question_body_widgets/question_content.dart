@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/animation/app_animation.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_options.dart';
+import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body_widgets/question_options.dart';
 
 class QuestionContent extends StatelessWidget {
   final QuestionsCubit cubit;
   final AppThemeColors theme;
-
-  /// Available height of the content area, passed from the parent screen
-  /// (which reads MediaQuery once). This avoids nesting a LayoutBuilder here.
   final double availableHeight;
 
   const QuestionContent({
@@ -34,7 +32,7 @@ class QuestionContent extends StatelessWidget {
           children: [
             verticalSpace(8),
             Text(
-              cubit.currentQuestion.title,
+              cubit.currentQuestion.title.tr(),
               style: AppTextStyle.font15textAccentRegularNoto().copyWith(
                 color: theme.title,
               ),
@@ -42,7 +40,7 @@ class QuestionContent extends StatelessWidget {
             ),
             verticalSpace(16),
             Text(
-              cubit.currentQuestion.questionText,
+              cubit.currentQuestion.questionText.tr(),
               style: AppTextStyle.font34textPrimarySemiBoldNoto().copyWith(
                 color: theme.textPrimary,
               ),
@@ -50,7 +48,7 @@ class QuestionContent extends StatelessWidget {
             ),
             verticalSpace(16),
             Text(
-              cubit.currentQuestion.note,
+              cubit.currentQuestion.note.tr(),
               style: AppTextStyle.font17textMutedRegularNoto().copyWith(
                 color: theme.textSecondary,
               ),
@@ -81,7 +79,7 @@ class QuestionContent extends StatelessWidget {
                   );
                 },
                 child: Text(
-                  'تعرف على الفروق بين العائلات العطرية',
+                  'learn_family_differences'.tr(),
                   style: AppTextStyle.font16textAccentUnderLineMediumNoto()
                       .copyWith(
                         color: theme.title,
@@ -93,7 +91,7 @@ class QuestionContent extends StatelessWidget {
               verticalSpace(8),
               cubit.state.showInfo
                   ? Text(
-                      '.يمكنك اختيار عائلتين كحد أقصى. ألغِ أحد الاختيارات لإضافة عائلة أخرى',
+                      'maximum_two_families_message'.tr(),
                       style: AppTextStyle.font16textAccentMediumNoto().copyWith(
                         color: theme.title,
                       ),
@@ -101,7 +99,6 @@ class QuestionContent extends StatelessWidget {
                     )
                   : const SizedBox.shrink(),
             ],
-            // Proportional bottom padding — avoids hardcoded 80
             SizedBox(height: (availableHeight * 0.14)),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
@@ -34,26 +35,23 @@ class FamilyCard extends StatelessWidget {
             style: AppTextStyle.font16textAccentMediumNoto().copyWith(
               color: theme.title,
             ),
-            textDirection: TextDirection.rtl,
           ),
           verticalSpace(8),
           Text(
-            family.title,
+            family.title.tr(),
             style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
               color: theme.textPrimary,
             ),
-            textDirection: TextDirection.rtl,
             textAlign: TextAlign.right,
           ),
           verticalSpace(12),
           FittedBox(
             fit: BoxFit.scaleDown,
             child: Text(
-              family.description,
+              family.description.tr(),
               style: AppTextStyle.font16textMutedRegularNoto().copyWith(
                 color: theme.textSecondary,
               ),
-              textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
             ),
           ),

@@ -49,17 +49,15 @@ class CustomButton extends StatelessWidget {
                 : BorderSide.none,
           ),
         ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              text,
-              style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
-                color: buttonForeground,
-              ),
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            text,
+            maxLines: 1,
+            style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
+              color: buttonForeground,
             ),
-          ],
+          ),
         ),
       ),
     );

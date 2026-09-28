@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
@@ -43,7 +44,7 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 Align(
                   alignment: Alignment.topLeft,
                   child: Text(
-                    'YA  PERFUME',
+                    'app_name'.tr(),
                     style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
                       color: theme.textSecondary,
                     ),
@@ -54,7 +55,6 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    // RULE 7/9: use .r for uniform sizing
                     CircularButterFly(
                       width: 80.r,
                       height: 80.r,
@@ -65,17 +65,15 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Text(
-                          'تعرّف على العائلات العطرية',
+                          'discover_fragrance_families'.tr(),
                           style: AppTextStyle.font34textPrimarySemiBoldNoto()
                               .copyWith(color: theme.textPrimary),
-                          textDirection: TextDirection.rtl,
                         ),
                         verticalSpace(8),
                         Text(
-                          'أمثلة بسيطة تساعدك على تصوّر كل طابع واختيار ما يناسب ذوقك.',
+                          'fragrance_families_description'.tr(),
                           style: AppTextStyle.font18textMutedRegularNoto()
                               .copyWith(color: theme.textSecondary),
-                          textDirection: TextDirection.rtl,
                           textAlign: TextAlign.right,
                         ),
                       ],
@@ -86,14 +84,7 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 verticalSpace(20),
 
                 Expanded(
-                  child: Directionality(
-                    textDirection: TextDirection.rtl,
-                    // RULE 4: use LayoutBuilder ONLY here — inside the grid's
-                    // Expanded slot — to compute childAspectRatio from real
-                    // constraints instead of hardcoding 250/180.
-                    // This single LayoutBuilder replaces the hardcoded ratio;
-                    // no other LayoutBuilders were added.
-                    child: LayoutBuilder(
+                  child: LayoutBuilder(
                       builder: (context, constraints) {
                         const crossAxisCount = 4;
                         const crossAxisSpacing = 16.0;
@@ -120,14 +111,13 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                           }).toList(),
                         );
                       },
-                    ),
                   ),
                 ),
 
                 verticalSpace(24),
 
                 CustomButton(
-                  text: 'العودة إلى الاختيارات',
+                  text: 'back_to_choices'.tr(),
                   onPressed: () {
                     Navigator.pop(context);
                   },

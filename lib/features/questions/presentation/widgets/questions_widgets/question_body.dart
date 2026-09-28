@@ -19,7 +19,6 @@ class QuestionBody extends StatelessWidget {
     AppThemeColors theme = AppTheme.fromType(themeType);
     final imagePath = selectedOption?.image ?? question.initailImage;
 
-    // Read screen height once here — passed down to avoid LayoutBuilder in children
     final sh = MediaQuery.sizeOf(context).height;
 
     return Expanded(
@@ -36,11 +35,7 @@ class QuestionBody extends StatelessWidget {
 
           horizontalSpace(16),
 
-          QuestionContent(
-            cubit: cubit,
-            theme: theme,
-            availableHeight: sh,
-          ),
+          QuestionContent(cubit: cubit, theme: theme, availableHeight: sh),
         ],
       ),
     );

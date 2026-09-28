@@ -7,6 +7,7 @@ enum QuestionSelectionType { single, multiple }
 class QuestionOption {
   final String id;
   final String text;
+  final String? subtitle;
   final String? image;
   final Color? backGroundColor;
   final Color? primaryColor;
@@ -15,6 +16,7 @@ class QuestionOption {
   const QuestionOption({
     required this.id,
     required this.text,
+    this.subtitle,
     this.image,
     this.backGroundColor,
     this.primaryColor,

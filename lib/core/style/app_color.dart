@@ -15,6 +15,7 @@ abstract class AppColors {
   static const Color darkAutumnBrown = Color(0xFF74551E);
   static const Color darkBlue = Color(0xFF1B3550);
   static const Color redOchre = Color(0xFFA98134);
+  static const Color blue = Color(0xFF1A4A9E);
 
   // ===== Semantic Background Colors =====
   static const Color bgCanvas = ultraBlack;
@@ -42,18 +43,19 @@ abstract class AppColors {
   static const Color borderRedOchre = redOchre;
 
   // ===== UI Specific Design Colors (From Images) =====
-  // خلفية النمط العادي (Normal Mode Background - الكريمي الفاتح)
   static const Color normalBackground = bgCanvas;
   static const Color normalCardBackground = bgSurface;
   static const Color normalCardBorder = borderDefault;
 
-  // خلفية النمط الداكن (Dark Mode Background - الأسود الداكن)
   static const Color darkBackground = bgSurface;
   static const Color darkCardBackground = bgSurfaceRaised;
   static const Color darkCardBorder = borderDefault;
 
-  // خلفية النمط الفاتح (Light Mode Background - الأبيض النقي الكلاسيكي)
   static const Color lightBackground = offWhite;
   static const Color lightCardBackground = pureWhite;
   static const Color lightCardBorder = borderDefault;
+
+  // ===== Snow Selection Color =====
+  static const Color blueSnow = blue;
+  static const Color whiteSnow = pureWhite;
 }

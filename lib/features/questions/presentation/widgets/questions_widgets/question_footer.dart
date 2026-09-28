@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
@@ -35,7 +36,6 @@ class QuestionFooter extends StatelessWidget {
     AppThemeColors theme = AppTheme.fromType(themeType);
 
     return Positioned(
-      // RULE 1 & 8: fixed pixel → .h
       bottom: 24.h,
       left: 24.w,
       right: 24.w,
@@ -43,43 +43,38 @@ class QuestionFooter extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           CustomButton(
-            text: 'السؤال السابق',
+            text: 'previous_question'.tr(),
             onPressed: onPrevious,
             width: 230.w,
             height: 40.h,
             background: theme.background,
             foreground: theme.textPrimary,
             borderColor: theme.borderOff.withValues(alpha: 0.14),
-            // RULE 1: raw value → scaled
             borderWidth: 0.5.w,
           ),
 
           if (questionId == '5')
             Text(
-              'العائلات المختارة: $numberSelected من 2',
+              'selected_families_count'.tr(args: ['$numberSelected']),
               style: AppTextStyle.font15textMutedMediumNoto().copyWith(
                 color: theme.textSecondary,
               ),
               textAlign: TextAlign.center,
-              textDirection: TextDirection.rtl,
             ),
 
           if (questionId == '6')
             InkWell(
               onTap: onSkip,
               child: Text(
-                'تخطَّ هذا السؤال',
+                'skip_question'.tr(),
                 style: AppTextStyle.font17textAccentUnderLineMediumNoto()
-                    .copyWith(
-                  color: theme.title,
-                  decorationColor: theme.title,
-                ),
+                    .copyWith(color: theme.title, decorationColor: theme.title),
                 textAlign: TextAlign.right,
               ),
             ),
 
           CustomButton(
-            text: 'متابعة',
+            text: 'continue'.tr(),
             onPressed: canGoNext
                 ? questionId == '4'
                       ? () {

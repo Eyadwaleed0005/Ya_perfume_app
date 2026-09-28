@@ -182,6 +182,15 @@ class AppTextStyle {
     );
   }
 
+  static TextStyle font15textMutedRegularNoto() {
+    return TextStyle(
+      fontSize: 15.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: notoSansArabic,
+      color: AppColors.textMuted,
+    );
+  }
+
   static TextStyle font15textMutedMediumNoto() {
     return TextStyle(
       fontSize: 15.sp,
