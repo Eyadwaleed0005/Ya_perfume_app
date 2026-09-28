@@ -13,18 +13,13 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   QuestionModel get currentQuestion => state.questions[state.currentIndex];
 
   QuestionOption? get selectedOption {
-    if (state.selectedOptions.isEmpty) {
-      return null;
-    }
+    final saved = state.allAnswers[currentQuestion.id];
+    if (saved == null || saved.isEmpty) return null;
 
-    final selectedId = state.selectedOptions.first;
-
+    final selectedId = saved.first;
     for (final option in currentQuestion.options) {
-      if (option.id == selectedId) {
-        return option;
-      }
+      if (option.id == selectedId) return option;
     }
-
     return null;
   }
 
@@ -37,7 +32,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "طابع العطر",
             questionText: "ما الطابع الذي تفضّله لعطرك؟",
             note: "اختر الطابع الذي تفضّله، بصرف النظر عن جنسك.",
-            initailImage: AppImage().twoGenderOffImg,
+            initailImage: AppImage().twoGenderOffImgQ1,
             initailBackGroundColor: AppColors.bgCanvas,
             initailPrimaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
             initailSecondaryColor: AppColors.goldAccent,
@@ -45,26 +40,17 @@ class QuestionsCubit extends Cubit<QuestionsState> {
               QuestionOption(
                 id: '1',
                 text: 'رجالي',
-                image: AppImage().maleGenderImg,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().maleGenderImgQ1,
               ),
               QuestionOption(
                 id: '2',
                 text: 'نسائي',
-                image: AppImage().femaleGenderImg,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().femaleGenderImgQ1,
               ),
               QuestionOption(
                 id: '3',
                 text: 'للجنسين',
-                image: AppImage().twoGenderImg,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().twoGenderImgQ1,
               ),
             ],
           ),
@@ -79,42 +65,23 @@ class QuestionsCubit extends Cubit<QuestionsState> {
                 id: '1',
                 text: 'أقل من 20',
                 image: AppImage().twentyQ2,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
               ),
               QuestionOption(
                 id: '2',
                 text: '20–29',
                 image: AppImage().twentyToQ2,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
               ),
               QuestionOption(
                 id: '3',
                 text: '30–39',
                 image: AppImage().thirtyToQ2,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
               ),
               QuestionOption(
                 id: '4',
                 text: '40–49',
                 image: AppImage().fourtyToQ2,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
               ),
-              QuestionOption(
-                id: '5',
-                text: '50+',
-                image: AppImage().fiftyToQ2,
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
+              QuestionOption(id: '5', text: '50+', image: AppImage().fiftyToQ2),
             ],
           ),
           QuestionModel(
@@ -122,28 +89,22 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "وقت الاستخدام",
             questionText: "متى تستخدم العطر غالبًا؟",
             note: "اختر الوقت الأقرب إلى استخدامك.",
-            initailImage: AppImage().twoGenderOffImg,
+            //initailImage: AppImage().twoGenderOffImg,
             options: [
               QuestionOption(
                 id: '1',
                 text: 'صباحًا ونهارًا',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().sunLightQ3,
               ),
               QuestionOption(
                 id: '2',
                 text: 'مساءً وليلًا',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().moonNightQ3,
               ),
               QuestionOption(
                 id: '3',
                 text: 'في كلا الوقتين',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().lightNightQ3,
               ),
             ],
           ),
@@ -152,29 +113,19 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "الفصل",
             questionText: "في أي فصل تستخدم العطر غالبًا؟",
             note: "اختر الفصل الأقرب إلى استخدامك.",
-            initailImage: AppImage().twoGenderOffImg,
+            initailImage: AppImage().perfumeQ4,
             options: [
               QuestionOption(
                 id: '1',
                 text: 'الصيف',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().summerQ4,
               ),
               QuestionOption(
                 id: '2',
                 text: 'الشتاء',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().winterQ4,
               ),
-              QuestionOption(
-                id: '3',
-                text: 'طول العام',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
+              QuestionOption(id: '3', text: 'طول العام'),
             ],
           ),
           QuestionModel(
@@ -182,63 +133,35 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "الروائح المفضلة",
             questionText: "ما الروائح التي تفضّلها؟",
             note: "اختر عائلة عطرية واحدة أو عائلتين كحد أقصى.",
-            initailImage: AppImage().twoGenderOffImg,
+
             options: [
               QuestionOption(
                 id: '1',
                 text: 'منعش وحمضي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().freshQ5,
               ),
               QuestionOption(
                 id: '2',
                 text: 'نظيف ومسكي وبروائح البودرة',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().muskQ5,
               ),
-              QuestionOption(
-                id: '3',
-                text: 'زهري',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '4',
-                text: 'فاكهي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
+              QuestionOption(id: '3', text: 'زهري', image: AppImage().springQ5),
+              QuestionOption(id: '4', text: 'فاكهي', image: AppImage().fruitQ5),
               QuestionOption(
                 id: '5',
                 text: 'حلو ومستوحى من الحلوى',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().sweetQ5,
               ),
-              QuestionOption(
-                id: '6',
-                text: 'خشبي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
+              QuestionOption(id: '6', text: 'خشبي', image: AppImage().woodQ5),
               QuestionOption(
                 id: '7',
                 text: 'شرقي ودافئ',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().orientalQ5,
               ),
               QuestionOption(
                 id: '8',
                 text: 'عود ودخان وجلد',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().oudQ5,
               ),
             ],
             selectionType: QuestionSelectionType.multiple,
@@ -250,57 +173,15 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "الروائح غير المحبوبة · اختياري",
             questionText: "هل توجد روائح تفضّل تجنّبها؟",
             note: "اختر الروائح التي تفضّل تجنّبها، أو تخطَّ هذا السؤال.",
-            initailImage: AppImage().twoGenderOffImg,
+
             options: [
-              QuestionOption(
-                id: '1',
-                text: 'الفانيليا والحلاوة القوية',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '2',
-                text: 'الحمضيات',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '3',
-                text: 'الزهور القوية',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '4',
-                text: 'المسك وروائح البودرة',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '5',
-                text: 'العود والبخور',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '6',
-                text: 'التوابل',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
-              QuestionOption(
-                id: '7',
-                text: 'التبغ والجلد والدخان',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
-              ),
+              QuestionOption(id: '1', text: 'الفانيليا والحلاوة القوية'),
+              QuestionOption(id: '2', text: 'الحمضيات'),
+              QuestionOption(id: '3', text: 'الزهور القوية'),
+              QuestionOption(id: '4', text: 'المسك وروائح البودرة'),
+              QuestionOption(id: '5', text: 'العود والبخور'),
+              QuestionOption(id: '6', text: 'التوابل'),
+              QuestionOption(id: '7', text: 'التبغ والجلد والدخان'),
             ],
             selectionType: QuestionSelectionType.multiple,
             minSelections: 1,
@@ -312,49 +193,37 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "المناسبة",
             questionText: "ما المناسبة التي تستخدم فيها العطر غالبًا؟",
             note: "اختر الاستخدام الأساسي للعطر.",
-            initailImage: AppImage().twoGenderOffImg,
+
             options: [
               QuestionOption(
                 id: '1',
                 text: 'استخدام يومي للعمل أو الدراسة',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().dailyQ7,
               ),
               QuestionOption(
                 id: '2',
                 text: 'نزهات وزيارات المقاهي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().cityQ7,
               ),
               QuestionOption(
                 id: '3',
                 text: 'رياضة وأنشطة خارجية',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().activeQ7,
               ),
               QuestionOption(
                 id: '4',
                 text: 'موعد رومانسي أو عشاء هادئ',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().dateQ7,
               ),
               QuestionOption(
                 id: '5',
                 text: 'حفل زفاف أو مناسبة رسمية',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().formalQ7,
               ),
               QuestionOption(
                 id: '6',
                 text: 'حفلة أو سهرة ليلية',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().partyQ7,
               ),
             ],
           ),
@@ -363,49 +232,37 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "الأسلوب الشخصي",
             questionText: "ما الأسلوب الأقرب إلى شخصيتك؟",
             note: "اختر الأسلوب الأقرب إلى شخصيتك.",
-            initailImage: AppImage().twoGenderOffImg,
+
             options: [
               QuestionOption(
                 id: '1',
                 text: 'رياضي وحيوي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
               QuestionOption(
                 id: '2',
                 text: 'عملي ومريح',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
               QuestionOption(
                 id: '3',
                 text: 'كلاسيكي ورسمي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
               QuestionOption(
                 id: '4',
                 text: 'أنيق وراقٍ',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
               QuestionOption(
                 id: '5',
                 text: 'جريء ومختلف',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
               QuestionOption(
                 id: '6',
                 text: 'ناعم ورومانسي',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().footballAndBicycleQ8,
               ),
             ],
           ),
@@ -414,28 +271,22 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: "الفوحان",
             questionText: "ما درجة فوحان العطر التي تفضّلها؟",
             note: "اختر مدى انتشار رائحة العطر حولك.",
-            initailImage: AppImage().twoGenderOffImg,
+
             options: [
               QuestionOption(
                 id: '1',
                 text: 'هادئ وقريب منك',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().smallCircleQ9,
               ),
               QuestionOption(
                 id: '2',
                 text: 'واضح ومتوازن',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().mediumCircleQ9,
               ),
               QuestionOption(
                 id: '3',
                 text: 'قوي ولافت',
-                backGroundColor: AppColors.bgCanvas,
-                primaryColor: AppColors.goldAccent.withValues(alpha: 0.14),
-                secondaryColor: AppColors.goldAccent,
+                image: AppImage().largeCircleQ9,
               ),
             ],
           ),
@@ -496,6 +347,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void toggleOption(String optionId) {
+    final questionId = currentQuestion.id;
     final selected = {...state.selectedOptions};
 
     if (selected.contains(optionId)) {
@@ -518,12 +370,55 @@ class QuestionsCubit extends Cubit<QuestionsState> {
           selected.length < currentQuestion.maxSelections) {
         emit(state.copyWith(showInfo: false));
       }
-
       selected.add(optionId);
     }
 
-    AppThemeType? themeType = state.selectedThemeType;
+    final updatedAnswers = Map<String, Set<String>>.from(state.allAnswers);
+    updatedAnswers[questionId] = selected;
+
+    final updatedImages = Map<String, String?>.from(state.accumulatedImages);
+
+    if (questionId == '4') {
+      // احفظ الزجازة
+      updatedImages['4_bottle'] = currentQuestion.initailImage;
+      // احفظ صورة الفصل
+      if (selected.isNotEmpty) {
+        final opt = currentQuestion.options.firstWhere(
+          (o) => o.id == selected.first,
+          orElse: () => currentQuestion.options.first,
+        );
+        updatedImages['4_season'] = opt.image;
+      } else {
+        updatedImages['4_season'] = null;
+      }
+    } else if ({'3', '5', '7', '8', '9'}.contains(questionId)) {
+      // احفظ صورة الـoption المختار
+      if (selected.isNotEmpty) {
+        final opt = currentQuestion.options.firstWhere(
+          (o) => o.id == selected.first,
+          orElse: () => currentQuestion.options.first,
+        );
+        if (questionId == '5') {
+          updatedImages['5_1'] = opt.image;
+          updatedImages['5_2'] = opt.image;
+        } else {
+          updatedImages[questionId] = opt.image;
+        }
+      } else {
+        updatedImages[questionId] = null;
+      }
+    }
+
+    toggleTheme(updatedAnswers, state.selectedThemeType, updatedImages);
+  }
+
+  void toggleTheme(
+    Map<String, Set<String>> allAnswers,
+    AppThemeType? themeType,
+    Map<String, String?> accumulatedImages,
+  ) {
     if (currentQuestion.id == '3') {
+      final selected = allAnswers[currentQuestion.id] ?? {};
       if (selected.contains('1')) {
         themeType = AppThemeType.light;
       } else if (selected.contains('2')) {
@@ -533,40 +428,33 @@ class QuestionsCubit extends Cubit<QuestionsState> {
       }
     }
     emit(
-      state.copyWith(selectedOptions: selected, selectedThemeType: themeType),
+      state.copyWith(
+        allAnswers: allAnswers,
+        selectedThemeType: themeType,
+        accumulatedImages: accumulatedImages,
+      ),
     );
   }
 
   void next() {
     if (!canContinue) return;
+    if (state.currentIndex >= state.questions.length - 1) return;
 
-    if (state.currentIndex >= state.questions.length - 1) {
-      return;
-    }
-
-    emit(
-      state.copyWith(currentIndex: state.currentIndex + 1, selectedOptions: {}),
-    );
+    emit(state.copyWith(currentIndex: state.currentIndex + 1));
   }
 
   void skip() {
     if (!currentQuestion.isSkippable) return;
+    if (state.currentIndex >= state.questions.length - 1) return;
 
-    if (state.currentIndex >= state.questions.length - 1) {
-      return;
-    }
-    emit(
-      state.copyWith(currentIndex: state.currentIndex + 1, selectedOptions: {}),
-    );
+    emit(state.copyWith(currentIndex: state.currentIndex + 1));
+  }
+
+  void previous() {
+    if (state.currentIndex == 0) return;
+    emit(state.copyWith(currentIndex: state.currentIndex - 1));
   }
 
   bool get canContinue =>
       state.selectedOptions.length >= currentQuestion.minSelections;
-
-  void previous() {
-    if (state.currentIndex == 0) return;
-    emit(
-      state.copyWith(currentIndex: state.currentIndex - 1, selectedOptions: {}),
-    );
-  }
 }

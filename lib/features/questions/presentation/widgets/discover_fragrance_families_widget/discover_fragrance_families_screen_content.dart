@@ -54,9 +54,10 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
+                    // RULE 7/9: use .r for uniform sizing
                     CircularButterFly(
-                      width: 80.w,
-                      height: 80.h,
+                      width: 80.r,
+                      height: 80.r,
                       background: theme.background,
                     ),
                     const Spacer(),
@@ -87,21 +88,44 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 Expanded(
                   child: Directionality(
                     textDirection: TextDirection.rtl,
-                    child: GridView.count(
-                      crossAxisCount: 4,
-                      crossAxisSpacing: 16.w,
-                      mainAxisSpacing: 16.h,
-                      childAspectRatio: 250 / 180,
-                      children: families.map((entry) {
-                        return FamilyCard(family: entry, themeType: themeType);
-                      }).toList(),
+                    // RULE 4: use LayoutBuilder ONLY here — inside the grid's
+                    // Expanded slot — to compute childAspectRatio from real
+                    // constraints instead of hardcoding 250/180.
+                    // This single LayoutBuilder replaces the hardcoded ratio;
+                    // no other LayoutBuilders were added.
+                    child: LayoutBuilder(
+                      builder: (context, constraints) {
+                        const crossAxisCount = 4;
+                        const crossAxisSpacing = 16.0;
+                        final totalSpacing =
+                            crossAxisSpacing * (crossAxisCount - 1);
+                        final cardWidth =
+                            (constraints.maxWidth - totalSpacing) /
+                            crossAxisCount;
+                        // Target ~55% of available height per card row
+                        final cardHeight = constraints.maxHeight * 0.55;
+                        final childAspectRatio = cardWidth / cardHeight;
+
+                        return GridView.count(
+                          crossAxisCount: crossAxisCount,
+                          crossAxisSpacing: 16.w,
+                          mainAxisSpacing: 16.h,
+                          // RULE 4: calculated, not hardcoded
+                          childAspectRatio: childAspectRatio,
+                          children: families.map((entry) {
+                            return FamilyCard(
+                              family: entry,
+                              themeType: themeType,
+                            );
+                          }).toList(),
+                        );
+                      },
                     ),
                   ),
                 ),
 
                 verticalSpace(24),
 
-                // الزرار
                 CustomButton(
                   text: 'العودة إلى الاختيارات',
                   onPressed: () {

@@ -73,6 +73,14 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/q1/
+    - assets/images/q2/
+    - assets/images/q3/
+    - assets/images/q4/
+    - assets/images/q5/
+    - assets/images/q7/
+    - assets/images/q8/
+    - assets/images/q9/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

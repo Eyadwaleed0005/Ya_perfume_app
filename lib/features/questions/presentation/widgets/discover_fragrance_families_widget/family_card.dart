@@ -18,9 +18,11 @@ class FamilyCard extends StatelessWidget {
     AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
 
     return Container(
-      padding: EdgeInsets.all(14.w),
+      // RULE 9 & 8: use .r so padding scales uniformly on both axes
+      padding: EdgeInsets.all(14.r),
       decoration: BoxDecoration(
         color: theme.surfaceOff,
+        // RULE 9: border radius uses .r
         borderRadius: BorderRadius.circular(16.r),
         border: Border.all(color: theme.borderOff.withValues(alpha: 0.14)),
       ),

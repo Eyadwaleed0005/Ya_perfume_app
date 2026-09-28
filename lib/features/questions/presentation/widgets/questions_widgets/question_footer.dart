@@ -35,7 +35,8 @@ class QuestionFooter extends StatelessWidget {
     AppThemeColors theme = AppTheme.fromType(themeType);
 
     return Positioned(
-      bottom: 24,
+      // RULE 1 & 8: fixed pixel → .h
+      bottom: 24.h,
       left: 24.w,
       right: 24.w,
       child: Row(
@@ -49,7 +50,8 @@ class QuestionFooter extends StatelessWidget {
             background: theme.background,
             foreground: theme.textPrimary,
             borderColor: theme.borderOff.withValues(alpha: 0.14),
-            borderWidth: 0.5,
+            // RULE 1: raw value → scaled
+            borderWidth: 0.5.w,
           ),
 
           if (questionId == '5')
@@ -66,9 +68,12 @@ class QuestionFooter extends StatelessWidget {
             InkWell(
               onTap: onSkip,
               child: Text(
-                'تخطَّ هذا السؤال',
+                'تخطَّ هذا السؤال',
                 style: AppTextStyle.font17textAccentUnderLineMediumNoto()
-                    .copyWith(color: theme.title, decorationColor: theme.title),
+                    .copyWith(
+                  color: theme.title,
+                  decorationColor: theme.title,
+                ),
                 textAlign: TextAlign.right,
               ),
             ),

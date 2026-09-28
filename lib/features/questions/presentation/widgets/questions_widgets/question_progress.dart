@@ -16,12 +16,12 @@ class QuestionProgress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Handle case where there's only one question to avoid division by zero
-    // currentIndex is 1-based for display (1 for first question)
-    final progress = currentIndex / (totalQuestions - 1);
-    const butterflySize = 40.0;
-    final halfButterfly = (butterflySize / 2).w;
-    final lineWidth = 400.w - butterflySize.w;
+    final progress = currentIndex / (totalQuestions);
+
+    // RULE 1 & 7: butterfly icon uses .r so it scales proportionally on all screens
+    final butterflySize = 40.r;
+    final halfButterfly = butterflySize / 2;
+    final lineWidth = 400.w - butterflySize;
 
     return SizedBox(
       width: 400.w,
@@ -29,6 +29,7 @@ class QuestionProgress extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
+          // Background line
           Positioned(
             left: halfButterfly,
             right: halfButterfly,
@@ -36,12 +37,14 @@ class QuestionProgress extends StatelessWidget {
             bottom: 0,
             child: Center(
               child: Container(
+                // RULE 1: .h for heights
                 height: 0.5.h,
                 color: AppColors.mutedGray.withValues(alpha: 0.4),
               ),
             ),
           ),
 
+          // Progress line (animated)
           Positioned(
             right: halfButterfly,
             top: 0,
@@ -50,6 +53,7 @@ class QuestionProgress extends StatelessWidget {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut,
+                // RULE 1: .h for heights
                 height: 0.5.h,
                 width: lineWidth * progress,
                 color: AppColors.goldAccent,
@@ -57,9 +61,10 @@ class QuestionProgress extends StatelessWidget {
             ),
           ),
 
-          ...List.generate(totalQuestions - 1, (i) {
+          // Step dots
+          ...List.generate(totalQuestions, (i) {
             final actualIndex = i + 1;
-            final dotProgress = actualIndex / (totalQuestions - 1);
+            final dotProgress = actualIndex / (totalQuestions);
             final isPassed = actualIndex <= currentIndex;
 
             final dotRight = halfButterfly + lineWidth * (dotProgress) - 3.w;
@@ -71,8 +76,9 @@ class QuestionProgress extends StatelessWidget {
               child: Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 600),
-                  width: 6.w,
-                  height: 6.w,
+                  // RULE 1: use .r for uniform dot (same w & h)
+                  width: 6.r,
+                  height: 6.r,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     color: isPassed
@@ -84,6 +90,7 @@ class QuestionProgress extends StatelessWidget {
             );
           }),
 
+          // Butterfly indicator (animated position)
           AnimatedPositioned(
             duration: const Duration(milliseconds: 600),
             curve: Curves.easeInOut,
@@ -93,8 +100,9 @@ class QuestionProgress extends StatelessWidget {
             child: Center(
               child: SvgPicture.asset(
                 AppImage().butterProgressBar,
-                width: butterflySize.w,
-                height: butterflySize.w,
+                // RULE 7: icon/image sizes use .r
+                width: butterflySize,
+                height: butterflySize,
                 colorFilter: const ColorFilter.mode(
                   AppColors.goldAccent,
                   BlendMode.srcIn,

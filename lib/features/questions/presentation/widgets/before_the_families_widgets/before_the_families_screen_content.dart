@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
@@ -19,6 +18,11 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
     AppThemeType effectiveThemeType = themeType ?? AppThemeType.normal;
     AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
 
+    // Read screen dimensions once at the top of build() — RULE 2
+    final size = MediaQuery.sizeOf(context);
+    final sw = size.width;
+    final sh = size.height;
+
     return Stack(
       children: [
         QuestionBackground(
@@ -27,9 +31,10 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
           secondaryColor: theme.secondary,
         ),
 
+        // RULE 5: Positioned uses proportional values from screen dimensions
         Positioned(
-          top: 24.h,
-          left: 64.w,
+          top: sh * 0.03,
+          left: sw * 0.05,
           child: Text(
             'YA  PERFUME',
             style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
@@ -43,11 +48,16 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              // Proportional butterfly circle — avoids hardcoded 170.h/170.w
               CircularButterFly(
-                height: 170.h,
-                width: 170.w,
+                height: sh * 0.20,
+                width: sh * 0.20,
                 background: theme.background,
               ),
+
+              // Proportional spacing instead of hardcoded verticalSpace(14)
+              SizedBox(height: sh * 0.02),
+
               Text(
                 'لنكتشف الروائح التي تفضّلها',
                 style: AppTextStyle.font36textPrimarySemiBoldNoto().copyWith(
@@ -57,7 +67,7 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
                 textDirection: TextDirection.rtl,
               ),
 
-              verticalSpace(14),
+              SizedBox(height: sh * 0.015),
 
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 80.w),
@@ -71,7 +81,8 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
                 ),
               ),
 
-              verticalSpace(60),
+              // Proportional spacing instead of hardcoded verticalSpace(60)
+              SizedBox(height: sh * 0.07),
 
               CustomButton(
                 text: 'اختيار الروائح المفضّلة',

@@ -42,7 +42,7 @@ class QuestionModel {
     required this.title,
     required this.questionText,
     required this.note,
-    this.initailImage = '',
+    this.initailImage,
     required this.options,
     this.selectionType = QuestionSelectionType.single,
     this.minSelections = 1,

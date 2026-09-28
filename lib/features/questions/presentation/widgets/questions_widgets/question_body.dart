@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
-import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_options.dart';
+import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body_widgets/question_image.dart';
+import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body_widgets/question_content.dart';
 
 class QuestionBody extends StatelessWidget {
   final QuestionsCubit cubit;
@@ -19,108 +17,29 @@ class QuestionBody extends StatelessWidget {
     final selectedOption = cubit.selectedOption;
     AppThemeType themeType = state.selectedThemeType ?? AppThemeType.normal;
     AppThemeColors theme = AppTheme.fromType(themeType);
+    final imagePath = selectedOption?.image ?? question.initailImage;
+
+    // Read screen height once here — passed down to avoid LayoutBuilder in children
+    final sh = MediaQuery.sizeOf(context).height;
 
     return Expanded(
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           verticalSpace(20),
-          Expanded(
-            flex: 1,
-            child: Container(
-              decoration: BoxDecoration(color: Colors.transparent),
-              child: SvgPicture.asset(
-                selectedOption?.image ?? question.initailImage!,
-                alignment: Alignment.topCenter,
-                fit: BoxFit.contain,
-              ),
-            ),
+
+          QuestionImage(
+            imagePath: imagePath,
+            borderColor: theme.borderOn,
+            cubit: cubit,
           ),
+
           horizontalSpace(16),
-          Expanded(
-            flex: 2,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 500),
-              switchInCurve: Curves.easeInOut,
-              switchOutCurve: Curves.easeInOut,
-              layoutBuilder: (currentChild, previousChildren) {
-                return Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    ...previousChildren,
-                    if (currentChild != null) currentChild,
-                  ],
-                );
-              },
-              child: Column(
-                key: ValueKey(cubit.currentQuestion.id),
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  verticalSpace(8),
-                  Text(
-                    cubit.currentQuestion.title,
-                    style: AppTextStyle.font15textAccentRegularNoto().copyWith(
-                      color: theme.title,
-                    ),
-                    textAlign: TextAlign.right,
-                  ),
-                  verticalSpace(16),
-                  Text(
-                    cubit.currentQuestion.questionText,
-                    style: AppTextStyle.font34textPrimarySemiBoldNoto()
-                        .copyWith(color: theme.textPrimary),
-                    textAlign: TextAlign.right,
-                  ),
-                  verticalSpace(16),
-                  Text(
-                    cubit.currentQuestion.note,
-                    style: AppTextStyle.font17textMutedRegularNoto().copyWith(
-                      color: theme.textSecondary,
-                    ),
-                    textAlign: TextAlign.right,
-                  ),
-                  verticalSpace(8),
-                  Expanded(child: QuestionOptions(cubit: cubit)),
-                  if (cubit.currentQuestion.id == '5') ...[
-                    verticalSpace(16),
-                    InkWell(
-                      onTap: () {
-                        if (cubit.state.families.isEmpty) {
-                          return;
-                        }
-                        Navigator.of(context).pushNamed(
-                          RouteNames.fragranceFamilies,
-                          arguments: {
-                            'families': cubit.state.families,
-                            'themeType': cubit.state.selectedThemeType,
-                          },
-                        );
-                      },
-                      child: Text(
-                        'تعرف على الفروق بين العائلات العطرية',
-                        style:
-                            AppTextStyle.font16textAccentUnderLineMediumNoto()
-                                .copyWith(
-                                  color: theme.title,
-                                  decorationColor: theme.title,
-                                ),
-                        textAlign: TextAlign.right,
-                      ),
-                    ),
-                    verticalSpace(8),
-                    cubit.state.showInfo
-                        ? Text(
-                            '.يمكنك اختيار عائلتين كحد أقصى. ألغِ أحد الاختيارات لإضافة عائلة أخرى',
-                            style: AppTextStyle.font16textAccentMediumNoto()
-                                .copyWith(color: theme.title),
-                            textAlign: TextAlign.right,
-                          )
-                        : const SizedBox.shrink(),
-                  ],
-                  verticalSpace(80),
-                ],
-              ),
-            ),
+
+          QuestionContent(
+            cubit: cubit,
+            theme: theme,
+            availableHeight: sh,
           ),
         ],
       ),

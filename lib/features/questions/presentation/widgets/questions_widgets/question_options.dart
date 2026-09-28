@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ya_perfume/core/animation/app_animation.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
-import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
@@ -13,7 +13,16 @@ import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit
 class QuestionOptions extends StatelessWidget {
   final QuestionsCubit cubit;
 
-  const QuestionOptions({super.key, required this.cubit});
+  /// Available height passed from the parent so that [mainAxisExtent]
+  /// and option heights can be calculated proportionally instead of
+  /// being hardcoded.
+  final double availableHeight;
+
+  const QuestionOptions({
+    super.key,
+    required this.cubit,
+    required this.availableHeight,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +46,9 @@ class QuestionOptions extends StatelessWidget {
     final secondOption = cubit.currentQuestion.options[1];
     final thirdOption = cubit.currentQuestion.options[2];
 
+    // Proportional height: ~8% of available content height, clamped sensibly
+    final optionHeight = (availableHeight * 0.08).clamp(45.0, 72.0);
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Column(
@@ -45,7 +57,7 @@ class QuestionOptions extends StatelessWidget {
             children: [
               Expanded(
                 child: SizedBox(
-                  height: 55.h,
+                  height: optionHeight,
                   child: _buildOption(
                     context: context,
                     option: firstOption,
@@ -56,7 +68,7 @@ class QuestionOptions extends StatelessWidget {
               horizontalSpace(12),
               Expanded(
                 child: SizedBox(
-                  height: 55.h,
+                  height: optionHeight,
                   child: _buildOption(
                     context: context,
                     option: secondOption,
@@ -71,7 +83,7 @@ class QuestionOptions extends StatelessWidget {
 
           SizedBox(
             width: double.infinity,
-            height: 55.h,
+            height: optionHeight,
             child: _buildOption(
               context: context,
               option: thirdOption,
@@ -86,16 +98,20 @@ class QuestionOptions extends StatelessWidget {
   Widget _buildDefaultOptions(BuildContext context, AppThemeColors theme) {
     final crossAxisCount = cubit.currentQuestion.options.length >= 4 ? 2 : 1;
 
+    // Proportional mainAxisExtent: ~8% of available height, clamped
+    final optionHeight = (availableHeight * 0.08).clamp(45.0, 72.0);
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: GridView.count(
-        shrinkWrap: true,
+        // RULE 3: Never use shrinkWrap: true inside Expanded
+        shrinkWrap: false,
         physics: const BouncingScrollPhysics(),
         crossAxisCount: crossAxisCount,
         crossAxisSpacing: 12.w,
         mainAxisSpacing: 12.h,
-        mainAxisExtent: 55.h,
-        //childAspectRatio: crossAxisCount == 1 ? 660 / 84 : 325 / 84,
+        // RULE 4: mainAxisExtent calculated proportionally, never hardcoded
+        mainAxisExtent: optionHeight,
         children: cubit.currentQuestion.options.map((option) {
           return _buildOption(context: context, option: option, theme: theme);
         }).toList(),
@@ -114,14 +130,17 @@ class QuestionOptions extends StatelessWidget {
           onTap: () {
             context.read<QuestionsCubit>().toggleOption(option.id);
           },
-          child: Container(
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeInOut,
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
             decoration: BoxDecoration(
               border: Border.all(
                 color: isSelected
                     ? theme.borderOn
                     : theme.borderOff.withValues(alpha: 0.28),
-                width: 0.5,
+                // RULE 1: border width must scale
+                width: 0.5.w,
               ),
               borderRadius: BorderRadius.circular(16.r),
               color: isSelected
@@ -139,6 +158,7 @@ class QuestionOptions extends StatelessWidget {
                     option.text,
                     textDirection: TextDirection.rtl,
                     textAlign: TextAlign.start,
+                    // RULE 6 removed per user request — AppTextStyle.sp is enough
                     style: AppTextStyle.font18textPrimaryMediumNoto().copyWith(
                       color: theme.textPrimary,
                     ),
@@ -156,14 +176,20 @@ class QuestionOptions extends StatelessWidget {
   }
 
   Widget _buildSelectionIndicator(bool isSelected, AppThemeColors theme) {
-    if (isSelected) {
-      return Icon(Icons.circle, color: theme.primaryButton, size: 20.r);
-    }
-
-    return Icon(
-      Icons.circle_outlined,
-      color: theme.borderOff.withValues(alpha: 0.24),
-      size: 20.r,
+    return AppAnimation.animatedSelectionIndicator(
+      isSelected: isSelected,
+      selectedWidget: Icon(
+        Icons.circle,
+        color: theme.primaryButton,
+        // RULE 7: Icons use .r
+        size: 20.r,
+      ),
+      unselectedWidget: Icon(
+        Icons.circle_outlined,
+        color: theme.borderOff.withValues(alpha: 0.24),
+        // RULE 7: Icons use .r
+        size: 20.r,
+      ),
     );
   }
 }
