@@ -81,7 +81,11 @@ class QuestionsCubit extends Cubit<QuestionsState> {
                 text: 'question_2_option_4',
                 image: AppImage().fourtyToQ2,
               ),
-              QuestionOption(id: '5', text: 'question_2_option_5', image: AppImage().fiftyToQ2),
+              QuestionOption(
+                id: '5',
+                text: 'question_2_option_5',
+                image: AppImage().fiftyToQ2,
+              ),
             ],
           ),
           QuestionModel(
@@ -145,14 +149,26 @@ class QuestionsCubit extends Cubit<QuestionsState> {
                 text: 'question_5_option_2',
                 image: AppImage().muskQ5,
               ),
-              QuestionOption(id: '3', text: 'question_5_option_3', image: AppImage().springQ5),
-              QuestionOption(id: '4', text: 'question_5_option_4', image: AppImage().fruitQ5),
+              QuestionOption(
+                id: '3',
+                text: 'question_5_option_3',
+                image: AppImage().springQ5,
+              ),
+              QuestionOption(
+                id: '4',
+                text: 'question_5_option_4',
+                image: AppImage().fruitQ5,
+              ),
               QuestionOption(
                 id: '5',
                 text: 'question_5_option_5',
                 image: AppImage().sweetQ5,
               ),
-              QuestionOption(id: '6', text: 'question_5_option_6', image: AppImage().woodQ5),
+              QuestionOption(
+                id: '6',
+                text: 'question_5_option_6',
+                image: AppImage().woodQ5,
+              ),
               QuestionOption(
                 id: '7',
                 text: 'question_5_option_7',
@@ -350,7 +366,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
   void toggleOption(String optionId) {
     final questionId = currentQuestion.id;
-    final selected = {...state.selectedOptions};
+    final selected = state.selectedOptions;
 
     if (selected.contains(optionId)) {
       if (currentQuestion.selectionType == QuestionSelectionType.multiple &&
@@ -380,36 +396,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
     final updatedImages = Map<String, String?>.from(state.accumulatedImages);
 
-    if (questionId == '4') {
-      // احفظ الزجازة
-      updatedImages['4_bottle'] = currentQuestion.initailImage;
-      // احفظ صورة الفصل
-      if (selected.isNotEmpty) {
-        final opt = currentQuestion.options.firstWhere(
-          (o) => o.id == selected.first,
-          orElse: () => currentQuestion.options.first,
-        );
-        updatedImages['4_season'] = opt.image;
-      } else {
-        updatedImages['4_season'] = null;
-      }
-    } else if ({'3', '5', '7', '8', '9'}.contains(questionId)) {
-      // احفظ صورة الـoption المختار
-      if (selected.isNotEmpty) {
-        final opt = currentQuestion.options.firstWhere(
-          (o) => o.id == selected.first,
-          orElse: () => currentQuestion.options.first,
-        );
-        if (questionId == '5') {
-          updatedImages['5_1'] = opt.image;
-          updatedImages['5_2'] = opt.image;
-        } else {
-          updatedImages[questionId] = opt.image;
-        }
-      } else {
-        updatedImages[questionId] = null;
-      }
-    }
+    saveImage(questionId, updatedImages, selected);
 
     toggleTheme(updatedAnswers, state.selectedThemeType, updatedImages);
   }
@@ -436,6 +423,40 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         accumulatedImages: accumulatedImages,
       ),
     );
+  }
+
+  void saveImage(
+    String questionId,
+    Map<String, String?> updatedImages,
+    Set<String> selected,
+  ) {
+    if (questionId == '4') {
+      updatedImages['4_bottle'] = currentQuestion.initailImage;
+      if (selected.isNotEmpty) {
+        final opt = currentQuestion.options.firstWhere(
+          (o) => o.id == selected.first,
+          orElse: () => currentQuestion.options.first,
+        );
+        updatedImages['4_season'] = opt.image;
+      } else {
+        updatedImages['4_season'] = null;
+      }
+    } else if ({'3', '5', '7', '8', '9'}.contains(questionId)) {
+      if (selected.isNotEmpty) {
+        final opt = currentQuestion.options.firstWhere(
+          (o) => o.id == selected.first,
+          orElse: () => currentQuestion.options.first,
+        );
+        if (questionId == '5') {
+          updatedImages['5_1'] = opt.image;
+          updatedImages['5_2'] = opt.image;
+        } else {
+          updatedImages[questionId] = opt.image;
+        }
+      } else {
+        updatedImages[questionId] = null;
+      }
+    }
   }
 
   void next() {

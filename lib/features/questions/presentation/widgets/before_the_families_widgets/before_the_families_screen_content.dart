@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -18,6 +20,7 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
   Widget build(BuildContext context) {
     AppThemeType effectiveThemeType = themeType ?? AppThemeType.normal;
     AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
+    final isArabic = context.locale.languageCode == 'ar';
 
     final size = MediaQuery.sizeOf(context);
     final sw = size.width;
@@ -36,6 +39,7 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
           left: sw * 0.05,
           child: Text(
             'app_name'.tr(),
+
             style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
               color: theme.title,
             ),
@@ -44,6 +48,9 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
 
         Center(
           child: Column(
+            textDirection: isArabic
+                ? ui.TextDirection.rtl
+                : ui.TextDirection.ltr,
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -57,6 +64,9 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
 
               Text(
                 'discover_your_preferred_scents'.tr(),
+                textDirection: isArabic
+                    ? ui.TextDirection.rtl
+                    : ui.TextDirection.ltr,
                 style: AppTextStyle.font36textPrimarySemiBoldNoto().copyWith(
                   color: theme.textPrimary,
                 ),
@@ -69,6 +79,9 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 80.w),
                 child: Text(
                   'choose_up_to_two_families'.tr(),
+                  textDirection: isArabic
+                      ? ui.TextDirection.rtl
+                      : ui.TextDirection.ltr,
                   style: AppTextStyle.font21textPrimaryRegularNoto().copyWith(
                     color: theme.textPrimary,
                   ),

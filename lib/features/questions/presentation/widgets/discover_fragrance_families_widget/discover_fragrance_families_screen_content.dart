@@ -93,7 +93,6 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                       final cardWidth =
                           (constraints.maxWidth - totalSpacing) /
                           crossAxisCount;
-                      // Target ~55% of available height per card row
                       final cardHeight = constraints.maxHeight * 0.55;
                       final childAspectRatio = cardWidth / cardHeight;
 
@@ -101,7 +100,6 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                         crossAxisCount: crossAxisCount,
                         crossAxisSpacing: 16.w,
                         mainAxisSpacing: 16.h,
-                        // RULE 4: calculated, not hardcoded
                         childAspectRatio: childAspectRatio,
                         children: families.map((entry) {
                           return FamilyCard(
