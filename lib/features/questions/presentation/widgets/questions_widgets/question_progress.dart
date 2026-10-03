@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ya_perfume/app/routes/app_images_routes.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 
-class QuestionProgress extends StatelessWidget {
+class QuestionProgress extends StatefulWidget {
   final int currentIndex;
   final int totalQuestions;
 
@@ -15,10 +15,59 @@ class QuestionProgress extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final progress = currentIndex / (totalQuestions);
+  State<QuestionProgress> createState() => _QuestionProgressState();
+}
 
-    // RULE 1 & 7: butterfly icon uses .r so it scales proportionally on all screens
+class _QuestionProgressState extends State<QuestionProgress>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+
+    _scaleAnimation = TweenSequence<double>([
+      TweenSequenceItem(
+        tween: Tween(
+          begin: 1.0,
+          end: 0.70,
+        ).chain(CurveTween(curve: Curves.easeInOut)),
+        weight: 50,
+      ),
+      TweenSequenceItem(
+        tween: Tween(
+          begin: 0.70,
+          end: 1.0,
+        ).chain(CurveTween(curve: Curves.easeInOut)),
+        weight: 50,
+      ),
+    ]).animate(_controller);
+
+    _startAnimation();
+  }
+
+  void _startAnimation() async {
+    while (mounted) {
+      await _controller.repeat(count: 2);
+      _controller.reset();
+      await Future.delayed(const Duration(seconds: 7));
+    }
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final progress = widget.currentIndex / widget.totalQuestions;
     final butterflySize = 40.r;
     final halfButterfly = butterflySize / 2;
     final lineWidth = 400.w - butterflySize;
@@ -29,7 +78,6 @@ class QuestionProgress extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          // Background line
           Positioned(
             left: halfButterfly,
             right: halfButterfly,
@@ -37,14 +85,12 @@ class QuestionProgress extends StatelessWidget {
             bottom: 0,
             child: Center(
               child: Container(
-                // RULE 1: .h for heights
                 height: 0.5.h,
                 color: AppColors.mutedGray.withValues(alpha: 0.4),
               ),
             ),
           ),
 
-          // Progress line (animated)
           Positioned(
             right: halfButterfly,
             top: 0,
@@ -53,7 +99,6 @@ class QuestionProgress extends StatelessWidget {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 600),
                 curve: Curves.easeInOut,
-                // RULE 1: .h for heights
                 height: 0.5.h,
                 width: lineWidth * progress,
                 color: AppColors.goldAccent,
@@ -61,13 +106,11 @@ class QuestionProgress extends StatelessWidget {
             ),
           ),
 
-          // Step dots
-          ...List.generate(totalQuestions, (i) {
+          ...List.generate(widget.totalQuestions, (i) {
             final actualIndex = i + 1;
-            final dotProgress = actualIndex / (totalQuestions);
-            final isPassed = actualIndex <= currentIndex;
-
-            final dotRight = halfButterfly + lineWidth * (dotProgress) - 3.w;
+            final dotProgress = actualIndex / widget.totalQuestions;
+            final isPassed = actualIndex <= widget.currentIndex;
+            final dotRight = halfButterfly + lineWidth * dotProgress - 3.w;
 
             return Positioned(
               right: dotRight,
@@ -76,7 +119,6 @@ class QuestionProgress extends StatelessWidget {
               child: Center(
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 600),
-                  // RULE 1: use .r for uniform dot (same w & h)
                   width: 6.r,
                   height: 6.r,
                   decoration: BoxDecoration(
@@ -90,22 +132,29 @@ class QuestionProgress extends StatelessWidget {
             );
           }),
 
-          // Butterfly indicator (animated position)
           AnimatedPositioned(
             duration: const Duration(milliseconds: 600),
             curve: Curves.easeInOut,
-            right: lineWidth * (progress) - 2.w,
+            right: lineWidth * progress - 2.w,
             top: 0,
             bottom: 0,
             child: Center(
-              child: SvgPicture.asset(
-                AppImage().butterProgressBar,
-                // RULE 7: icon/image sizes use .r
-                width: butterflySize,
-                height: butterflySize,
-                colorFilter: const ColorFilter.mode(
-                  AppColors.goldAccent,
-                  BlendMode.srcIn,
+              child: AnimatedBuilder(
+                animation: _scaleAnimation,
+                builder: (context, child) {
+                  return Transform.scale(
+                    scaleX: _scaleAnimation.value,
+                    child: child,
+                  );
+                },
+                child: SvgPicture.asset(
+                  AppImage().butterProgressBar,
+                  width: butterflySize,
+                  height: butterflySize,
+                  colorFilter: const ColorFilter.mode(
+                    AppColors.goldAccent,
+                    BlendMode.srcIn,
+                  ),
                 ),
               ),
             ),

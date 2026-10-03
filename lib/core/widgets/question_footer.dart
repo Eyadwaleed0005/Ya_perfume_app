@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
-import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
@@ -18,6 +17,7 @@ class QuestionFooter extends StatelessWidget {
   final String? questionId;
   final VoidCallback? onSkip;
   final QuestionsState state;
+  final Widget? centerWidget;
 
   const QuestionFooter({
     super.key,
@@ -28,6 +28,7 @@ class QuestionFooter extends StatelessWidget {
     this.questionId,
     this.onSkip,
     required this.state,
+    this.centerWidget,
   });
 
   @override
@@ -53,25 +54,7 @@ class QuestionFooter extends StatelessWidget {
             borderWidth: 0.5.w,
           ),
 
-          if (questionId == '5')
-            Text(
-              'selected_families_count'.tr(args: ['$numberSelected']),
-              style: AppTextStyle.font15textMutedMediumNoto().copyWith(
-                color: theme.textSecondary,
-              ),
-              textAlign: TextAlign.center,
-            ),
-
-          if (questionId == '6')
-            InkWell(
-              onTap: onSkip,
-              child: Text(
-                'skip_question'.tr(),
-                style: AppTextStyle.font17textAccentUnderLineMediumNoto()
-                    .copyWith(color: theme.title, decorationColor: theme.title),
-                textAlign: TextAlign.right,
-              ),
-            ),
+          if (centerWidget != null) centerWidget!,
 
           CustomButton(
             text: 'continue'.tr(),

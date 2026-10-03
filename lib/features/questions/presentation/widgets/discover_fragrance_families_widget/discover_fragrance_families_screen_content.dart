@@ -8,9 +8,9 @@ import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/before_the_families_widgets/circular_butter_fly.dart';
+import 'package:ya_perfume/core/widgets/circular_butter_fly.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/discover_fragrance_families_widget/family_card.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_background.dart';
+import 'package:ya_perfume/core/widgets/question_background.dart';
 
 class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
   final List<FragranceFamily> families;
@@ -85,32 +85,32 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
 
                 Expanded(
                   child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        const crossAxisCount = 4;
-                        const crossAxisSpacing = 16.0;
-                        final totalSpacing =
-                            crossAxisSpacing * (crossAxisCount - 1);
-                        final cardWidth =
-                            (constraints.maxWidth - totalSpacing) /
-                            crossAxisCount;
-                        // Target ~55% of available height per card row
-                        final cardHeight = constraints.maxHeight * 0.55;
-                        final childAspectRatio = cardWidth / cardHeight;
+                    builder: (context, constraints) {
+                      const crossAxisCount = 4;
+                      const crossAxisSpacing = 16.0;
+                      final totalSpacing =
+                          crossAxisSpacing * (crossAxisCount - 1);
+                      final cardWidth =
+                          (constraints.maxWidth - totalSpacing) /
+                          crossAxisCount;
+                      // Target ~55% of available height per card row
+                      final cardHeight = constraints.maxHeight * 0.55;
+                      final childAspectRatio = cardWidth / cardHeight;
 
-                        return GridView.count(
-                          crossAxisCount: crossAxisCount,
-                          crossAxisSpacing: 16.w,
-                          mainAxisSpacing: 16.h,
-                          // RULE 4: calculated, not hardcoded
-                          childAspectRatio: childAspectRatio,
-                          children: families.map((entry) {
-                            return FamilyCard(
-                              family: entry,
-                              themeType: themeType,
-                            );
-                          }).toList(),
-                        );
-                      },
+                      return GridView.count(
+                        crossAxisCount: crossAxisCount,
+                        crossAxisSpacing: 16.w,
+                        mainAxisSpacing: 16.h,
+                        // RULE 4: calculated, not hardcoded
+                        childAspectRatio: childAspectRatio,
+                        children: families.map((entry) {
+                          return FamilyCard(
+                            family: entry,
+                            themeType: themeType,
+                          );
+                        }).toList(),
+                      );
+                    },
                   ),
                 ),
 

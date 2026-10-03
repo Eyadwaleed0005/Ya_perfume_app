@@ -5,10 +5,10 @@ import 'package:snowfall_or_anythings/snowfall_or_anythings.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
+import 'package:ya_perfume/core/widgets/question_background.dart';
+import 'package:ya_perfume/core/widgets/question_footer.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_background.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_footer.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_header.dart';
 
 class QuestionsScreenContent extends StatelessWidget {

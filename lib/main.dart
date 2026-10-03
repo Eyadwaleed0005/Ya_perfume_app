@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
               child: child ?? const SizedBox.shrink(),
             );
           },
-          title: 'app_name'.tr(),
+          title: "app_name".tr(),
           debugShowCheckedModeBanner: false,
           initialRoute: RouteNames.questions,
           onGenerateRoute: AppRoutes.generateRoute,

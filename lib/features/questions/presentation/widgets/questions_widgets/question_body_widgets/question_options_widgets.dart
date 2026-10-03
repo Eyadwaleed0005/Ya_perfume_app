@@ -3,6 +3,8 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ya_perfume/app/routes/app_images_routes.dart';
 import 'package:ya_perfume/core/animation/app_animation.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
@@ -18,10 +20,6 @@ class QuestionOptionsWidgets {
   QuestionOptionsWidgets({required this.cubit, required this.availableHeight});
 
   Widget buildQuestionFour(BuildContext context, AppThemeColors theme) {
-    /* if (cubit.currentQuestion.options.length < 3) {
-      return buildDefaultOptions(context, theme);
-    } */
-
     final firstOption = cubit.currentQuestion.options[0];
     final secondOption = cubit.currentQuestion.options[1];
     final thirdOption = cubit.currentQuestion.options[2];
@@ -112,6 +110,7 @@ class QuestionOptionsWidgets {
     final isSelected = cubit.state.selectedOptions.contains(option.id);
     final isArabic = context.locale.languageCode == 'ar';
     final isOptionTwo = option.id == '2' && cubit.currentQuestion.id == '4';
+    final showFrostCover = isOptionTwo && isSelected;
 
     return InkWell(
       onTap: () {
@@ -122,68 +121,77 @@ class QuestionOptionsWidgets {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 300),
           curve: Curves.easeInOut,
-          padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
           decoration: BoxDecoration(
             border: Border.all(
-              color: isSelected
-                  ? isOptionTwo
-                        ? AppColors.blueSnow.withValues(alpha: 0.35)
-                        : theme.borderOn
+              color: showFrostCover
+                  ? AppColors.borderSnow.withValues(alpha: 0.68)
+                  : isSelected
+                  ? theme.borderOn
                   : theme.borderOff.withValues(alpha: 0.28),
               width: 0.5.w,
             ),
             borderRadius: BorderRadius.circular(16.r),
-            color: isSelected
-                ? isOptionTwo
-                      ? AppColors.blueSnow.withValues(alpha: 0.25)
-                      : theme.surfaceOn.withValues(alpha: 0.28)
+            color: showFrostCover
+                ? AppColors.blueSnow
+                : isSelected
+                ? theme.surfaceOn.withValues(alpha: 0.28)
                 : theme.surfaceOff,
           ),
-          child: Column(
-            textDirection: isArabic
-                ? ui.TextDirection.rtl
-                : ui.TextDirection.ltr,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Stack(
             children: [
-              Row(
-                textDirection: isArabic
-                    ? ui.TextDirection.rtl
-                    : ui.TextDirection.ltr,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-
-                children: [
-                  buildSelectionIndicator(isSelected, theme, isOptionTwo),
-                  horizontalSpace(8),
-                  Expanded(
-                    child: Text(
-                      option.text.tr(),
+              if (isOptionTwo) FrostCover(isVisible: showFrostCover),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 6.h),
+                child: Column(
+                  textDirection: isArabic
+                      ? ui.TextDirection.rtl
+                      : ui.TextDirection.ltr,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
                       textDirection: isArabic
                           ? ui.TextDirection.rtl
                           : ui.TextDirection.ltr,
-                      style: AppTextStyle.font18textPrimaryMediumNoto()
-                          .copyWith(color: theme.textPrimary),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        buildSelectionIndicator(isSelected, theme),
+                        horizontalSpace(8),
+                        Expanded(
+                          child: Text(
+                            option.text.tr(),
+                            textDirection: isArabic
+                                ? ui.TextDirection.rtl
+                                : ui.TextDirection.ltr,
+                            style: AppTextStyle.font18textPrimaryMediumNoto()
+                                .copyWith(
+                                  color: showFrostCover
+                                      ? AppColors.textSecondary
+                                      : theme.textPrimary,
+                                ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
-              if (option.subtitle != null)
-                Expanded(
-                  child: Text(
-                    option.subtitle!.tr(),
-                    textDirection: isArabic
-                        ? ui.TextDirection.rtl
-                        : ui.TextDirection.ltr,
-                    style: AppTextStyle.font15textMutedRegularNoto().copyWith(
-                      color: theme.textSecondary,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+                    if (option.subtitle != null)
+                      Expanded(
+                        child: Text(
+                          option.subtitle!.tr(),
+                          textDirection: isArabic
+                              ? ui.TextDirection.rtl
+                              : ui.TextDirection.ltr,
+                          style: AppTextStyle.font15textMutedRegularNoto()
+                              .copyWith(color: theme.textSecondary),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                  ],
                 ),
+              ),
             ],
           ),
         ),
@@ -191,24 +199,39 @@ class QuestionOptionsWidgets {
     );
   }
 
-  static Widget buildSelectionIndicator(
-    bool isSelected,
-    AppThemeColors theme,
-    bool isOptionTwo,
-  ) {
+  static Widget buildSelectionIndicator(bool isSelected, AppThemeColors theme) {
     return AppAnimation.animatedSelectionIndicator(
       isSelected: isSelected,
       selectedWidget: Icon(
         Icons.circle,
-        color: isOptionTwo
-            ? AppColors.blueSnow.withValues(alpha: 0.45)
-            : theme.primaryButton,
+        color: theme.primaryButton,
         size: 20.r,
       ),
       unselectedWidget: Icon(
         Icons.circle_outlined,
         color: theme.borderOff.withValues(alpha: 0.24),
         size: 20.r,
+      ),
+    );
+  }
+}
+
+class FrostCover extends StatelessWidget {
+  final bool isVisible;
+
+  const FrostCover({super.key, required this.isVisible});
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned.fill(
+      child: AnimatedOpacity(
+        opacity: isVisible ? 1.0 : 0.0,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16.r),
+          child: SvgPicture.asset(AppImage().naturalFrostQ4, fit: BoxFit.fill),
+        ),
       ),
     );
   }

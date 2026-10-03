@@ -15,7 +15,7 @@ abstract class AppColors {
   static const Color darkAutumnBrown = Color(0xFF74551E);
   static const Color darkBlue = Color(0xFF1B3550);
   static const Color redOchre = Color(0xFFA98134);
-  static const Color blue = Color(0xFF1A4A9E);
+  static const Color blue = Color(0xFF0E2430);
 
   // ===== Semantic Background Colors =====
   static const Color bgCanvas = ultraBlack;
@@ -41,6 +41,7 @@ abstract class AppColors {
   static const Color borderFocus = goldAccentLight;
   static const Color borderDark = ultraBlack;
   static const Color borderRedOchre = redOchre;
+  static const Color borderSnow = Color(0xFF9EC7D6);
 
   // ===== UI Specific Design Colors (From Images) =====
   static const Color normalBackground = bgCanvas;

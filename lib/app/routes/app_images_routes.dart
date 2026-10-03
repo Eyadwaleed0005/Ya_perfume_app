@@ -45,6 +45,7 @@ class AppImage {
   late final String perfumeQ4 = '${baseImagesQ4}perfume.svg';
   late final String summerQ4 = '${baseImagesQ4}summer.svg';
   late final String winterQ4 = '${baseImagesQ4}winter.svg';
+  late final String naturalFrostQ4 = '${baseImagesQ4}natural_frost.svg';
 
   late final String springQ5 = '${baseImagesQ5}spring.svg';
   late final String freshQ5 = '${baseImagesQ5}fresh.svg';

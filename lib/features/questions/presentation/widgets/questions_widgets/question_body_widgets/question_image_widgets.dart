@@ -18,15 +18,14 @@ class QuestionImageWidgets {
     Color borderColor,
   ) {
     if (imagePath == null) return const SizedBox();
-    final questionId = cubit.currentQuestion.id;
-    final isLarge = questionId == '1' || questionId == '2';
+
     return Stack(
       children: [
         Positioned(
-          top: isLarge ? h * 0.0 : h * 0.05,
-          left: isLarge ? -w * 0.1 : 0,
-          width: isLarge ? w * 1.1 : w * 0.80,
-          height: isLarge ? h * 0.85 : h * 0.60,
+          top: 0,
+          left: -w * 0.1,
+          width: w * 1.1,
+          height: h * 0.85,
           child: QuestionImageWidgets.animatedSvg(
             imagePath,
             borderColor: borderColor,
@@ -228,10 +227,10 @@ class QuestionImageWidgets {
     return [
       if (q3Image != null)
         Positioned(
-          top: h * 0.05,
-          left: 0,
-          width: w * 0.80,
-          height: h * 0.60,
+          top: 0,
+          left: -w * 0.1,
+          width: w * 1.1,
+          height: h * 0.85,
           child: QuestionImageWidgets.animatedSvg(
             q3Image,
             borderColor: borderColor,

@@ -6,8 +6,8 @@ import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/before_the_families_widgets/circular_butter_fly.dart';
-import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_background.dart';
+import 'package:ya_perfume/core/widgets/circular_butter_fly.dart';
+import 'package:ya_perfume/core/widgets/question_background.dart';
 
 class BeforeTheFamiliesScreenContent extends StatelessWidget {
   final AppThemeType? themeType;
