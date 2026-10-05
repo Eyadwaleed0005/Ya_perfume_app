@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:ya_perfume/core/style/app_color.dart';
 
-class QuestionBackground extends StatelessWidget {
+class CustomBackground extends StatelessWidget {
   final Color backGroundColor;
   final Color primaryColor;
   final Color secondaryColor;
 
-  const QuestionBackground({
+  const CustomBackground({
     super.key,
-    required this.backGroundColor,
-    required this.primaryColor,
-    required this.secondaryColor,
+    this.backGroundColor = AppColors.normalBackground,
+    this.primaryColor = AppColors.goldAccent,
+    this.secondaryColor = AppColors.goldAccent,
   });
 
   @override

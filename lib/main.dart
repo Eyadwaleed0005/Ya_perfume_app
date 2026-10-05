@@ -27,13 +27,13 @@ Future<void> main() async {
       path: 'assets/translations',
       fallbackLocale: const Locale('ar', 'EG'),
       startLocale: const Locale('ar', 'EG'),
-      child: const MyApp(),
+      child: const YaPerfumeApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class YaPerfumeApp extends StatelessWidget {
+  const YaPerfumeApp({super.key});
 
   @override
   Widget build(BuildContext context) {

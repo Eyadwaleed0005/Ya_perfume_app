@@ -10,7 +10,7 @@ import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
 import 'package:ya_perfume/core/widgets/circular_butter_fly.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/discover_fragrance_families_widget/family_card.dart';
-import 'package:ya_perfume/core/widgets/question_background.dart';
+import 'package:ya_perfume/core/widgets/custom_background.dart';
 
 class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
   final List<FragranceFamily> families;
@@ -30,7 +30,7 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
     return SafeArea(
       child: Stack(
         children: [
-          QuestionBackground(
+          CustomBackground(
             backGroundColor: theme.background,
             primaryColor: theme.primary.withValues(alpha: 0.14),
             secondaryColor: theme.secondary,

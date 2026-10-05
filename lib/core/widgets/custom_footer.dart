@@ -9,7 +9,7 @@ import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
 
-class QuestionFooter extends StatelessWidget {
+class CustomFooter extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onPrevious;
   final bool canGoNext;
@@ -19,7 +19,7 @@ class QuestionFooter extends StatelessWidget {
   final QuestionsState state;
   final Widget? centerWidget;
 
-  const QuestionFooter({
+  const CustomFooter({
     super.key,
     required this.onNext,
     required this.onPrevious,
