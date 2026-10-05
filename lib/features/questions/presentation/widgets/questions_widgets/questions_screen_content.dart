@@ -7,8 +7,8 @@ import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
-import 'package:ya_perfume/core/widgets/question_background.dart';
-import 'package:ya_perfume/core/widgets/question_footer.dart';
+import 'package:ya_perfume/core/widgets/custom_background.dart';
+import 'package:ya_perfume/core/widgets/custom_footer.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_header.dart';
@@ -34,7 +34,7 @@ class QuestionsScreenContent extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 64.w),
             child: Stack(
               children: [
-                QuestionBackground(
+                CustomBackground(
                   backGroundColor: theme.background,
                   primaryColor: theme.primary.withValues(alpha: 0.14),
                   secondaryColor: theme.secondary,
@@ -72,7 +72,7 @@ class QuestionsScreenContent extends StatelessWidget {
                   ],
                 ),
 
-                QuestionFooter(
+                CustomFooter(
                   numberSelected: state.selectedOptions.length,
                   questionId: cubit.currentQuestion.id,
                   canGoNext: cubit.canContinue,

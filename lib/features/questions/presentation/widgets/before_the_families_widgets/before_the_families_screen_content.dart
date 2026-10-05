@@ -9,7 +9,7 @@ import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/core/widgets/circular_butter_fly.dart';
-import 'package:ya_perfume/core/widgets/question_background.dart';
+import 'package:ya_perfume/core/widgets/custom_background.dart';
 
 class BeforeTheFamiliesScreenContent extends StatelessWidget {
   final AppThemeType? themeType;
@@ -28,7 +28,7 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
 
     return Stack(
       children: [
-        QuestionBackground(
+        CustomBackground(
           backGroundColor: theme.background,
           primaryColor: theme.primary.withValues(alpha: 0.14),
           secondaryColor: theme.secondary,

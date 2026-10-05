@@ -430,33 +430,30 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     Map<String, String?> updatedImages,
     Set<String> selected,
   ) {
-    if (questionId == '4') {
-      updatedImages['4_bottle'] = currentQuestion.initailImage;
-      if (selected.isNotEmpty) {
-        final opt = currentQuestion.options.firstWhere(
-          (o) => o.id == selected.first,
-          orElse: () => currentQuestion.options.first,
-        );
-        updatedImages['4_season'] = opt.image;
-      } else {
-        updatedImages['4_season'] = null;
-      }
-    } else if ({'3', '5', '7', '8', '9'}.contains(questionId)) {
-      if (selected.isNotEmpty) {
-        final opt = currentQuestion.options.firstWhere(
-          (o) => o.id == selected.first,
-          orElse: () => currentQuestion.options.first,
-        );
-        if (questionId == '5') {
-          updatedImages['5_1'] = opt.image;
-          updatedImages['5_2'] = opt.image;
-        } else {
-          updatedImages[questionId] = opt.image;
-        }
-      } else {
-        updatedImages[questionId] = null;
-      }
+    final selectedImage = getSelectedImage(selected);
+
+    switch (questionId) {
+      case '4':
+        updatedImages['4_bottle'] = currentQuestion.initailImage;
+        updatedImages['4_season'] = selectedImage;
+
+      case '5':
+        updatedImages['5_1'] = selectedImage;
+        updatedImages['5_2'] = selectedImage;
+
+      case '3' || '7' || '8' || '9':
+        updatedImages[questionId] = selectedImage;
     }
+  }
+
+  String? getSelectedImage(Set<String> selected) {
+    if (selected.isEmpty) return null;
+
+    final opt = currentQuestion.options.firstWhere(
+      (o) => o.id == selected.first,
+      orElse: () => currentQuestion.options.first,
+    );
+    return opt.image;
   }
 
   void next() {

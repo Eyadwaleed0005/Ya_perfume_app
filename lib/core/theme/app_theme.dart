@@ -5,22 +5,20 @@ import '../style/app_color.dart';
 enum AppThemeType { light, dark, normal }
 
 class AppTheme {
-  // النمط الفاتح (Light Mode - الأبيض الكلاسيكي الواضح)
   static const AppThemeColors light = AppThemeColors(
     background: AppColors.lightBackground,
     surfaceOn: AppColors.bgAccent,
     surfaceOff: AppColors.lightCardBackground,
-    primary: AppColors.goldAccent,
-    secondary: AppColors.goldAccent,
+    primary: AppColors.bgAccent,
+    secondary: AppColors.bgAccent,
     title: AppColors.textDarkAutumnBrown,
     textPrimary: AppColors.darkBrown,
     textSecondary: AppColors.veryDarkGrayishBlue,
     borderOn: AppColors.borderRedOchre,
     borderOff: AppColors.borderDark,
-    primaryButton: AppColors.goldAccent,
+    primaryButton: AppColors.bgAccent,
   );
 
-  // النمط الداكن (Dark Mode - الأسود مع الأجواء الليلية)
   static const AppThemeColors dark = AppThemeColors(
     background: AppColors.darkBackground,
     surfaceOn: AppColors.bgAccent,
@@ -32,22 +30,21 @@ class AppTheme {
     textSecondary: AppColors.offWhite,
     borderOn: AppColors.borderAccent,
     borderOff: AppColors.borderDefault,
-    primaryButton: AppColors.goldAccent,
+    primaryButton: AppColors.bgAccent,
   );
 
-  // النمط العادي (Normal Mode - الكريمي الفاتح المستوحى من الثيم الأساسي)
   static const AppThemeColors normal = AppThemeColors(
     background: AppColors.normalBackground,
     surfaceOn: AppColors.bgAccent,
-    primary: AppColors.goldAccent,
+    primary: AppColors.bgAccent,
     surfaceOff: AppColors.bgSurface,
-    secondary: AppColors.goldAccent,
+    secondary: AppColors.bgAccent,
     title: AppColors.textAccent,
     textPrimary: AppColors.pureWhite,
     textSecondary: AppColors.offWhite,
     borderOn: AppColors.borderAccent,
     borderOff: AppColors.borderDefault,
-    primaryButton: AppColors.goldAccent,
+    primaryButton: AppColors.bgAccent,
   );
 
   static AppThemeColors fromType(AppThemeType type) {
