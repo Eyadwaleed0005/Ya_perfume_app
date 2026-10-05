@@ -116,7 +116,6 @@ class _AppOfflineBannerState extends State<AppOfflineBanner>
                 borderRadius: BorderRadius.circular(12.r),
               ),
               child: Row(
-                textDirection: TextDirection.rtl,
                 children: [
                   Container(
                     width: 36.w,
