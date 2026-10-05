@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/app/routes/app_routes.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
-
 import 'dart:ui' as ui;
 
 Future<void> main() async {
