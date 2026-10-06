@@ -21,23 +21,21 @@ class QuestionBody extends StatelessWidget {
 
     final sh = MediaQuery.sizeOf(context).height;
 
-    return Expanded(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          verticalSpace(20),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        verticalSpace(20),
 
-          QuestionImage(
-            imagePath: imagePath,
-            borderColor: theme.borderOn,
-            cubit: cubit,
-          ),
+        QuestionImage(
+          imagePath: imagePath,
+          borderColor: theme.borderOn,
+          cubit: cubit,
+        ),
 
-          horizontalSpace(16),
+        horizontalSpace(16),
 
-          QuestionContent(cubit: cubit, theme: theme, availableHeight: sh),
-        ],
-      ),
+        QuestionContent(cubit: cubit, theme: theme, availableHeight: sh),
+      ],
     );
   }
 }

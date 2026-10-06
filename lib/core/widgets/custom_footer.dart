@@ -42,6 +42,7 @@ class CustomFooter extends StatelessWidget {
       right: 24.w,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomButton(
             text: 'previous_question'.tr(),

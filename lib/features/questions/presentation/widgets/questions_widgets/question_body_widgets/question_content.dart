@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/animation/app_animation.dart';
@@ -46,7 +45,7 @@ class QuestionContent extends StatelessWidget {
               ),
               textAlign: TextAlign.right,
             ),
-            verticalSpace(16),
+            verticalSpace(8),
             Text(
               cubit.currentQuestion.note.tr(),
               style: AppTextStyle.font17textMutedRegularNoto().copyWith(
@@ -54,17 +53,15 @@ class QuestionContent extends StatelessWidget {
               ),
               textAlign: TextAlign.right,
             ),
+            verticalSpace(8),
             Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 8.h),
-                child: QuestionOptions(
-                  cubit: cubit,
-                  availableHeight: availableHeight,
-                ),
+              child: QuestionOptions(
+                cubit: cubit,
+                availableHeight: availableHeight,
               ),
             ),
+            verticalSpace(12),
             if (cubit.currentQuestion.id == '5') ...[
-              verticalSpace(8),
               InkWell(
                 onTap: () {
                   if (cubit.state.families.isEmpty) {
@@ -98,6 +95,7 @@ class QuestionContent extends StatelessWidget {
                       textAlign: TextAlign.right,
                     )
                   : const SizedBox.shrink(),
+              verticalSpace(12),
             ],
             SizedBox(height: (availableHeight * 0.14)),
           ],

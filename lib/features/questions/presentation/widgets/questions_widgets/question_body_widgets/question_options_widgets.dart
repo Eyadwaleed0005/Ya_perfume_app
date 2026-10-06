@@ -36,6 +36,7 @@ class QuestionOptionsWidgets {
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Column(
         children: [
+          verticalSpace(12),
           Row(
             children: [
               Expanded(
@@ -81,23 +82,31 @@ class QuestionOptionsWidgets {
 
   Widget buildDefaultOptions(BuildContext context, AppThemeColors theme) {
     final crossAxisCount = cubit.currentQuestion.options.length >= 4 ? 2 : 1;
-
-    final optionHeight = (availableHeight * 0.08).clamp(45.h, 72.h);
+    final optionHeight = (availableHeight * 0.12).clamp(45.h, 72.h);
     final isArabic = context.locale.languageCode == 'ar';
 
     return Directionality(
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
-
-      child: GridView.count(
-        shrinkWrap: false,
+      child: CustomScrollView(
         physics: const BouncingScrollPhysics(),
-        crossAxisCount: crossAxisCount,
-        crossAxisSpacing: 12.w,
-        mainAxisSpacing: 12.h,
-        mainAxisExtent: optionHeight,
-        children: cubit.currentQuestion.options.map((option) {
-          return buildOption(context: context, option: option, theme: theme);
-        }).toList(),
+        slivers: [
+          SliverGrid(
+            delegate: SliverChildBuilderDelegate((context, index) {
+              final option = cubit.currentQuestion.options[index];
+              return buildOption(
+                context: context,
+                option: option,
+                theme: theme,
+              );
+            }, childCount: cubit.currentQuestion.options.length),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: crossAxisCount,
+              crossAxisSpacing: 12.w,
+              mainAxisSpacing: 12.h,
+              mainAxisExtent: optionHeight,
+            ),
+          ),
+        ],
       ),
     );
   }

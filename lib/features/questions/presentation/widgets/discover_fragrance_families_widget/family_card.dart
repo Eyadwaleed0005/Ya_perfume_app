@@ -32,6 +32,7 @@ class FamilyCard extends StatelessWidget {
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min, // مهم
           children: [
             Text(
               family.number,
@@ -40,22 +41,18 @@ class FamilyCard extends StatelessWidget {
               ),
             ),
             verticalSpace(8),
-            Expanded(
-              flex: 1,
-              child: Text(
-                family.title.tr(),
-                style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
-                  color: theme.textPrimary,
-                ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
+            Text(
+              family.title.tr(),
+              style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
+                color: theme.textPrimary,
               ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
 
             verticalSpace(12),
 
             Expanded(
-              flex: 4,
               child: Text(
                 family.description.tr(),
                 style: AppTextStyle.font16textMutedRegularNoto().copyWith(
