@@ -72,13 +72,6 @@ class PercentageSelectionTotal extends StatelessWidget {
                             textDirection: ui.TextDirection.ltr,
                             children: [
                               Text(
-                                '100%',
-                                textDirection: ui.TextDirection.ltr,
-                                style:
-                                    AppTextStyle.font16textMutedRegularNoto(),
-                              ),
-                              horizontalSpace(4),
-                              Text(
                                 'percentage_selection_adjust_total'.tr(),
                                 style:
                                     AppTextStyle.font16textMutedRegularNoto(),

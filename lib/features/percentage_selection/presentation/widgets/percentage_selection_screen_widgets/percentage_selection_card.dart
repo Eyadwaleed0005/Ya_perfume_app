@@ -27,45 +27,39 @@ class PercentageSelectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250.w,
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
       decoration: BoxDecoration(
         color: AppColors.bgSurface,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: AppColors.borderSubtle, width: 1),
       ),
       child: Column(
-        mainAxisSize: MainAxisSize.min,
         children: [
-          PercentageSelectionBottle(
-            percentage: percentage,
-            liquidColor: liquidColor,
+          Expanded(
+            child: Center(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: PercentageSelectionBottle(
+                  percentage: percentage,
+                  liquidColor: liquidColor,
+                  width: 112.w,
+                ),
+              ),
+            ),
           ),
-          verticalSpace(32),
+          verticalSpace(8),
           Text(
             title,
             textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: AppTextStyle.font18textPrimaryMediumNoto(),
           ),
-          verticalSpace(16),
+          verticalSpace(8),
           Row(
             textDirection: ui.TextDirection.ltr,
             children: [
-              IconButton.outlined(
-                onPressed: onDecrease,
-                icon: const Icon(Icons.remove),
-                iconSize: 18.sp,
-                style: IconButton.styleFrom(
-                  foregroundColor: AppColors.textPrimary,
-                  disabledForegroundColor: AppColors.textMuted.withValues(
-                    alpha: 0.35,
-                  ),
-                  side: const BorderSide(color: AppColors.borderSubtle),
-                  fixedSize: Size.square(48.r),
-                  padding: EdgeInsets.zero,
-                  shape: const CircleBorder(),
-                ),
-              ),
+              _buildControl(icon: Icons.remove, onPressed: onDecrease),
               Expanded(
                 child: Text(
                   '${percentage.toStringAsFixed(0)}%',
@@ -74,24 +68,33 @@ class PercentageSelectionCard extends StatelessWidget {
                   style: AppTextStyle.font25textAccentSemiBoldNoto(),
                 ),
               ),
-              IconButton.outlined(
-                onPressed: onIncrease,
-                icon: const Icon(Icons.add),
-                iconSize: 18.sp,
-                style: IconButton.styleFrom(
-                  foregroundColor: AppColors.textPrimary,
-                  disabledForegroundColor: AppColors.textMuted.withValues(
-                    alpha: 0.35,
-                  ),
-                  side: const BorderSide(color: AppColors.borderSubtle),
-                  fixedSize: Size.square(48.r),
-                  padding: EdgeInsets.zero,
-                  shape: const CircleBorder(),
-                ),
-              ),
+              _buildControl(icon: Icons.add, onPressed: onIncrease),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildControl({
+    required IconData icon,
+    required VoidCallback? onPressed,
+  }) {
+    return SizedBox.square(
+      dimension: 40.r,
+      child: IconButton.outlined(
+        onPressed: onPressed,
+        icon: Icon(icon),
+        iconSize: 18.sp,
+        style: IconButton.styleFrom(
+          foregroundColor: AppColors.textPrimary,
+          disabledForegroundColor: AppColors.textMuted.withValues(alpha: 0.35),
+          side: const BorderSide(color: AppColors.borderSubtle),
+          minimumSize: Size.zero,
+          padding: EdgeInsets.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+          shape: const CircleBorder(),
+        ),
       ),
     );
   }

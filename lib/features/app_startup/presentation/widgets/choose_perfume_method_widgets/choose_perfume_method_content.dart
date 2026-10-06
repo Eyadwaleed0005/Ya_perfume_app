@@ -20,37 +20,36 @@ class ChoosePerfumeMethodContent extends StatelessWidget {
         SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-            child: Center(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: SizedBox(
-                  width: 1100.w,
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                Align(
+                  alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: EdgeInsets.only(bottom: 100.h),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Row(
-                          textDirection: TextDirection.ltr,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            AppAnimation.appStartupEntrance(
-                              child: const ChoosePerfumeMethodBackButton(),
-                            ),
-                            horizontalSpace(16),
-                            const Expanded(
-                              child: Center(child: ChoosePerfumeMethodIntro()),
-                            ),
-                            horizontalSpace(64),
-                          ],
-                        ),
-                        verticalSpace(80),
-                        const ChoosePerfumeMethodCards(),
-                      ],
+                    padding: EdgeInsets.only(top: 12.h),
+                    child: SizedBox(
+                      width: 1100.w,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const ChoosePerfumeMethodIntro(),
+                          verticalSpace(60),
+                          const ChoosePerfumeMethodCards(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 80.w, top: 12.h),
+                    child: AppAnimation.appStartupEntrance(
+                      child: const ChoosePerfumeMethodBackButton(),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

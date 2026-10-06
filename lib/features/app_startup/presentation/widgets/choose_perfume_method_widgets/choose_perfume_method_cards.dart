@@ -12,37 +12,40 @@ class ChoosePerfumeMethodCards extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      textDirection: TextDirection.ltr,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        AppAnimation.appStartupEntrance(
-          delay: const Duration(milliseconds: 120),
-          child: ChoosePerfumeMethodCard(
-            imagePath: AppImage().perfumeQuestionsCard,
-            title: 'perfume_questions_title'.tr(context: context),
-            description: 'perfume_questions_description'.tr(context: context),
-            footer: 'perfume_questions_footer'.tr(context: context),
-            onTap: () {
-              Navigator.of(context).pushNamed(RouteNames.questions);
-            },
+    return IntrinsicHeight(
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
+        textDirection: TextDirection.ltr,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          AppAnimation.appStartupEntrance(
+            delay: const Duration(milliseconds: 120),
+            child: ChoosePerfumeMethodCard(
+              imagePath: AppImage().perfumeQuestionsCard,
+              title: 'perfume_questions_title'.tr(context: context),
+              description: 'perfume_questions_description'.tr(context: context),
+              footer: 'perfume_questions_footer'.tr(context: context),
+              onTap: () {
+                Navigator.of(context).pushNamed(RouteNames.questions);
+              },
+            ),
           ),
-        ),
-        horizontalSpace(24),
-        AppAnimation.appStartupEntrance(
-          delay: const Duration(milliseconds: 160),
-          child: ChoosePerfumeMethodCard(
-            imagePath: AppImage().perfumeRatiosCard,
-            title: 'perfume_ratios_title'.tr(context: context),
-            description: 'perfume_ratios_description'.tr(context: context),
-            footer: 'perfume_ratios_footer'.tr(context: context),
-            onTap: () {
-              Navigator.of(context).pushNamed(RouteNames.percentageSelection);
-            },
+          horizontalSpace(24),
+          AppAnimation.appStartupEntrance(
+            delay: const Duration(milliseconds: 160),
+            child: ChoosePerfumeMethodCard(
+              imagePath: AppImage().perfumeRatiosCard,
+              title: 'perfume_ratios_title'.tr(context: context),
+              description: 'perfume_ratios_description'.tr(context: context),
+              footer: 'perfume_ratios_footer'.tr(context: context),
+              onTap: () {
+                Navigator.of(context).pushNamed(RouteNames.percentageSelection);
+              },
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
