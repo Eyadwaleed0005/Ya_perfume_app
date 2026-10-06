@@ -32,7 +32,6 @@ class ChoosePerfumeMethodCard extends StatelessWidget {
 
     return SizedBox(
       width: 420.w,
-      height: 380.h,
       child: Material(
         color: AppColors.bgCanvas,
         shape: RoundedRectangleBorder(
@@ -45,46 +44,34 @@ class ChoosePerfumeMethodCard extends StatelessWidget {
           splashColor: AppColors.goldAccent.withValues(alpha: 0.15),
           highlightColor: AppColors.goldAccent.withValues(alpha: 0.08),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 15.h),
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
             child: Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14.r),
-                  child: SizedBox(
-                    width: double.infinity,
-                    height: 200.h,
+                  child: AspectRatio(
+                    aspectRatio: 460 / 220,
                     child: SvgPicture.asset(
                       imagePath,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.contain,
                       alignment: Alignment.center,
                     ),
                   ),
                 ),
-                verticalSpace(16),
-                Expanded(
-                  child: Column(
-                    children: [
-                      Text(
-                        title,
-                        textDirection: textDirection,
-                        textAlign: TextAlign.center,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: AppTextStyle.font18textPrimarySemiBoldNoto(),
-                      ),
-                      verticalSpace(10),
-                      Flexible(
-                        child: Text(
-                          description,
-                          textDirection: textDirection,
-                          textAlign: TextAlign.center,
-                          maxLines: 3,
-                          overflow: TextOverflow.ellipsis,
-                          style: AppTextStyle.font15textMutedRegularNoto(),
-                        ),
-                      ),
-                    ],
-                  ),
+                verticalSpace(12),
+                Text(
+                  title,
+                  textDirection: textDirection,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.font18textPrimarySemiBoldNoto(),
+                ),
+                verticalSpace(8),
+                Text(
+                  description,
+                  textDirection: textDirection,
+                  textAlign: TextAlign.center,
+                  style: AppTextStyle.font15textMutedRegularNoto(),
                 ),
                 verticalSpace(12),
                 Row(
@@ -109,14 +96,11 @@ class ChoosePerfumeMethodCard extends StatelessWidget {
                         footer,
                         textDirection: textDirection,
                         textAlign: TextAlign.center,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
                         style: AppTextStyle.font15textMutedRegularNoto(),
                       ),
                     ),
                   ],
                 ),
-                verticalSpace(10),
               ],
             ),
           ),

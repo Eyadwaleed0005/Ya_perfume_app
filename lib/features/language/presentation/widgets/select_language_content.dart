@@ -28,55 +28,50 @@ class SelectLanguageContent extends StatelessWidget {
         const SplashBackground(),
         SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 18.h),
             child: Center(
               child: FittedBox(
-                fit: BoxFit.scaleDown,
+                fit: BoxFit.contain,
                 child: SizedBox(
                   width: 1000.w,
-                  child: Padding(
-                    padding: EdgeInsets.only(bottom: 100.h),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        AppAnimation.languageEntrance(
-                          child: const SelectLanguageLogo(),
-                        ),
-                        AppAnimation.languageEntrance(
-                          delay: const Duration(milliseconds: 40),
-                          child: AppAnimation.languageContent(
-                            animationKey: locale.toString(),
-                            child: Text(
-                              'select_language_instruction'.tr(
-                                context: context,
-                              ),
-                              textAlign: TextAlign.center,
-                              textDirection: textDirection,
-                              style:
-                                  AppTextStyle.font36textPrimarySemiBoldNoto(),
-                            ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      AppAnimation.languageEntrance(
+                        child: const SelectLanguageLogo(),
+                      ),
+                      AppAnimation.languageEntrance(
+                        delay: const Duration(milliseconds: 40),
+                        child: AppAnimation.languageContent(
+                          animationKey: locale.toString(),
+                          child: Text(
+                            'select_language_instruction'.tr(context: context),
+                            textAlign: TextAlign.center,
+                            textDirection: textDirection,
+                            style: AppTextStyle.font36textPrimarySemiBoldNoto(),
                           ),
                         ),
-                        verticalSpace(38),
-                        const SelectLanguageButtons(),
-                        verticalSpace(60),
-                        AppAnimation.languageEntrance(
-                          delay: const Duration(milliseconds: 280),
-                          child: AppAnimation.languageContent(
-                            animationKey: locale.toString(),
-                            child: CustomButton(
-                              text: 'start'.tr(context: context),
-                              width: 210.w,
-                              onPressed: () {
-                                Navigator.of(context)
-                                    .pushNamed(RouteNames.choosePerfumeMethod);
-                              },
-                            ),
+                      ),
+                      verticalSpace(38.w / 1.h),
+                      const SelectLanguageButtons(),
+                      verticalSpace(40.w / 1.h),
+                      AppAnimation.languageEntrance(
+                        delay: const Duration(milliseconds: 280),
+                        child: AppAnimation.languageContent(
+                          animationKey: locale.toString(),
+                          child: CustomButton(
+                            text: 'start'.tr(context: context),
+                            width: 210.w,
+                            height: 52.w,
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(RouteNames.choosePerfumeMethod);
+                            },
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),

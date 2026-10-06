@@ -56,7 +56,7 @@
 "percentage_selection_total": "المجموع",
 "percentage_selection_choose_method": "اختيار الطريقة",
 "percentage_selection_show_suggestions": "عرض العطور المقترحة",
-"percentage_selection_adjust_total": "عدّل النسب حتى يصبح المجموع",
+"percentage_selection_adjust_total": "عدّل النسب حتى يصبح المجموع %100",
 "percentage_selection_loading_title": "جارٍ إعداد العطور المقترحة",
 "percentage_selection_loading_description": "سنقترح لك بعد قليل أربعة عطور تناسب ذوقك."
 }
