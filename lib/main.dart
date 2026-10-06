@@ -55,7 +55,7 @@ class YaPerfumeApp extends StatelessWidget {
           },
           title: "app_name".tr(),
           debugShowCheckedModeBanner: false,
-          initialRoute: RouteNames.splash,
+          initialRoute: RouteNames.questions,
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },

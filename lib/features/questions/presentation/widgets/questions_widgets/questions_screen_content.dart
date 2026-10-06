@@ -66,10 +66,11 @@ class QuestionsScreenContent extends StatelessWidget {
                     state: state,
                   ),
 
-                  QuestionBody(cubit: cubit, state: state),
+                  Expanded(
+                    child: QuestionBody(cubit: cubit, state: state),
+                  ),
                 ],
               ),
-
               CustomFooter(
                 numberSelected: state.selectedOptions.length,
                 questionId: cubit.currentQuestion.id,

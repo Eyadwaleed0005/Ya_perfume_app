@@ -80,34 +80,32 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 ],
               ),
 
-              verticalSpace(20),
+              verticalSpace(16),
 
               Expanded(
-                child: LayoutBuilder(
-                  builder: (context, constraints) {
-                    const crossAxisCount = 4;
-                    const crossAxisSpacing = 16.0;
-                    final totalSpacing =
-                        crossAxisSpacing * (crossAxisCount - 1);
-                    final cardWidth =
-                        (constraints.maxWidth - totalSpacing) / crossAxisCount;
-                    final cardHeight = constraints.maxHeight * 0.55;
-                    final childAspectRatio = cardWidth / cardHeight;
-
-                    return GridView.count(
-                      crossAxisCount: crossAxisCount,
-                      crossAxisSpacing: 16.w,
-                      mainAxisSpacing: 16.h,
-                      childAspectRatio: childAspectRatio,
-                      children: families.map((entry) {
-                        return FamilyCard(family: entry, themeType: themeType);
-                      }).toList(),
-                    );
-                  },
+                child: CustomScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  slivers: [
+                    SliverGrid(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) => FamilyCard(
+                          family: families[index],
+                          themeType: themeType,
+                        ),
+                        childCount: families.length,
+                      ),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 4,
+                        crossAxisSpacing: 16.w,
+                        mainAxisSpacing: 16.h,
+                        mainAxisExtent: 120.h,
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
-              verticalSpace(24),
+              verticalSpace(16),
 
               CustomButton(
                 text: 'back_to_choices'.tr(),
@@ -120,7 +118,7 @@ class DiscoverFragranceFamiliesScreenContent extends StatelessWidget {
                 foreground: AppColors.textUltraBlack,
               ),
 
-              verticalSpace(24),
+              verticalSpace(16),
             ],
           ),
         ),
