@@ -14,9 +14,7 @@ class BeforeTheFamiliesScreen extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: AppSystemUi.dark(),
       child: Scaffold(
-        body: SafeArea(
-          child: BeforeTheFamiliesScreenContent(themeType: themeType),
-        ),
+        body: BeforeTheFamiliesScreenContent(themeType: themeType),
       ),
     );
   }

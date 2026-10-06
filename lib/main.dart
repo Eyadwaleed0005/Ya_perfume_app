@@ -10,7 +10,7 @@ import 'dart:ui' as ui;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
   ]);
   await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();

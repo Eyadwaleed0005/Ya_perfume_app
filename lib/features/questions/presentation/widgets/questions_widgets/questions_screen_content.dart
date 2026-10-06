@@ -29,66 +29,63 @@ class QuestionsScreenContent extends StatelessWidget {
         final showSnow =
             cubit.currentQuestion.id == '4' &&
             state.selectedOptions.contains('2');
-        return SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 64.w),
-            child: Stack(
-              children: [
-                CustomBackground(
-                  backGroundColor: theme.background,
-                  primaryColor: theme.primary.withValues(alpha: 0.14),
-                  secondaryColor: theme.secondary,
-                ),
+        return Padding(
+          padding: EdgeInsets.symmetric(horizontal: 64.w),
+          child: Stack(
+            children: [
+              CustomBackground(
+                backGroundColor: theme.background,
+                primaryColor: theme.primary.withValues(alpha: 0.14),
+                secondaryColor: theme.secondary,
+              ),
 
-                if (showSnow)
-                  Positioned.fill(
-                    child: IgnorePointer(
-                      child: RepaintBoundary(
-                        child: SnowfallOrAnythings(
-                          key: const ValueKey('question-3-option-2-snow'),
-                          numberOfParticles: 50,
-                          particleSize: 1,
-                          particleSpeed: 0.40,
-                          particleColor:
-                              effectiveThemeType == AppThemeType.light
-                              ? AppColors.blueSnow.withValues(alpha: 0.25)
-                              : AppColors.whiteSnow.withValues(alpha: 0.8),
-                          particleType: ParticleType.snowflake,
-                          frameRateMs: 60,
-                        ),
+              if (showSnow)
+                Positioned.fill(
+                  child: IgnorePointer(
+                    child: RepaintBoundary(
+                      child: SnowfallOrAnythings(
+                        key: const ValueKey('question-3-option-2-snow'),
+                        numberOfParticles: 50,
+                        particleSize: 1,
+                        particleSpeed: 0.40,
+                        particleColor: effectiveThemeType == AppThemeType.light
+                            ? AppColors.blueSnow.withValues(alpha: 0.25)
+                            : AppColors.whiteSnow.withValues(alpha: 0.8),
+                        particleType: ParticleType.snowflake,
+                        frameRateMs: 60,
                       ),
                     ),
                   ),
-
-                Column(
-                  children: [
-                    QuestionHeader(
-                      currentIndex: state.currentIndex + 1,
-                      totalQuestions: state.questions.length,
-                      state: state,
-                    ),
-
-                    QuestionBody(cubit: cubit, state: state),
-                  ],
                 ),
 
-                CustomFooter(
-                  numberSelected: state.selectedOptions.length,
-                  questionId: cubit.currentQuestion.id,
-                  canGoNext: cubit.canContinue,
-                  onNext: () => cubit.next(),
-                  onPrevious: () => cubit.previous(),
-                  onSkip: () => cubit.skip(),
-                  state: state,
-                  centerWidget: _buildCenterWidget(
-                    cubit.currentQuestion.id,
-                    state.selectedOptions.length,
-                    cubit.skip,
-                    theme,
+              Column(
+                children: [
+                  QuestionHeader(
+                    currentIndex: state.currentIndex + 1,
+                    totalQuestions: state.questions.length,
+                    state: state,
                   ),
+
+                  QuestionBody(cubit: cubit, state: state),
+                ],
+              ),
+
+              CustomFooter(
+                numberSelected: state.selectedOptions.length,
+                questionId: cubit.currentQuestion.id,
+                canGoNext: cubit.canContinue,
+                onNext: () => cubit.next(),
+                onPrevious: () => cubit.previous(),
+                onSkip: () => cubit.skip(),
+                state: state,
+                centerWidget: _buildCenterWidget(
+                  cubit.currentQuestion.id,
+                  state.selectedOptions.length,
+                  cubit.skip,
+                  theme,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
