@@ -22,36 +22,44 @@ class SplashScreenContent extends StatelessWidget {
         SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const Spacer(flex: 2),
-                AppAnimation.splashFade(
-                  child: const Center(child: SplashLogo()),
-                ),
-                verticalSpace(15),
-                AppAnimation.splashFade(
-                  delay: const Duration(milliseconds: 150),
-                  child: const SizedBox.shrink()
-                      .animate(
-                        onComplete: (_) {
-                          if (!context.mounted) return;
+            child: Center(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: SizedBox(
+                  width: 400.w,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 80.h),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AppAnimation.splashFade(child: const SplashLogo()),
+                        verticalSpace(15),
+                        AppAnimation.splashFade(
+                          delay: const Duration(milliseconds: 150),
+                          child: const SizedBox.shrink()
+                              .animate(
+                                onComplete: (_) {
+                                  if (!context.mounted) return;
 
-                          context.read<SplashCubit>().completeLoading();
-                        },
-                      )
-                      .custom(
-                        duration: 6.seconds,
-                        begin: 0,
-                        end: 1,
-                        curve: Curves.linear,
-                        builder: (context, value, child) {
-                          return SplashLoadingBar(progress: value);
-                        },
-                      ),
+                                  context.read<SplashCubit>().completeLoading();
+                                },
+                              )
+                              .custom(
+                                duration: 6.seconds,
+                                begin: 0,
+                                end: 1,
+                                curve: Curves.linear,
+                                builder: (context, value, child) {
+                                  return SplashLoadingBar(progress: value);
+                                },
+                              ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
-                const Spacer(flex: 3),
-              ],
+              ),
             ),
           ),
         ),

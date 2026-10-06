@@ -20,8 +20,7 @@ class SelectLanguageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LanguageCubit, LanguageState>(
       builder: (context, state) {
-        final isSelected =
-            state.selectedLocale.languageCode == languageCode;
+        final isSelected = state.selectedLocale.languageCode == languageCode;
 
         return SizedBox(
           width: 160.w,
@@ -34,9 +33,7 @@ class SelectLanguageButton extends StatelessWidget {
               clipBehavior: Clip.antiAlias,
               child: InkWell(
                 onTap: () {
-                  context.read<LanguageCubit>().selectLanguage(
-                    languageCode,
-                  );
+                  context.read<LanguageCubit>().selectLanguage(languageCode);
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(
