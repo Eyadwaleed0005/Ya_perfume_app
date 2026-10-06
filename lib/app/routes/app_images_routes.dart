@@ -78,6 +78,13 @@ class AppImage {
   late final String mediumCircleQ9 = '${baseImagesQ9}medium_circle.svg';
   late final String largeCircleQ9 = '${baseImagesQ9}large_circle.svg';
 
+  // ===== language flages =====
+  late final String arabicLanguageFlag = '${baseImages}egypt_flag.svg';
+  late final String englishLanguageFlag = '${baseImages}uk_flag.svg';
+  late final String frenchLanguageFlag = '${baseImages}france_flag.svg';
+  late final String russianLanguageFlag = '${baseImages}russia_flag.svg';
+  late final String italianLanguageFlag = '${baseImages}italy_flag.svg';
+
   // ===== icons =====
   late final String butterProgressBar = '${baseIcons}butter_progress_bar.svg';
 

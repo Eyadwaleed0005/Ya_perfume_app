@@ -35,6 +35,8 @@ class AppTextStyle {
     );
   }
 
+  
+
   static TextStyle font23textPrimarySemiBoldNoto() {
     return TextStyle(
       fontSize: 23.sp,
