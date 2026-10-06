@@ -20,36 +20,36 @@ class ChoosePerfumeMethodContent extends StatelessWidget {
         SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Row(
-                    textDirection: TextDirection.ltr,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      AppAnimation.appStartupEntrance(
-                        child: const ChoosePerfumeMethodBackButton(),
-                      ),
-                      horizontalSpace(16),
-                      const Flexible(
-                        child: Center(
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            child: ChoosePerfumeMethodIntro(),
-                          ),
+            child: Center(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: SizedBox(
+                  width: 1100.w,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 100.h),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Row(
+                          textDirection: TextDirection.ltr,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            AppAnimation.appStartupEntrance(
+                              child: const ChoosePerfumeMethodBackButton(),
+                            ),
+                            horizontalSpace(16),
+                            const Expanded(
+                              child: Center(child: ChoosePerfumeMethodIntro()),
+                            ),
+                            horizontalSpace(64),
+                          ],
                         ),
-                      ),
-                      horizontalSpace(64),
-                    ],
-                  ),
-                  verticalSpace(80),
-                  const Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: ChoosePerfumeMethodCards(),
+                        verticalSpace(80),
+                        const ChoosePerfumeMethodCards(),
+                      ],
                     ),
                   ),
-                ],
+                ),
               ),
             ),
           ),

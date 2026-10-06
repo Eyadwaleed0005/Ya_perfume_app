@@ -29,45 +29,55 @@ class SelectLanguageContent extends StatelessWidget {
         SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 20.h),
-            child: Padding(
-              padding: EdgeInsets.only(bottom: 100.h),
-              child: Center(
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    AppAnimation.languageEntrance(
-                      child: const SelectLanguageLogo(),
-                    ),
-                    AppAnimation.languageEntrance(
-                      delay: const Duration(milliseconds: 40),
-                      child: AppAnimation.languageContent(
-                        animationKey: locale.toString(),
-                        child: Text(
-                          'select_language_instruction'.tr(context: context),
-                          textAlign: TextAlign.center,
-                          textDirection: textDirection,
-                          style: AppTextStyle.font36textPrimarySemiBoldNoto(),
+            child: Center(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: SizedBox(
+                  width: 1000.w,
+                  child: Padding(
+                    padding: EdgeInsets.only(bottom: 100.h),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        AppAnimation.languageEntrance(
+                          child: const SelectLanguageLogo(),
                         ),
-                      ),
-                    ),
-                    verticalSpace(38),
-                    const SelectLanguageButtons(),
-                    verticalSpace(60),
-                    AppAnimation.languageEntrance(
-                      delay: const Duration(milliseconds: 280),
-                      child: AppAnimation.languageContent(
-                        animationKey: locale.toString(),
-                        child: CustomButton(
-                          text: 'start'.tr(context: context),
-                          width: 210.w,
-                          onPressed: () {
-                            Navigator.of(context)
-                                .pushNamed(RouteNames.choosePerfumeMethod);
-                          },
+                        AppAnimation.languageEntrance(
+                          delay: const Duration(milliseconds: 40),
+                          child: AppAnimation.languageContent(
+                            animationKey: locale.toString(),
+                            child: Text(
+                              'select_language_instruction'.tr(
+                                context: context,
+                              ),
+                              textAlign: TextAlign.center,
+                              textDirection: textDirection,
+                              style:
+                                  AppTextStyle.font36textPrimarySemiBoldNoto(),
+                            ),
+                          ),
                         ),
-                      ),
+                        verticalSpace(38),
+                        const SelectLanguageButtons(),
+                        verticalSpace(60),
+                        AppAnimation.languageEntrance(
+                          delay: const Duration(milliseconds: 280),
+                          child: AppAnimation.languageContent(
+                            animationKey: locale.toString(),
+                            child: CustomButton(
+                              text: 'start'.tr(context: context),
+                              width: 210.w,
+                              onPressed: () {
+                                Navigator.of(context)
+                                    .pushNamed(RouteNames.choosePerfumeMethod);
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
               ),
             ),

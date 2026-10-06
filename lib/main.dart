@@ -1,22 +1,25 @@
+import 'dart:ui' as ui;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/app/routes/app_routes.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
-
-import 'dart:ui' as ui;
+import 'package:ya_perfume/core/services/device_preview_service.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
   ]);
+
   await ScreenUtil.ensureScreenSize();
   await EasyLocalization.ensureInitialized();
 
-  runApp(
-    EasyLocalization(
+  DevicePreviewService.run(
+    child: EasyLocalization(
       supportedLocales: const [
         Locale('en', 'US'),
         Locale('ar', 'EG'),
@@ -47,13 +50,18 @@ class YaPerfumeApp extends StatelessWidget {
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
+          onGenerateTitle: (context) {
+            return 'app_name'.tr(context: context);
+          },
           builder: (context, child) {
-            return Directionality(
-              textDirection: ui.TextDirection.ltr,
-              child: child ?? const SizedBox.shrink(),
+            return DevicePreviewService.appBuilder(
+              context,
+              Directionality(
+                textDirection: ui.TextDirection.ltr,
+                child: child ?? const SizedBox.shrink(),
+              ),
             );
           },
-          title: "app_name".tr(),
           debugShowCheckedModeBanner: false,
           initialRoute: RouteNames.splash,
           onGenerateRoute: AppRoutes.generateRoute,
