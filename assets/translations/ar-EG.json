@@ -41,9 +41,11 @@
   "family_8_title": "عود ودخان وجلد", "family_8_description": "عود وبخور وجلد؛ طابع عميق ومدخن.",
   "choose_perfume_method_intro": "اختر طريقتك لاكتشاف العطر المناسب لك.\nسأرافقك خطوة بخطوة.",
   "perfume_questions_title": "اختر عطرك حسب شخصيتك",
-"perfume_questions_description": "أجب عن أسئلة قصيرة حول استخدامك وتفضيلاتك لنقترح العطر الأنسب لك.",
-"perfume_questions_footer": "٩ أسئلة · نحو دقيقتين",
-"perfume_ratios_title": "حدّد نسب الروائح",
-"perfume_ratios_description": "وزّع النسب بين العائلات العطرية لنقترح عطرًا يناسب تفضيلاتك.",
-"perfume_ratios_footer": "مزيج مخصّص"
+  "perfume_questions_description": "أجب عن أسئلة قصيرة حول استخدامك وتفضيلاتك لنقترح العطر الأنسب لك.",
+  "perfume_questions_footer": "٩ أسئلة · نحو دقيقتين",
+  "perfume_ratios_title": "حدّد نسب الروائح",
+  "perfume_ratios_description": "وزّع النسب بين العائلات العطرية لنقترح عطرًا يناسب تفضيلاتك.",
+  "perfume_ratios_footer": "مزيج مخصّص",
+  "select_language_instruction": "اختر لغتك، ثم اضغط ابدأ.",
+  "start": "ابدأ"
 }

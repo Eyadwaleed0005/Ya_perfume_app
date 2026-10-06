@@ -1,28 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ya_perfume/core/animation/app_animation.dart';
+import 'package:ya_perfume/core/helper/spacer.dart';
+import 'package:ya_perfume/features/app_startup/presentation/cubit/splash_cubit.dart';
+
 import 'splash_background.dart';
 import 'splash_loading_bar.dart';
 import 'splash_logo.dart';
 
 class SplashScreenContent extends StatelessWidget {
   const SplashScreenContent({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       fit: StackFit.expand,
       children: [
         const SplashBackground(),
-        const Align(alignment: Alignment(0, -0.15), child: SplashLogo()),
-        Align(
-          alignment: const Alignment(0, 0.4),
-          child: const SizedBox.shrink().animate().custom(
-            duration: 6.seconds,
-            begin: 0,
-            end: 1,
-            curve: Curves.linear,
-            builder: (context, value, child) {
-              return SplashLoadingBar(progress: value);
-            },
+        SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 40.h),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const Spacer(flex: 2),
+                AppAnimation.splashFade(
+                  child: const Center(child: SplashLogo()),
+                ),
+                verticalSpace(15),
+                AppAnimation.splashFade(
+                  delay: const Duration(milliseconds: 150),
+                  child: const SizedBox.shrink()
+                      .animate(
+                        onComplete: (_) {
+                          if (!context.mounted) return;
+
+                          context.read<SplashCubit>().completeLoading();
+                        },
+                      )
+                      .custom(
+                        duration: 6.seconds,
+                        begin: 0,
+                        end: 1,
+                        curve: Curves.linear,
+                        builder: (context, value, child) {
+                          return SplashLoadingBar(progress: value);
+                        },
+                      ),
+                ),
+                const Spacer(flex: 3),
+              ],
+            ),
           ),
         ),
       ],

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:ya_perfume/core/animation/app_animation.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/features/app_startup/presentation/widgets/splash_screen_widgets/splash_background.dart';
 
@@ -26,7 +27,9 @@ class ChoosePerfumeMethodContent extends StatelessWidget {
                     textDirection: TextDirection.ltr,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const ChoosePerfumeMethodBackButton(),
+                      AppAnimation.appStartupEntrance(
+                        child: const ChoosePerfumeMethodBackButton(),
+                      ),
                       horizontalSpace(16),
                       const Flexible(
                         child: Center(

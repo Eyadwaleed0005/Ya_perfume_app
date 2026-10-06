@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/app/routes/app_routes.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
+
 import 'dart:ui' as ui;
 
 Future<void> main() async {
@@ -26,6 +27,7 @@ Future<void> main() async {
       path: 'assets/translations',
       fallbackLocale: const Locale('ar', 'EG'),
       startLocale: const Locale('ar', 'EG'),
+      saveLocale: false,
       child: const YaPerfumeApp(),
     ),
   );
@@ -53,7 +55,7 @@ class YaPerfumeApp extends StatelessWidget {
           },
           title: "app_name".tr(),
           debugShowCheckedModeBanner: false,
-          initialRoute: RouteNames.choosePerfumeMethod,
+          initialRoute: RouteNames.splash,
           onGenerateRoute: AppRoutes.generateRoute,
         );
       },

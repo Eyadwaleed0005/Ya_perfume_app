@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ya_perfume/core/animation/app_startup_animation_widget.dart';
 import 'package:ya_perfume/core/animation/questions_animation/ques_animation.dart';
+import 'package:ya_perfume/core/animation/language_animation_widget.dart';
+import 'package:ya_perfume/core/animation/splash_animation_widget.dart';
 
 class AppAnimation {
   const AppAnimation._();
@@ -30,5 +33,46 @@ class AppAnimation {
 
   static Widget animatedContentSwitcher({required Widget child}) {
     return QuesAnimation.animatedContentSwitcher(child: child);
+  }
+
+  static Widget languageEntrance({
+    required Widget child,
+    Duration delay = Duration.zero,
+  }) {
+    return LanguageAnimationWidget.entrance(delay: delay, child: child);
+  }
+
+  static Widget languageContent({
+    required Widget child,
+    required Object animationKey,
+  }) {
+    return LanguageAnimationWidget.content(
+      animationKey: animationKey,
+      child: child,
+    );
+  }
+
+  static Widget languageSelection({
+    required Widget child,
+    required bool isSelected,
+  }) {
+    return LanguageAnimationWidget.selection(
+      isSelected: isSelected,
+      child: child,
+    );
+  }
+
+  static Widget appStartupEntrance({
+    required Widget child,
+    Duration delay = Duration.zero,
+  }) {
+    return AppStartupAnimationWidget.entrance(delay: delay, child: child);
+  }
+
+  static Widget splashFade({
+    required Widget child,
+    Duration delay = Duration.zero,
+  }) {
+    return SplashAnimationWidget.fade(delay: delay, child: child);
   }
 }
