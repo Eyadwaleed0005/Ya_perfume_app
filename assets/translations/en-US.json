@@ -122,5 +122,17 @@
   "perfume_ratios_description": "Set the proportions of fragrance families so we can suggest a fragrance that matches your preferences.",
   "perfume_ratios_footer": "Custom blend",
   "select_language_instruction": "Choose your language, then tap Start.",
-  "start": "Start"
+  "start": "Start",
+  "percentage_selection_description": "Adjust the fragrance family percentages until the total reaches 100%",
+  "percentage_family_warm": "Warm",
+"percentage_family_fresh": "Fresh",
+"percentage_family_woody": "Woody",
+"percentage_family_floral": "Floral",
+"percentage_selection_total": "Total",
+"percentage_selection_choose_method": "Choose method",
+"percentage_selection_show_suggestions": "Show suggested perfumes",
+"percentage_selection_adjust_total": "Adjust the percentages until the total reaches 100%",
+"percentage_selection_loading_title": "Preparing your perfume recommendations",
+"percentage_selection_loading_description": "We'll soon suggest four perfumes that suit your taste."
+
 }

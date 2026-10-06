@@ -122,5 +122,16 @@
   "perfume_ratios_description": "Distribuisci le proporzioni tra le famiglie olfattive per aiutarci a suggerirti un profumo adatto alle tue preferenze.",
   "perfume_ratios_footer": "Miscela personalizzata",
   "select_language_instruction": "Scegli la lingua, poi premi Inizia.",
-  "start": "Inizia"
+  "start": "Inizia",
+  "percentage_selection_description": "Distribuisci le percentuali tra le famiglie olfattive fino a raggiungere un totale del 100%",
+  "percentage_family_warm": "Caldo",
+"percentage_family_fresh": "Fresco",
+"percentage_family_woody": "Legnoso",
+"percentage_family_floral": "Floreale",
+"percentage_selection_total": "Totale",
+"percentage_selection_choose_method": "Scegli il metodo",
+"percentage_selection_show_suggestions": "Mostra i profumi suggeriti",
+"percentage_selection_adjust_total": "Modifica le percentuali fino a raggiungere un totale del 100%",
+"percentage_selection_loading_title": "Stiamo preparando i profumi consigliati",
+"percentage_selection_loading_description": "Tra poco ti proporremo quattro profumi adatti ai tuoi gusti."
 }

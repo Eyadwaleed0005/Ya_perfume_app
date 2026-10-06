@@ -47,5 +47,16 @@
   "perfume_ratios_description": "وزّع النسب بين العائلات العطرية لنقترح عطرًا يناسب تفضيلاتك.",
   "perfume_ratios_footer": "مزيج مخصّص",
   "select_language_instruction": "اختر لغتك، ثم اضغط ابدأ.",
-  "start": "ابدأ"
+  "start": "ابدأ",
+  "percentage_selection_description": "وزّع النسب بين العائلات العطرية حتى يصبح المجموع 100%",
+  "percentage_family_warm": "الدافئ",
+"percentage_family_fresh": "المنعش",
+"percentage_family_woody": "الخشبي",
+"percentage_family_floral": "الزهري",
+"percentage_selection_total": "المجموع",
+"percentage_selection_choose_method": "اختيار الطريقة",
+"percentage_selection_show_suggestions": "عرض العطور المقترحة",
+"percentage_selection_adjust_total": "عدّل النسب حتى يصبح المجموع",
+"percentage_selection_loading_title": "جارٍ إعداد العطور المقترحة",
+"percentage_selection_loading_description": "سنقترح لك بعد قليل أربعة عطور تناسب ذوقك."
 }
