@@ -122,5 +122,16 @@
   "perfume_ratios_description": "Répartissez les proportions entre les familles olfactives pour que nous vous proposions un parfum adapté à vos préférences.",
   "perfume_ratios_footer": "Mélange personnalisé",
   "select_language_instruction": "Choisissez votre langue, puis appuyez sur Commencer.",
-  "start": "Commencer"
+  "start": "Commencer",
+  "percentage_selection_description": "Répartissez les pourcentages entre les familles olfactives pour atteindre un total de 100%",
+  "percentage_family_warm": "Chaud",
+"percentage_family_fresh": "Frais",
+"percentage_family_woody": "Boisé",
+"percentage_family_floral": "Floral",
+"percentage_selection_total": "Total",
+"percentage_selection_choose_method": "Choisir la méthode",
+"percentage_selection_show_suggestions": "Voir les parfums suggérés",
+"percentage_selection_adjust_total": "Ajustez les pourcentages pour atteindre un total de 100%",
+"percentage_selection_loading_title": "Préparation de vos suggestions de parfums",
+"percentage_selection_loading_description": "Nous vous proposerons bientôt quatre parfums qui correspondent à vos goûts."
 }

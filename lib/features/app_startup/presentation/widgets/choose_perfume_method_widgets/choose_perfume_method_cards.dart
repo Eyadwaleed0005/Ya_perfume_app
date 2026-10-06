@@ -38,7 +38,7 @@ class ChoosePerfumeMethodCards extends StatelessWidget {
             description: 'perfume_ratios_description'.tr(context: context),
             footer: 'perfume_ratios_footer'.tr(context: context),
             onTap: () {
-              // هنضيف مسار اسكرين النسب لما نجهّزها.
+              Navigator.of(context).pushNamed(RouteNames.percentageSelection);
             },
           ),
         ),

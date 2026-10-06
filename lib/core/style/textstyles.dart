@@ -81,6 +81,14 @@ class AppTextStyle {
       color: AppColors.textAccent,
     );
   }
+  static TextStyle font20TextAccentRegularNoto() {
+    return TextStyle(
+      fontSize: 20.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: notoSansArabic,
+      color: AppColors.textAccent,
+    );
+  }
 
   static TextStyle font15textAccentRegularNoto() {
     return TextStyle(
@@ -250,6 +258,9 @@ class AppTextStyle {
     );
   }
 
+
+
+
   static TextStyle font18textMutedRegularNoto() {
     return TextStyle(
       fontSize: 18.sp,
@@ -265,6 +276,16 @@ class AppTextStyle {
       fontWeight: FontWeightHelper.regular,
       fontFamily: notoSansArabic,
       color: AppColors.textMuted,
+    );
+  }
+
+
+  static TextStyle font19textPrimaryRegularNoto() {
+    return TextStyle(
+      fontSize: 19.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: notoSansArabic,
+      color: AppColors.textPrimary,
     );
   }
 

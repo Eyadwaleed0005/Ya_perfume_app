@@ -5,6 +5,8 @@ import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/features/app_startup/presentation/screens/choose_perfume_method_screen.dart';
 import 'package:ya_perfume/features/app_startup/presentation/screens/splash_screen.dart';
 import 'package:ya_perfume/features/language/presentation/screens/select_language_screen.dart';
+import 'package:ya_perfume/features/percentage_selection/presentation/screens/percentage_selection_loading_screen.dart';
+import 'package:ya_perfume/features/percentage_selection/presentation/screens/percentage_selection_screen.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/before_the_families_screen.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/discover_fragrance_families_screen.dart';
@@ -65,6 +67,19 @@ class AppRoutes {
       case RouteNames.selectLanguage:
         return AppAnimation.animatedNavigation(
           const SelectLanguageScreen(),
+          settings,
+          const Duration(milliseconds: 400),
+        );
+
+      case RouteNames.percentageSelection:
+        return AppAnimation.animatedNavigation(
+          const PercentageSelectionScreen(),
+          settings,
+          const Duration(milliseconds: 400),
+        );
+      case RouteNames.percentageSelectionLoading:
+        return AppAnimation.animatedNavigation(
+          const PercentageSelectionLoadingScreen(),
           settings,
           const Duration(milliseconds: 400),
         );

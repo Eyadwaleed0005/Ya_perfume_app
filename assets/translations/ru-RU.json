@@ -122,5 +122,16 @@
   "perfume_ratios_description": "Распределите пропорции между семействами ароматов, чтобы мы могли предложить парфюм по вашим предпочтениям.",
   "perfume_ratios_footer": "Индивидуальная композиция",
   "select_language_instruction": "Выберите язык, затем нажмите «Начать».",
-  "start": "Начать"
+  "start": "Начать",
+  "percentage_selection_description": "Распределите доли ароматических семейств так, чтобы сумма составила 100%",
+  "percentage_family_warm": "Тёплый",
+"percentage_family_fresh": "Свежий",
+"percentage_family_woody": "Древесный",
+"percentage_family_floral": "Цветочный",
+"percentage_selection_total": "Итого",
+"percentage_selection_choose_method": "Выбрать способ",
+"percentage_selection_show_suggestions": "Показать рекомендации",
+"percentage_selection_adjust_total": "Измените проценты так, чтобы сумма составила 100%",
+"percentage_selection_loading_title": "Подбираем для вас ароматы",
+"percentage_selection_loading_description": "Скоро мы предложим вам четыре аромата, которые подойдут вашему вкусу."
 }

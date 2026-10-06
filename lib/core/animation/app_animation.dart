@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ya_perfume/core/animation/app_startup_animation_widget.dart';
-import 'package:ya_perfume/core/animation/questions_animation/ques_animation.dart';
 import 'package:ya_perfume/core/animation/language_animation_widget.dart';
+import 'package:ya_perfume/core/animation/percentage_selection_animation.dart';
+import 'package:ya_perfume/core/animation/ques_animation.dart';
 import 'package:ya_perfume/core/animation/splash_animation_widget.dart';
 
 class AppAnimation {
@@ -12,7 +13,11 @@ class AppAnimation {
     RouteSettings settings,
     Duration transitionDuration,
   ) {
-    return QuesAnimation.fadeRoute(page, settings, transitionDuration);
+    return QuesAnimation.fadeRoute(
+      page,
+      settings,
+      transitionDuration,
+    );
   }
 
   static Widget animatedSelectionIndicator({
@@ -27,11 +32,15 @@ class AppAnimation {
     );
   }
 
-  static Widget animatedImageSwitcher({required Widget child}) {
+  static Widget animatedImageSwitcher({
+    required Widget child,
+  }) {
     return QuesAnimation.animatedImageSwitcher(child: child);
   }
 
-  static Widget animatedContentSwitcher({required Widget child}) {
+  static Widget animatedContentSwitcher({
+    required Widget child,
+  }) {
     return QuesAnimation.animatedContentSwitcher(child: child);
   }
 
@@ -39,7 +48,10 @@ class AppAnimation {
     required Widget child,
     Duration delay = Duration.zero,
   }) {
-    return LanguageAnimationWidget.entrance(delay: delay, child: child);
+    return LanguageAnimationWidget.entrance(
+      delay: delay,
+      child: child,
+    );
   }
 
   static Widget languageContent({
@@ -66,13 +78,39 @@ class AppAnimation {
     required Widget child,
     Duration delay = Duration.zero,
   }) {
-    return AppStartupAnimationWidget.entrance(delay: delay, child: child);
+    return AppStartupAnimationWidget.entrance(
+      delay: delay,
+      child: child,
+    );
   }
 
   static Widget splashFade({
     required Widget child,
     Duration delay = Duration.zero,
   }) {
-    return SplashAnimationWidget.fade(delay: delay, child: child);
+    return SplashAnimationWidget.fade(
+      delay: delay,
+      child: child,
+    );
+  }
+
+  static Widget percentageSelectionEntrance({
+    required Widget child,
+    Duration delay = Duration.zero,
+  }) {
+    return PercentageSelectionAnimation.entrance(
+      delay: delay,
+      child: child,
+    );
+  }
+
+  static Widget percentageSelectionButterflyFlight({
+    required Widget child,
+    double flightRadius = 120,
+  }) {
+    return PercentageSelectionAnimation.butterflyFlight(
+      flightRadius: flightRadius,
+      child: child,
+    );
   }
 }

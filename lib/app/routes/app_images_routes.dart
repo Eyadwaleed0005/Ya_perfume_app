@@ -38,6 +38,8 @@ class AppImage {
       '${baseImages}perfume_questions_card.svg';
 
   late final String perfumeRatiosCard = '${baseImages}perfume_ratios_card.svg';
+  late final String mothWingTrail =
+    '${baseImages}moth_wing_trail.svg';
 
   late final String initialQ2 = '${baseImagesQ2}initial_q2.svg';
   late final String twentyQ2 = '${baseImagesQ2}20_q2.svg';
