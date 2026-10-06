@@ -1,0 +1,1887 @@
+[
+  {
+    "code": null,
+    "name": "Gucci Guilty Eau de Parfum",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "زهري",
+      "نظيف ومسكي وبروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "La Bomba Carolina Herrera",
+    "gender": "نسائي",
+    "ageGroups": [
+      "أقل من 20",
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Secret Charm Victoria's Secret",
+    "gender": "نسائي",
+    "ageGroups": [
+      "أقل من 20",
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "عملي ومريح",
+      "ناعم ورومانسي"
+    ],
+    "projection": "هادئ وقريب منك"
+  },
+  {
+    "code": null,
+    "name": "Flora by Gucci Eau de Parfum",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "زهري",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Libre Yves Saint Laurent",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "نظيف ومسكي وبروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Burberry Her Burberry",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحى من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Alien Mugler",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "جرئ ومختلف"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Boss The Scent Elixir for him Hugo Boss",
+    "gender": "رجالي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي ودافئ",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "التوابل",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "جرئ ومختلف"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Bianco Latte Giardini Di Toscana",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "نظيف ومسكي وبروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Olympéa Rabanne",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "طول العام",
+    "preferredScents": [
+      "شرقي ودافئ",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "L'Homme À la Rose Maison Francis Kurkdjian",
+    "gender": "رجالي",
+    "ageGroups": [
+      "20-29",
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "جرئ ومختلف"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Delina Parfums de Marly",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "موعد رومانسي أو عشاء هادئ",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Roses Vanille Mancera",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Tygar Bvlgari",
+    "gender": "رجالي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "منعش وحمضي",
+      "نظيف ومسكي بروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Stronger with you Absolutely Giorgio Armani",
+    "gender": "رجالي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوي",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Flora Gorgeous Gardenia Gucci",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Love is Heavenly Victoria's Secret",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Escade Moon Sparkle",
+    "gender": "نسائي",
+    "ageGroups": [
+      "أقل من 20"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "عملي ومريح",
+      "رياضي وحيوي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Crazy Love Emoji",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "التوابل"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Love Don't Be Shy By Kilian",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "My Way Giorgio Armani",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Vanilla Blend Zielinski & Rozen",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "عملي ومريح",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Roberto Cavalli Eau de Parfum",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي ودافئ",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "جرئ ومختلف"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Coco Mademoiselle Chanel",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الشتاء",
+    "preferredScents": [
+      "منعش وحمضي",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "J'adore Dior",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "استخدام يومي للعمل أو الدراسة"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Woman by Ralph Lauren",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Eau So Sexy Eau de Parfum Victoria's Secret",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "عملي ومريح",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "212 Sexy Men Carolina Herrera",
+    "gender": "رجالي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي ودافئ",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Chance Eau de Parfum Chanel",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "نظيف ومسكي وبروائح البودرة",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Baraonda Nasomatto",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "خشبي",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "La Vie Est Belle Lancôme",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Good Girl Carolina Herrera",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوي",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "جرئ ومختلف"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Paradiso Roberto Cavalli",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "منعش وحمضي",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Goddess Burberry",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "عملي ومريح",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Narciso Poudree Narciso Rodriguez",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الشتاء",
+    "preferredScents": [
+      "نظيف ومسكي وبروائح البودرة",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "المسك وروائح البودرة",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Sì Passione Giorgio Armani",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Idôle Lancôme",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "نظيف ومسكي وبروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Black opium",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Gucci Bamboo",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Very Sexy Victoria's Secret",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Vanille Planifolia Extrait 21 Guerlain",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Amor Amor Cacharel",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "منعش وحمضي",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Madawi Arabian Oud",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "فاكهي",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Red Tobacco Mancera",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي ودافئ",
+      "عود ودخان وجلد"
+    ],
+    "avoidedScents": [
+      "التبغ والجلد والدخان",
+      "التوابل"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Tuxedo Yves Saint Laurent",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي دافئ",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "التوابل"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "كلاسيكي ورسمي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Tonka Cola Mancera",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "التوابل",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Light Blue Dolce&Gabbana",
+    "gender": "نسائى",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "منعش وحمضي",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "رياضة وأنشطة خارجية"
+    ],
+    "styles": [
+      "رياضي وحيوي",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "The one For Men Dolce&Gabbana",
+    "gender": "رجالي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "شرقي دافئ",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "التوابل",
+      "التبغ والجلد والدخان"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Imperial Valley Gissah",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "عود ودخان وجلد",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "العود والبخور",
+      "التبغ والجلد والدخان"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Stronger with you Sandalwood Giorgio Armani",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "خشبي",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "التوابل",
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Madawi Gold Edition Arabian Oud",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوي",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "التوابل"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية",
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Khamrah Lattafa Perfumes",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوي",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "التوابل"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Erba Pura Xerjoff",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الحمضيات",
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "رياضي وحيوي"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Baccarat Rouge 540 Maison Francis Kurkdjian",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "خشبي",
+      "شرقي دافئ"
+    ],
+    "avoidedScents": [
+      "التوابل"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Yum Boujee Marshmallow | 81 Kayali Fragrances",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "طول العام",
+    "preferredScents": [
+      "حلو ومستوحي من الحلوى",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Oud & Spice Acqua di Parma",
+    "gender": "رجالي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "عود ودخان وجلد",
+      "شرقي ودافئ",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "العود والبخور",
+      "التوابل",
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "24 Faubourg Hermès",
+    "gender": "نسائي",
+    "ageGroups": [
+      "40-49"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "كلاسيكي ورسمي",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Black Afgano Nasomatto",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "عود ودخان وجلد",
+      "شرقي ودافئ"
+    ],
+    "avoidedScents": [
+      "العود والبخور",
+      "التبغ والجلد والدخان"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Hibiscus Mahajád Maison Crivelli",
+    "gender": "للجنسين",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "طول العام",
+    "preferredScents": [
+      "زهري",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Body Burberry",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الشتاء",
+    "preferredScents": [
+      "نظيف ومسكي وبروائح البودرة",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "212 Vip Rosé Carolina Herrera",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "نظيف ومسكي وبروائح البودرة"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "المسك وروائح البودرة"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Light Blue Forever pour Homme Dolce&Gabbana",
+    "gender": "رجالي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الحمضيات"
+    ],
+    "occasions": [
+      "رياضة وأنشطة خارجية",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "رياضي وحيوي",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Sexy Graffiti Escada",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Midnight Fantasy Britney Spears",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية",
+      "موعد رومانسي أو عشاء هادئ"
+    ],
+    "styles": [
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Gucci Rush",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "مساءً وليلاً",
+    "season": "الشتاء",
+    "preferredScents": [
+      "زهري",
+      "خشبي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية"
+    ],
+    "occasions": [
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف",
+      "أنيق وراقٍ"
+    ],
+    "projection": "قوي ولافت"
+  },
+  {
+    "code": null,
+    "name": "Bright Crystal Versace",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "ناعم ورومانسي",
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Elie Saab La Parfum Eau de Toilette",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "زهري",
+      "منعش وحمضي"
+    ],
+    "avoidedScents": [
+      "الزهور القوية",
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Pink Sugar Aquolina",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الشتاء",
+    "preferredScents": [
+      "حلوي ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "نزهات وزيارات المقاهي",
+      "حفلة أو سهرة ليلية"
+    ],
+    "styles": [
+      "جرئ ومختلف"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Guess Girl Guess",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "حلوي ومستوحي من الحلوى",
+      "فاكهي"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "عملي ومريح"
+    ],
+    "projection": "هادئ وقريب منك"
+  },
+  {
+    "code": null,
+    "name": "Narciso Rouge Narciso Rodriguez",
+    "gender": "نسائي",
+    "ageGroups": [
+      "30-39"
+    ],
+    "usageTime": "في كلا الوقتين",
+    "season": "الشتاء",
+    "preferredScents": [
+      "نظيف ومسكي وبروائح البودرة",
+      "زهري"
+    ],
+    "avoidedScents": [
+      "المسك وروائح البودرة",
+      "الفانيليا والحلاوة القوية"
+    ],
+    "occasions": [
+      "موعد رومانسي أو عشاء هادئ",
+      "حفل زفاف أو مناسبة رسمية"
+    ],
+    "styles": [
+      "أنيق وراقٍ",
+      "ناعم ورومانسي"
+    ],
+    "projection": "واضح ومتوازن"
+  },
+  {
+    "code": null,
+    "name": "Bombshell Victoria's Secret",
+    "gender": "نسائي",
+    "ageGroups": [
+      "20-29"
+    ],
+    "usageTime": "صباحاً ونهارًا",
+    "season": "الصيف",
+    "preferredScents": [
+      "فاكهي",
+      "حلو ومستوحي من الحلوى"
+    ],
+    "avoidedScents": [
+      "الفانيليا والحلاوة القوية",
+      "الحمضيات"
+    ],
+    "occasions": [
+      "استخدام يومي للعمل أو الدراسة",
+      "نزهات وزيارات المقاهي"
+    ],
+    "styles": [
+      "عملي ومريح"
+    ],
+    "projection": "واضح ومتوازن"
+  }
+]

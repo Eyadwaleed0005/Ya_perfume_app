@@ -1,0 +1,854 @@
+[
+  {
+    "code": null,
+    "name": "Gucci Guilty Eau de Parfum",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 38.4,
+      "Floral": 35.4,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 7.7,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "La Bomba Carolina Herrera",
+    "percentages": {
+      "Sweet": 15.5,
+      "Fresh": 13.9,
+      "Floral": 22.1,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 12.4,
+      "Fruity": 36.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Secret Charm Victoria's Secret",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 15.3,
+      "Floral": 30.4,
+      "White Floral/Jasmin": 36.5,
+      "Woody": 0.0,
+      "Fruity": 17.7
+    }
+  },
+  {
+    "code": null,
+    "name": "Flora by Gucci Eau de Parfum",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 29.5,
+      "Floral": 31.2,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 19.2,
+      "Fruity": 11.7
+    }
+  },
+  {
+    "code": null,
+    "name": "Libre Yves Saint Laurent",
+    "percentages": {
+      "Sweet": 20.0,
+      "Fresh": 33.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 15.4,
+      "Woody": 7.7,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Burberry Her Burberry",
+    "percentages": {
+      "Sweet": 23.7,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 15.5,
+      "Fruity": 30.2
+    }
+  },
+  {
+    "code": null,
+    "name": "Alien Mugler",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 0.0,
+      "Floral": 9.5,
+      "White Floral/Jasmin": 47.4,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Boss The Scent Elixir for him Hugo Boss",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 50.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 16.6,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Bianco Latte Giardini Di Toscana",
+    "percentages": {
+      "Sweet": 55.0,
+      "Fresh": 8.3,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 6.7,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Olympéa Rabanne",
+    "percentages": {
+      "Sweet": 14.3,
+      "Fresh": 25.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 11.4,
+      "Woody": 10.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "L'Homme À la Rose Maison Francis Kurkdjian",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 37.7,
+      "Floral": 23.4,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 10.8,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Delina Parfums de Marly",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 28.1,
+      "Floral": 28.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 7.8,
+      "Fruity": 19.7
+    }
+  },
+  {
+    "code": null,
+    "name": "Roses Vanille Mancera",
+    "percentages": {
+      "Sweet": 27.6,
+      "Fresh": 9.0,
+      "Floral": 29.2,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 9.2,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Tygar Bvlgari",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 46.2,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 9.8,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Stronger with you Absolutely Giorgio Armani",
+    "percentages": {
+      "Sweet": 23.2,
+      "Fresh": 14.6,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 16.5,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Flora Gorgeous Gardenia Gucci",
+    "percentages": {
+      "Sweet": 14.4,
+      "Fresh": 18.8,
+      "Floral": 15.2,
+      "White Floral/Jasmin": 18.9,
+      "Woody": 9.9,
+      "Fruity": 12.9
+    }
+  },
+  {
+    "code": null,
+    "name": "Love is Heavenly Victoria's Secret",
+    "percentages": {
+      "Sweet": 9.56,
+      "Fresh": 21.47,
+      "Floral": 17.29,
+      "White Floral/Jasmin": 8.19,
+      "Woody": 13.78,
+      "Fruity": 11.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Escade Moon Sparkle",
+    "percentages": {
+      "Sweet": 23.0,
+      "Fresh": 30.8,
+      "Floral": 20.1,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 26.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Crazy Love Emoji",
+    "percentages": {
+      "Sweet": 19.2,
+      "Fresh": 19.0,
+      "Floral": 7.9,
+      "White Floral/Jasmin": 9.5,
+      "Woody": 0.0,
+      "Fruity": 15.9
+    }
+  },
+  {
+    "code": null,
+    "name": "Love Don't Be Shy By Kilian",
+    "percentages": {
+      "Sweet": 43.3,
+      "Fresh": 11.5,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 17.5,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "My Way Giorgio Armani",
+    "percentages": {
+      "Sweet": 15.4,
+      "Fresh": 18.9,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 49.4,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Vanilla Blend Zielinski & Rozen",
+    "percentages": {
+      "Sweet": 52.9,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Roberto Cavalli Eau de Parfum",
+    "percentages": {
+      "Sweet": 32.3,
+      "Fresh": 9.9,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 13.8,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Coco Mademoiselle Chanel",
+    "percentages": {
+      "Sweet": 18.5,
+      "Fresh": 17.2,
+      "Floral": 16.9,
+      "White Floral/Jasmin": 10.1,
+      "Woody": 21.2,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "J'adore Dior",
+    "percentages": {
+      "Sweet": 9.8,
+      "Fresh": 33.2,
+      "Floral": 13.7,
+      "White Floral/Jasmin": 22.9,
+      "Woody": 0.0,
+      "Fruity": 12.7
+    }
+  },
+  {
+    "code": null,
+    "name": "Woman by Ralph Lauren",
+    "percentages": {
+      "Sweet": 9.8,
+      "Fresh": 22.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 26.8,
+      "Woody": 12.4,
+      "Fruity": 13.6
+    }
+  },
+  {
+    "code": null,
+    "name": "Eau So Sexy Eau de Parfum Victoria's Secret",
+    "percentages": {
+      "Sweet": 26.5,
+      "Fresh": 46.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 16.7
+    }
+  },
+  {
+    "code": null,
+    "name": "212 Sexy Men Carolina Herrera",
+    "percentages": {
+      "Sweet": 14.6,
+      "Fresh": 26.4,
+      "Floral": 8.3,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 13.1,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Chance Eau de Parfum Chanel",
+    "percentages": {
+      "Sweet": 8.4,
+      "Fresh": 0.0,
+      "Floral": 8.0,
+      "White Floral/Jasmin": 10.6,
+      "Woody": 22.2,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Baraonda Nasomatto",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 0.0,
+      "Floral": 21.4,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 21.3,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "La Vie Est Belle Lancôme",
+    "percentages": {
+      "Sweet": 30.5,
+      "Fresh": 0.0,
+      "Floral": 7.7,
+      "White Floral/Jasmin": 8.8,
+      "Woody": 18.8,
+      "Fruity": 10.8
+    }
+  },
+  {
+    "code": null,
+    "name": "Good Girl Carolina Herrera",
+    "percentages": {
+      "Sweet": 25.0,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 21.0,
+      "Woody": 8.6,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Paradiso Roberto Cavalli",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 69.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 14.0,
+      "Woody": 17.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Goddess Burberry",
+    "percentages": {
+      "Sweet": 48.2,
+      "Fresh": 36.5,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Narciso Poudree Narciso Rodriguez",
+    "percentages": {
+      "Sweet": 16.8,
+      "Fresh": 9.6,
+      "Floral": 8.4,
+      "White Floral/Jasmin": 14.1,
+      "Woody": 13.3,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Sì Passione Giorgio Armani",
+    "percentages": {
+      "Sweet": 21.8,
+      "Fresh": 15.9,
+      "Floral": 18.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 10.2,
+      "Fruity": 17.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Idôle Lancôme",
+    "percentages": {
+      "Sweet": 17.5,
+      "Fresh": 16.2,
+      "Floral": 24.3,
+      "White Floral/Jasmin": 9.9,
+      "Woody": 0.0,
+      "Fruity": 10.5
+    }
+  },
+  {
+    "code": null,
+    "name": "Black opium",
+    "percentages": {
+      "Sweet": 25.7,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 10.7,
+      "Woody": 8.9,
+      "Fruity": 8.5
+    }
+  },
+  {
+    "code": null,
+    "name": "Gucci Bamboo",
+    "percentages": {
+      "Sweet": 9.9,
+      "Fresh": 23.1,
+      "Floral": 10.5,
+      "White Floral/Jasmin": 18.9,
+      "Woody": 11.3,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Very Sexy Victoria's Secret",
+    "percentages": {
+      "Sweet": 12.9,
+      "Fresh": 15.9,
+      "Floral": 22.2,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 11.5
+    }
+  },
+  {
+    "code": null,
+    "name": "Vanille Planifolia Extrait 21 Guerlain",
+    "percentages": {
+      "Sweet": 32.4,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Amor Amor Cacharel",
+    "percentages": {
+      "Sweet": 20.4,
+      "Fresh": 24.1,
+      "Floral": 8.1,
+      "White Floral/Jasmin": 8.6,
+      "Woody": 7.8,
+      "Fruity": 13.5
+    }
+  },
+  {
+    "code": null,
+    "name": "Madawi Arabian Oud",
+    "percentages": {
+      "Sweet": 7.8,
+      "Fresh": 0.0,
+      "Floral": 24.7,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 17.1,
+      "Fruity": 14.7
+    }
+  },
+  {
+    "code": null,
+    "name": "Red Tobacco Mancera",
+    "percentages": {
+      "Sweet": 19.3,
+      "Fresh": 7.7,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 19.1,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Tuxedo Yves Saint Laurent",
+    "percentages": {
+      "Sweet": 11.3,
+      "Fresh": 28.3,
+      "Floral": 8.5,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 22.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Tonka Cola Mancera",
+    "percentages": {
+      "Sweet": 20.4,
+      "Fresh": 22.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 9.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Light Blue Dolce&Gabbana",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 53.4,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 15.4,
+      "Fruity": 12.0
+    }
+  },
+  {
+    "code": null,
+    "name": "The one For Men Dolce&Gabbana",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 18.9,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 6.4,
+      "Woody": 20.7,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Imperial Valley Gissah",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 39.3,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 20.6,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Stronger with you Sandalwood Giorgio Armani",
+    "percentages": {
+      "Sweet": 11.5,
+      "Fresh": 21.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 20.2,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Madawi Gold Edition Arabian Oud",
+    "percentages": {
+      "Sweet": 30.6,
+      "Fresh": 9.4,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 8.9,
+      "Woody": 8.4,
+      "Fruity": 13.9
+    }
+  },
+  {
+    "code": null,
+    "name": "Khamrah Lattafa Perfumes",
+    "percentages": {
+      "Sweet": 33.2,
+      "Fresh": 8.7,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 8.9,
+      "Fruity": 7.9
+    }
+  },
+  {
+    "code": null,
+    "name": "Erba Pura Xerjoff",
+    "percentages": {
+      "Sweet": 24.6,
+      "Fresh": 25.3,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 17.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Baccarat Rouge 540 Maison Francis Kurkdjian",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 24.8,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 8.3,
+      "Woody": 18.6,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Yum Boujee Marshmallow | 81 Kayali Fragrances",
+    "percentages": {
+      "Sweet": 53.2,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 18.4
+    }
+  },
+  {
+    "code": null,
+    "name": "Oud & Spice Acqua di Parma",
+    "percentages": {
+      "Sweet": 9.4,
+      "Fresh": 0.0,
+      "Floral": 11.5,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 21.3,
+      "Fruity": 8.9
+    }
+  },
+  {
+    "code": null,
+    "name": "24 Faubourg Hermès",
+    "percentages": {
+      "Sweet": 10.1,
+      "Fresh": 28.0,
+      "Floral": 18.7,
+      "White Floral/Jasmin": 16.0,
+      "Woody": 10.1,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Black Afgano Nasomatto",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 17.1,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 22.1,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Hibiscus Mahajád Maison Crivelli",
+    "percentages": {
+      "Sweet": 10.4,
+      "Fresh": 28.9,
+      "Floral": 29.4,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 7.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Body Burberry",
+    "percentages": {
+      "Sweet": 7.4,
+      "Fresh": 8.3,
+      "Floral": 27.2,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 13.1,
+      "Fruity": 8.5
+    }
+  },
+  {
+    "code": null,
+    "name": "212 Vip Rosé Carolina Herrera",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 0.0,
+      "Floral": 36.4,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 15.8,
+      "Fruity": 16.1
+    }
+  },
+  {
+    "code": null,
+    "name": "Light Blue Forever pour Homme Dolce&Gabbana",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 84.9,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 15.1,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Sexy Graffiti Escada",
+    "percentages": {
+      "Sweet": 22.1,
+      "Fresh": 0.0,
+      "Floral": 14.6,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 14.9,
+      "Fruity": 33.6
+    }
+  },
+  {
+    "code": null,
+    "name": "Midnight Fantasy Britney Spears",
+    "percentages": {
+      "Sweet": 30.0,
+      "Fresh": 0.0,
+      "Floral": 9.5,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 31.9
+    }
+  },
+  {
+    "code": null,
+    "name": "Gucci Rush",
+    "percentages": {
+      "Sweet": 16.4,
+      "Fresh": 11.3,
+      "Floral": 9.9,
+      "White Floral/Jasmin": 13.0,
+      "Woody": 22.7,
+      "Fruity": 10.2
+    }
+  },
+  {
+    "code": null,
+    "name": "Bright Crystal Versace",
+    "percentages": {
+      "Sweet": 0.0,
+      "Fresh": 51.9,
+      "Floral": 35.6,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 12.5,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Elie Saab La Parfum Eau de Toilette",
+    "percentages": {
+      "Sweet": 34.3,
+      "Fresh": 19.7,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 32.0,
+      "Woody": 0.0,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Pink Sugar Aquolina",
+    "percentages": {
+      "Sweet": 61.0,
+      "Fresh": 0.0,
+      "Floral": 0.0,
+      "White Floral/Jasmin": 0.0,
+      "Woody": 0.0,
+      "Fruity": 13.6
+    }
+  },
+  {
+    "code": null,
+    "name": "Guess Girl Guess",
+    "percentages": {
+      "Sweet": 24.2,
+      "Fresh": 23.2,
+      "Floral": 8.9,
+      "White Floral/Jasmin": 12.8,
+      "Woody": 7.4,
+      "Fruity": 14.4
+    }
+  },
+  {
+    "code": null,
+    "name": "Narciso Rouge Narciso Rodriguez",
+    "percentages": {
+      "Sweet": 19.9,
+      "Fresh": 0.0,
+      "Floral": 27.8,
+      "White Floral/Jasmin": 7.2,
+      "Woody": 11.2,
+      "Fruity": 0.0
+    }
+  },
+  {
+    "code": null,
+    "name": "Bombshell Victoria's Secret",
+    "percentages": {
+      "Sweet": 15.7,
+      "Fresh": 27.6,
+      "Floral": 19.6,
+      "White Floral/Jasmin": 8.9,
+      "Woody": 0.0,
+      "Fruity": 28.2
+    }
+  }
+]
