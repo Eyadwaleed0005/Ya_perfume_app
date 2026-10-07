@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snowfall_or_anythings/snowfall_or_anythings.dart';
+import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
@@ -32,6 +33,7 @@ class QuestionsScreenContent extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: 64.w),
           child: Stack(
+            fit: StackFit.expand,
             children: [
               CustomBackground(
                 backGroundColor: theme.background,
@@ -60,6 +62,7 @@ class QuestionsScreenContent extends StatelessWidget {
 
               Column(
                 children: [
+                  verticalSpace(16.h),
                   QuestionHeader(
                     currentIndex: state.currentIndex + 1,
                     totalQuestions: state.questions.length,
@@ -69,22 +72,22 @@ class QuestionsScreenContent extends StatelessWidget {
                   Expanded(
                     child: QuestionBody(cubit: cubit, state: state),
                   ),
+                  CustomFooter(
+                    numberSelected: state.selectedOptions.length,
+                    questionId: cubit.currentQuestion.id,
+                    canGoNext: cubit.canContinue,
+                    onNext: () => cubit.next(),
+                    onPrevious: () => cubit.previous(),
+                    onSkip: () => cubit.skip(),
+                    cubit: cubit,
+                    centerWidget: _buildCenterWidget(
+                      cubit.currentQuestion.id,
+                      state.selectedOptions.length,
+                      cubit.skip,
+                      theme,
+                    ),
+                  ),
                 ],
-              ),
-              CustomFooter(
-                numberSelected: state.selectedOptions.length,
-                questionId: cubit.currentQuestion.id,
-                canGoNext: cubit.canContinue,
-                onNext: () => cubit.next(),
-                onPrevious: () => cubit.previous(),
-                onSkip: () => cubit.skip(),
-                state: state,
-                centerWidget: _buildCenterWidget(
-                  cubit.currentQuestion.id,
-                  state.selectedOptions.length,
-                  cubit.skip,
-                  theme,
-                ),
               ),
             ],
           ),

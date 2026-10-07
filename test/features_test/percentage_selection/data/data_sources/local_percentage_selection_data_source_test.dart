@@ -17,9 +17,7 @@ void main() {
   setUp(() {
     assetBundle = MockAssetBundle();
 
-    dataSource = LocalPercentageSelectionDataSource(
-      assetBundle: assetBundle,
-    );
+    dataSource = LocalPercentageSelectionDataSource(assetBundle: assetBundle);
   });
 
   group('LocalPercentageSelectionDataSource', () {
@@ -39,18 +37,12 @@ void main() {
         {
           'code': null,
           'name': 'Second Perfume',
-          'percentages': {
-            'Sweet': 10,
-            'Fresh': 40,
-            'Floral': 20,
-            'Woody': 30,
-          },
+          'percentages': {'Sweet': 10, 'Fresh': 40, 'Floral': 20, 'Woody': 30},
         },
       ]);
 
-      when(
-        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
-      ).thenAnswer((_) async => jsonString);
+      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
+          .thenAnswer((_) async => jsonString);
 
       final result = await dataSource.getPerfumes();
 
@@ -72,16 +64,14 @@ void main() {
       expect(result[1].percentages.floral, 20.0);
       expect(result[1].percentages.woody, 30.0);
 
-      verify(
-        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
-      ).called(1);
+      verify(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
+          .called(1);
       verifyNoMoreInteractions(assetBundle);
     });
 
     test('returns an empty list for an empty JSON array', () async {
-      when(
-        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
-      ).thenAnswer((_) async => '[]');
+      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
+          .thenAnswer((_) async => '[]');
 
       final result = await dataSource.getPerfumes();
 
@@ -91,20 +81,15 @@ void main() {
     test('propagates an asset loading exception', () async {
       final error = FlutterError('Unable to load asset');
 
-      when(
-        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
-      ).thenAnswer((_) async => throw error);
+      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
+          .thenAnswer((_) async => throw error);
 
-      await expectLater(
-        dataSource.getPerfumes(),
-        throwsA(same(error)),
-      );
+      await expectLater(dataSource.getPerfumes(), throwsA(same(error)));
     });
 
     test('throws FormatException for malformed JSON', () async {
-      when(
-        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
-      ).thenAnswer((_) async => 'invalid json');
+      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
+          .thenAnswer((_) async => 'invalid json');
 
       await expectLater(
         dataSource.getPerfumes(),

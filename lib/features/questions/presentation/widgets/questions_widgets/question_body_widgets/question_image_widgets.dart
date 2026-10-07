@@ -25,7 +25,7 @@ class QuestionImageWidgets {
           top: 0,
           left: -w * 0.1,
           width: w * 1.1,
-          height: h * 0.85,
+          height: h * 1.1,
           child: QuestionImageWidgets.animatedSvg(
             imagePath,
             borderColor: borderColor,
@@ -154,16 +154,16 @@ class QuestionImageWidgets {
   Widget buildQ9(double w, double h, String? imagePath, Color borderColor) {
     final circleData = switch (imagePath) {
       _ when imagePath == AppImage().smallCircleQ9 => (
-        top: h * 0.35,
-        left: w * 0.36,
-        size: Size(w * 0.25, h * 0.15),
+        top: h * 0.4,
+        left: w * 0.385,
+        size: Size(w * 0.21, h * 0.14),
       ),
       _ when imagePath == AppImage().mediumCircleQ9 => (
-        top: h * 0.32,
-        left: w * 0.33,
-        size: Size(w * 0.32, h * 0.19),
+        top: h * 0.39,
+        left: w * 0.35,
+        size: Size(w * 0.27, h * 0.17),
       ),
-      _ => (top: h * 0.28, left: w * 0.30, size: Size(w * 0.38, h * 0.28)),
+      _ => (top: h * 0.38, left: w * 0.32, size: Size(w * 0.33, h * 0.21)),
     };
 
     return Stack(
@@ -230,7 +230,7 @@ class QuestionImageWidgets {
           top: 0,
           left: -w * 0.1,
           width: w * 1.1,
-          height: h * 0.85,
+          height: h * 1.1,
           child: QuestionImageWidgets.animatedSvg(
             q3Image,
             borderColor: borderColor,
@@ -241,7 +241,7 @@ class QuestionImageWidgets {
           top: h * 0.05,
           left: 0,
           right: 0,
-          bottom: h * 0.15,
+          bottom: h * 0.00,
           child: Center(
             child: QuestionImageWidgets.animatedSvg(
               q4Bottle,
@@ -251,7 +251,7 @@ class QuestionImageWidgets {
         ),
       if (q4Season != null)
         Positioned(
-          bottom: h * 0.2,
+          bottom: h * 0.1,
           left: 0,
           width: w * 0.35,
           height: h * 0.25,

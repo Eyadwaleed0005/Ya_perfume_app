@@ -6,12 +6,12 @@ import 'package:ya_perfume/features/questions/presentation/widgets/questions_wid
 
 class QuestionOptions extends StatelessWidget {
   final QuestionsCubit cubit;
-  final double availableHeight;
+  final double? availableHeight;
 
   const QuestionOptions({
     super.key,
     required this.cubit,
-    required this.availableHeight,
+    this.availableHeight,
   });
 
   @override
@@ -19,15 +19,25 @@ class QuestionOptions extends StatelessWidget {
     AppThemeType themeType =
         cubit.state.selectedThemeType ?? AppThemeType.normal;
     AppThemeColors theme = AppTheme.fromType(themeType);
-    final quesOptions = QuestionOptionsWidgets(
-      cubit: cubit,
-      availableHeight: availableHeight,
+
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final height =
+            constraints.maxHeight.isFinite && constraints.maxHeight > 0
+                ? constraints.maxHeight
+                : (availableHeight ?? MediaQuery.sizeOf(context).height * 0.5);
+
+        final quesOptions = QuestionOptionsWidgets(
+          cubit: cubit,
+          availableHeight: height,
+        );
+
+        if (cubit.currentQuestion.id == '4') {
+          return quesOptions.buildQuestionFour(context, theme);
+        }
+
+        return quesOptions.buildDefaultOptions(context, theme);
+      },
     );
-
-    if (cubit.currentQuestion.id == '4') {
-      return quesOptions.buildQuestionFour(context, theme);
-    }
-
-    return quesOptions.buildDefaultOptions(context, theme);
   }
 }
