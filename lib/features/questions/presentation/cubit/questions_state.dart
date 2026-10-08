@@ -1,5 +1,7 @@
 part of 'questions_cubit.dart';
 
+enum QuestionsStatus { initial, loading, loaded }
+
 class QuestionsState {
   final int currentIndex;
   final List<QuestionModel> questions;
@@ -8,6 +10,8 @@ class QuestionsState {
   final bool showInfo;
   final AppThemeType? selectedThemeType;
   final Map<String, String?> accumulatedImages;
+  final List<PerfumeQuestionsEntity> perfumes;
+  final QuestionsStatus status;
 
   const QuestionsState({
     this.currentIndex = 0,
@@ -17,6 +21,8 @@ class QuestionsState {
     this.showInfo = false,
     this.selectedThemeType,
     this.accumulatedImages = const {},
+    this.perfumes = const [],
+    this.status = QuestionsStatus.initial,
   });
 
   Set<String> get selectedOptions =>
@@ -30,6 +36,8 @@ class QuestionsState {
     bool? showInfo,
     AppThemeType? selectedThemeType,
     Map<String, String?>? accumulatedImages,
+    List<PerfumeQuestionsEntity>? perfumes,
+    QuestionsStatus? status,
   }) {
     return QuestionsState(
       currentIndex: currentIndex ?? this.currentIndex,
@@ -39,6 +47,8 @@ class QuestionsState {
       showInfo: showInfo ?? this.showInfo,
       selectedThemeType: selectedThemeType ?? this.selectedThemeType,
       accumulatedImages: accumulatedImages ?? this.accumulatedImages,
+      perfumes: perfumes ?? this.perfumes,
+      status: status ?? this.status,
     );
   }
 }
