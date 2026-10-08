@@ -287,7 +287,7 @@ void main() {
       }
 
       blocTest<PercentageSelectionCubit, PercentageSelectionState>(
-        'emits loading then success after at least 12 seconds',
+        'emits loading then success after at least 8 seconds',
         build: createCubit,
         seed: () => validState,
         act: (cubit) {
@@ -299,7 +299,8 @@ void main() {
             expect(cubit.state.canSubmit, isFalse);
             expect(cubit.state.perfumes, isEmpty);
 
-            async.elapse(const Duration(seconds: 11, milliseconds: 999));
+            async.elapse(const Duration(seconds: 7, milliseconds: 999));
+            async.flushMicrotasks();
 
             expect(cubit.state.status, PercentageSelectionStatus.loading);
 
@@ -331,7 +332,7 @@ void main() {
       );
 
       blocTest<PercentageSelectionCubit, PercentageSelectionState>(
-        'waits for the search when it takes longer than 12 seconds',
+        'waits for the search when it takes longer than 8 seconds',
         build: createCubit,
         seed: () => validState,
         act: (cubit) {
@@ -343,7 +344,8 @@ void main() {
             unawaited(cubit.findClosestPerfumes());
             async.flushMicrotasks();
 
-            async.elapse(const Duration(seconds: 12));
+            async.elapse(const Duration(seconds: 8));
+            async.flushMicrotasks();
 
             expect(cubit.state.status, PercentageSelectionStatus.loading);
 
@@ -375,7 +377,7 @@ void main() {
             unawaited(cubit.findClosestPerfumes());
 
             async.flushMicrotasks();
-            async.elapse(const Duration(seconds: 12));
+            async.elapse(const Duration(seconds: 8));
             async.flushMicrotasks();
           });
         },
@@ -403,7 +405,7 @@ void main() {
             expect(cubit.state.perfumes, isEmpty);
 
             async.flushMicrotasks();
-            async.elapse(const Duration(seconds: 12));
+            async.elapse(const Duration(seconds: 8));
             async.flushMicrotasks();
           });
         },
@@ -445,7 +447,7 @@ void main() {
           unawaited(cubit.close());
           async.flushMicrotasks();
 
-          async.elapse(const Duration(seconds: 12));
+          async.elapse(const Duration(seconds: 8));
           async.flushMicrotasks();
 
           expect(cubit.isClosed, isTrue);
