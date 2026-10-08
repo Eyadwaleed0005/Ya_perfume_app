@@ -29,7 +29,6 @@ class QuestionContent extends StatelessWidget {
           key: ValueKey(cubit.currentQuestion.id),
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            verticalSpace(8),
             Text(
               cubit.currentQuestion.title.tr(),
               style: AppTextStyle.font15textAccentRegularNoto().copyWith(
@@ -37,7 +36,7 @@ class QuestionContent extends StatelessWidget {
               ),
               textAlign: TextAlign.right,
             ),
-            verticalSpace(16),
+            verticalSpace(8),
             Text(
               cubit.currentQuestion.questionText.tr(),
               style: AppTextStyle.font34textPrimarySemiBoldNoto().copyWith(
@@ -60,7 +59,7 @@ class QuestionContent extends StatelessWidget {
                 availableHeight: availableHeight,
               ),
             ),
-            verticalSpace(12),
+            verticalSpace(8),
             if (cubit.currentQuestion.id == '5') ...[
               InkWell(
                 onTap: () {
@@ -85,7 +84,7 @@ class QuestionContent extends StatelessWidget {
                   textAlign: TextAlign.right,
                 ),
               ),
-              verticalSpace(8),
+              verticalSpace(4),
               cubit.state.showInfo
                   ? Text(
                       'maximum_two_families_message'.tr(),
@@ -95,7 +94,7 @@ class QuestionContent extends StatelessWidget {
                       textAlign: TextAlign.right,
                     )
                   : const SizedBox.shrink(),
-              verticalSpace(12),
+              verticalSpace(8),
             ],
           ],
         ),

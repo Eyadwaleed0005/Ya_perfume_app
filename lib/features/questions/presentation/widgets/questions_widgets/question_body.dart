@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
@@ -21,21 +22,24 @@ class QuestionBody extends StatelessWidget {
 
     final sh = MediaQuery.sizeOf(context).height;
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        verticalSpace(20),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 32.w),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          verticalSpace(20),
 
-        QuestionImage(
-          imagePath: imagePath,
-          borderColor: theme.borderOn,
-          cubit: cubit,
-        ),
+          QuestionImage(
+            imagePath: imagePath,
+            borderColor: theme.borderOn,
+            cubit: cubit,
+          ),
 
-        horizontalSpace(16),
+          horizontalSpace(16),
 
-        QuestionContent(cubit: cubit, theme: theme, availableHeight: sh),
-      ],
+          QuestionContent(cubit: cubit, theme: theme, availableHeight: sh),
+        ],
+      ),
     );
   }
 }
