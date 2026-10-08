@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "140191368992",
+    "project_id": "ya-perfume",
+    "storage_bucket": "ya-perfume.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:140191368992:android:72d64075a3de67fed17945",
+        "android_client_info": {
+          "package_name": "com.famex.yaperfume"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCO-ZupL8qZCSGF2rqAyDNZdSa0TtvBi90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
