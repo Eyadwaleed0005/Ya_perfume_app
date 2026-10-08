@@ -16,7 +16,7 @@ class CustomFooter extends StatelessWidget {
   final int numberSelected;
   final String? questionId;
   final VoidCallback? onSkip;
-  final QuestionsState state;
+  final QuestionsCubit cubit;
   final Widget? centerWidget;
 
   const CustomFooter({
@@ -27,26 +27,27 @@ class CustomFooter extends StatelessWidget {
     required this.numberSelected,
     this.questionId,
     this.onSkip,
-    required this.state,
+    required this.cubit,
     this.centerWidget,
   });
 
   @override
   Widget build(BuildContext context) {
-    AppThemeType themeType = state.selectedThemeType ?? AppThemeType.normal;
+    AppThemeType themeType =
+        cubit.state.selectedThemeType ?? AppThemeType.normal;
     AppThemeColors theme = AppTheme.fromType(themeType);
 
-    return Positioned(
-      bottom: 24.h,
-      left: 24.w,
-      right: 24.w,
+    return Padding(
+      padding: EdgeInsets.only(left: 24.w, right: 24.w, bottom: 24.h),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomButton(
             text: 'previous_question'.tr(),
-            onPressed: onPrevious,
+            onPressed: cubit.state.currentIndex > 0
+                ? onPrevious
+                : () => Navigator.pop(context),
             width: 230.w,
             height: 40.h,
             background: theme.background,
@@ -64,10 +65,12 @@ class CustomFooter extends StatelessWidget {
                       ? () {
                           Navigator.of(context).pushNamed(
                             RouteNames.beforeTheFamilies,
-                            arguments: state.selectedThemeType,
+                            arguments: cubit.state.selectedThemeType,
                           );
                           context.read<QuestionsCubit>().next();
                         }
+                      : questionId == '9'
+                      ? cubit.getPerfumes
                       : onNext
                 : null,
             width: 230.w,

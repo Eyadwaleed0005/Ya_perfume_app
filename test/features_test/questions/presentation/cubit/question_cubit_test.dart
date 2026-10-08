@@ -1,11 +1,28 @@
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
+import 'package:ya_perfume/features/questions/data/adapters/perfume_questions_adapter.dart';
 import 'package:ya_perfume/features/questions/data/models/question_model.dart';
+import 'package:ya_perfume/features/questions/domain/entities/perfume_questions_entity.dart';
+import 'package:ya_perfume/features/questions/domain/use_cases/get_perfumes_use_case.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
 
+class MockGetPerfumesUseCase extends Mock implements GetPerfumesUseCase {}
+
+class FakePerfumeQuestionsEntity extends Mock
+    implements PerfumeQuestionsEntity {}
+
+class MockPerfumeQuestionsAdapter extends Mock
+    implements PerfumeQuestionsAdapter {}
+
 QuestionsCubit _loadedCubit() {
-  final cubit = QuestionsCubit();
+  final mock = MockGetPerfumesUseCase();
+  when(() => mock.call(any())).thenAnswer((_) async => []);
+  final cubit = QuestionsCubit(
+    getPerfumesUseCase: mock,
+    perfumeQuestionsAdapter: MockPerfumeQuestionsAdapter(),
+  );
   cubit.getQuestions();
   return cubit;
 }
@@ -32,9 +49,36 @@ Matcher _hasSelectedOptions(Set<String> options) {
 }
 
 void main() {
+  late MockGetPerfumesUseCase usecase;
+  late MockPerfumeQuestionsAdapter adapter;
+  late PerfumeQuestionsEntity perfumeQuestionsEntity;
+  registerFallbackValue(FakePerfumeQuestionsEntity());
+  registerFallbackValue(const QuestionsState());
+
+  setUp(() {
+    usecase = MockGetPerfumesUseCase();
+    adapter = MockPerfumeQuestionsAdapter();
+    perfumeQuestionsEntity = PerfumeQuestionsEntity(
+      code: 000,
+      name: 'sayed',
+      numOfAcceptance: 0,
+      gender: "نسائي",
+      ageGroups: ["20-29", "30-39"],
+      usageTime: "صباحاً ونهارًا",
+      season: "طول العام",
+      preferredScents: ["زهري", "نظيف ومسكي وبروائح البودرة"],
+      avoidedScents: ["الزهور القوية", "المسك وروائح البودرة"],
+      occasions: ["استخدام يومي للعمل أو الدراسة", "موعد رومانسي أو عشاء هادئ"],
+      styles: ["أنيق وراقٍ", "ناعم ورومانسي"],
+      projection: "واضح ومتوازن",
+    );
+  });
   group('QuestionsCubit', () {
     test('initial state should be empty', () async {
-      final cubit = QuestionsCubit();
+      final cubit = QuestionsCubit(
+        getPerfumesUseCase: usecase,
+        perfumeQuestionsAdapter: adapter,
+      );
 
       try {
         expect(cubit.state.currentIndex, 0);
@@ -51,7 +95,10 @@ void main() {
 
     blocTest<QuestionsCubit, QuestionsState>(
       'getQuestions should load 9 questions',
-      build: QuestionsCubit.new,
+      build: () => QuestionsCubit(
+        getPerfumesUseCase: usecase,
+        perfumeQuestionsAdapter: adapter,
+      ),
       act: (cubit) {
         cubit.getQuestions();
       },
@@ -325,6 +372,36 @@ void main() {
               isNotEmpty,
             ),
       ],
+    );
+
+    blocTest(
+      'get perfumes should return perfumes',
+      build: () {
+        when(() => adapter.adapt(any()))
+            .thenAnswer((_) => perfumeQuestionsEntity);
+        when(() => usecase.call(perfumeQuestionsEntity))
+            .thenAnswer((_) async => [perfumeQuestionsEntity]);
+
+        return QuestionsCubit(
+          getPerfumesUseCase: usecase,
+          perfumeQuestionsAdapter: adapter,
+        );
+      },
+      act: (cubit) => cubit.getPerfumes(),
+      expect: () => [
+        isA<QuestionsState>().having(
+          (s) => s.status,
+          'status',
+          QuestionsStatus.loading,
+        ),
+        isA<QuestionsState>()
+            .having((s) => s.status, 'status', QuestionsStatus.loaded)
+            .having((s) => s.perfumes, 'perfumes', [perfumeQuestionsEntity]),
+      ],
+      verify: (_) {
+        verify(() => adapter.adapt(any())).called(1);
+        verify(() => usecase.call(perfumeQuestionsEntity)).called(1);
+      },
     );
   });
 }

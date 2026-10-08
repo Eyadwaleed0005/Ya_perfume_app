@@ -97,7 +97,6 @@ class QuestionContent extends StatelessWidget {
                   : const SizedBox.shrink(),
               verticalSpace(12),
             ],
-            SizedBox(height: (availableHeight * 0.14)),
           ],
         ),
       ),

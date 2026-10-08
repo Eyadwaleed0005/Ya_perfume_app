@@ -14,10 +14,12 @@ class MockAssetBundle extends Mock implements AssetBundle {}
 Map<String, dynamic> createPercentagesRecord({
   required String name,
   int? code,
-  num sweet = 25,
-  num fresh = 25,
-  num floral = 25,
-  num woody = 25,
+  num sweet = 20,
+  num fresh = 20,
+  num floral = 15,
+  num woody = 15,
+  num fruity = 20,
+  num whiteFloralJasmin = 10,
 }) {
   return {
     PerfumePercentagesJsonKeys.code: code,
@@ -27,6 +29,8 @@ Map<String, dynamic> createPercentagesRecord({
       PerfumePercentagesJsonKeys.fresh: fresh,
       PerfumePercentagesJsonKeys.floral: floral,
       PerfumePercentagesJsonKeys.woody: woody,
+      PerfumePercentagesJsonKeys.fruity: fruity,
+      PerfumePercentagesJsonKeys.whiteFloralJasmin: whiteFloralJasmin,
     },
   };
 }
@@ -57,54 +61,62 @@ void main() {
   setUp(() {
     assetBundle = MockAssetBundle();
 
-    dataSource = LocalPercentageSelectionDataSource(assetBundle: assetBundle);
+    dataSource = LocalPercentageSelectionDataSource(
+      assetBundle: assetBundle,
+    );
 
-    when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
-        .thenAnswer((_) async => '[]');
+    when(
+      () => assetBundle.loadString(AppDataPaths.perfumePercentages),
+    ).thenAnswer((_) async => '[]');
 
-    when(() => assetBundle.loadString(AppDataPaths.perfumeQuestions))
-        .thenAnswer((_) async => '[]');
+    when(
+      () => assetBundle.loadString(AppDataPaths.perfumeQuestions),
+    ).thenAnswer((_) async => '[]');
   });
 
   group('LocalPercentageSelectionDataSource', () {
     test('loads both assets and matches details by name', () async {
-      final firstRecord = createPercentagesRecord(
-        code: 101,
-        name: 'First Perfume',
-        sweet: 30.5,
-        fresh: 20,
-        floral: 15,
-        woody: 10.5,
-      );
-
-      final percentages =
-          firstRecord[PerfumePercentagesJsonKeys.percentages]
-              as Map<String, dynamic>;
-
-      percentages[PerfumePercentagesJsonKeys.fruity] = 24;
-
       final percentagesJson = jsonEncode([
-        firstRecord,
+        createPercentagesRecord(
+          code: 101,
+          name: 'First Perfume',
+          sweet: 30.5,
+          fresh: 20,
+          floral: 15,
+          woody: 10.5,
+          fruity: 14,
+          whiteFloralJasmin: 10,
+        ),
         createPercentagesRecord(
           name: 'Second Perfume',
           sweet: 10,
-          fresh: 40,
-          floral: 20,
-          woody: 30,
+          fresh: 30,
+          floral: 15,
+          woody: 20,
+          fruity: 15,
+          whiteFloralJasmin: 10,
         ),
       ]);
 
-      // Different order verifies that matching uses names, not positions.
+      // ترتيب مختلف للتأكد إن الربط بالاسم وليس بمكان العنصر.
       final detailsJson = jsonEncode([
-        createDetailsRecord(name: 'Second Perfume', season: 'الصيف'),
-        createDetailsRecord(name: 'First Perfume', season: 'الشتاء'),
+        createDetailsRecord(
+          name: 'Second Perfume',
+          season: 'الصيف',
+        ),
+        createDetailsRecord(
+          name: 'First Perfume',
+          season: 'الشتاء',
+        ),
       ]);
 
-      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
-          .thenAnswer((_) async => percentagesJson);
+      when(
+        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
+      ).thenAnswer((_) async => percentagesJson);
 
-      when(() => assetBundle.loadString(AppDataPaths.perfumeQuestions))
-          .thenAnswer((_) async => detailsJson);
+      when(
+        () => assetBundle.loadString(AppDataPaths.perfumeQuestions),
+      ).thenAnswer((_) async => detailsJson);
 
       final result = await dataSource.getPerfumes();
 
@@ -119,7 +131,9 @@ void main() {
       expect(first.percentages.fresh, 20.0);
       expect(first.percentages.floral, 15.0);
       expect(first.percentages.woody, 10.5);
-      expect(first.percentages.total, 76);
+      expect(first.percentages.fruity, 14.0);
+      expect(first.percentages.whiteFloralJasmin, 10.0);
+      expect(first.percentages.total, 100);
 
       expect(first.gender, 'رجالي');
       expect(first.ageGroups, ['20-29', '30-39']);
@@ -136,16 +150,21 @@ void main() {
       expect(second.code, 0);
       expect(second.name, 'Second Perfume');
       expect(second.percentages.sweet, 10.0);
-      expect(second.percentages.fresh, 40.0);
-      expect(second.percentages.floral, 20.0);
-      expect(second.percentages.woody, 30.0);
+      expect(second.percentages.fresh, 30.0);
+      expect(second.percentages.floral, 15.0);
+      expect(second.percentages.woody, 20.0);
+      expect(second.percentages.fruity, 15.0);
+      expect(second.percentages.whiteFloralJasmin, 10.0);
+      expect(second.percentages.total, 100);
       expect(second.season, 'الصيف');
 
-      verify(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
-          .called(1);
+      verify(
+        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
+      ).called(1);
 
-      verify(() => assetBundle.loadString(AppDataPaths.perfumeQuestions))
-          .called(1);
+      verify(
+        () => assetBundle.loadString(AppDataPaths.perfumeQuestions),
+      ).called(1);
 
       verifyNoMoreInteractions(assetBundle);
     });
@@ -154,6 +173,16 @@ void main() {
       final result = await dataSource.getPerfumes();
 
       expect(result, isEmpty);
+
+      verify(
+        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
+      ).called(1);
+
+      verify(
+        () => assetBundle.loadString(AppDataPaths.perfumeQuestions),
+      ).called(1);
+
+      verifyNoMoreInteractions(assetBundle);
     });
 
     for (final assetPath in [
@@ -163,15 +192,20 @@ void main() {
       test('propagates an asset loading exception from $assetPath', () async {
         final error = FlutterError('Unable to load asset');
 
-        when(() => assetBundle.loadString(assetPath))
-            .thenAnswer((_) async => throw error);
+        when(
+          () => assetBundle.loadString(assetPath),
+        ).thenAnswer((_) async => throw error);
 
-        await expectLater(dataSource.getPerfumes(), throwsA(same(error)));
+        await expectLater(
+          dataSource.getPerfumes(),
+          throwsA(same(error)),
+        );
       });
 
       test('throws FormatException for malformed JSON in $assetPath', () async {
-        when(() => assetBundle.loadString(assetPath))
-            .thenAnswer((_) async => 'invalid json');
+        when(
+          () => assetBundle.loadString(assetPath),
+        ).thenAnswer((_) async => 'invalid json');
 
         await expectLater(
           dataSource.getPerfumes(),
@@ -181,11 +215,13 @@ void main() {
     }
 
     test('throws StateError when perfume details are missing', () async {
-      when(() => assetBundle.loadString(AppDataPaths.perfumePercentages))
-          .thenAnswer(
-            (_) async =>
-                jsonEncode([createPercentagesRecord(name: 'Missing Perfume')]),
-          );
+      when(
+        () => assetBundle.loadString(AppDataPaths.perfumePercentages),
+      ).thenAnswer(
+        (_) async => jsonEncode([
+          createPercentagesRecord(name: 'Missing Perfume'),
+        ]),
+      );
 
       await expectLater(
         dataSource.getPerfumes(),
@@ -200,13 +236,14 @@ void main() {
     });
 
     test('throws StateError when detail names are duplicated', () async {
-      when(() => assetBundle.loadString(AppDataPaths.perfumeQuestions))
-          .thenAnswer(
-            (_) async => jsonEncode([
-              createDetailsRecord(name: 'Duplicate Perfume'),
-              createDetailsRecord(name: 'Duplicate Perfume'),
-            ]),
-          );
+      when(
+        () => assetBundle.loadString(AppDataPaths.perfumeQuestions),
+      ).thenAnswer(
+        (_) async => jsonEncode([
+          createDetailsRecord(name: 'Duplicate Perfume'),
+          createDetailsRecord(name: 'Duplicate Perfume'),
+        ]),
+      );
 
       await expectLater(
         dataSource.getPerfumes(),

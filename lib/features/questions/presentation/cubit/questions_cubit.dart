@@ -2,15 +2,30 @@ import 'package:bloc/bloc.dart';
 import 'package:ya_perfume/app/routes/app_images_routes.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
+import 'package:ya_perfume/features/questions/data/adapters/perfume_questions_adapter.dart';
 import 'package:ya_perfume/features/questions/data/models/fragrance_family_model.dart';
 import 'package:ya_perfume/features/questions/data/models/question_model.dart';
-
+import 'package:ya_perfume/features/questions/domain/entities/perfume_questions_entity.dart';
+import 'package:ya_perfume/features/questions/domain/use_cases/get_perfumes_use_case.dart';
 part 'questions_state.dart';
 
 class QuestionsCubit extends Cubit<QuestionsState> {
-  QuestionsCubit() : super(const QuestionsState());
+  final GetPerfumesUseCase getPerfumesUseCase;
+  final PerfumeQuestionsAdapter perfumeQuestionsAdapter;
+  QuestionsCubit({
+    required this.getPerfumesUseCase,
+    required this.perfumeQuestionsAdapter,
+  }) : super(const QuestionsState());
 
   QuestionModel get currentQuestion => state.questions[state.currentIndex];
+
+  Future<void> getPerfumes() async {
+    emit(state.copyWith(status: QuestionsStatus.loading));
+    //ِAdapter Design Pattern for converting state to perfume questions entity
+    final perfumeQuestions = perfumeQuestionsAdapter.adapt(state);
+    final perfumes = await getPerfumesUseCase(perfumeQuestions);
+    emit(state.copyWith(status: QuestionsStatus.loaded, perfumes: perfumes));
+  }
 
   QuestionOption? get selectedOption {
     final saved = state.allAnswers[currentQuestion.id];
@@ -467,7 +482,15 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     if (!currentQuestion.isSkippable) return;
     if (state.currentIndex >= state.questions.length - 1) return;
 
-    emit(state.copyWith(currentIndex: state.currentIndex + 1));
+    final updatedAnswers = Map<String, Set<String>>.from(state.allAnswers);
+    updatedAnswers.remove(currentQuestion.id);
+
+    emit(
+      state.copyWith(
+        currentIndex: state.currentIndex + 1,
+        allAnswers: updatedAnswers,
+      ),
+    );
   }
 
   void previous() {
