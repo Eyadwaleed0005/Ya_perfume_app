@@ -24,6 +24,7 @@ class QuestionsCubit extends Cubit<QuestionsState> {
     //ِAdapter Design Pattern for converting state to perfume questions entity
     final perfumeQuestions = perfumeQuestionsAdapter.adapt(state);
     final perfumes = await getPerfumesUseCase(perfumeQuestions);
+    await Future<void>.delayed(const Duration(seconds: 8));
     emit(state.copyWith(status: QuestionsStatus.loaded, perfumes: perfumes));
   }
 

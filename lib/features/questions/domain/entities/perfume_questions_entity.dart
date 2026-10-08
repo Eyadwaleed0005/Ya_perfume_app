@@ -1,15 +1,17 @@
+import 'package:ya_perfume/features/results/domain/entities/perfume_result_entity.dart';
+
 class PerfumeQuestionsEntity {
   final int? code;
   final String name;
   final int numOfAcceptance;
   final String gender;
-  final List<dynamic> ageGroups;
+  final List<String> ageGroups;
   final String usageTime;
   final String season;
-  final List<dynamic> preferredScents;
-  final List<dynamic> avoidedScents;
-  final List<dynamic> occasions;
-  final List<dynamic> styles;
+  final List<String> preferredScents;
+  final List<String> avoidedScents;
+  final List<String> occasions;
+  final List<String> styles;
   final String projection;
 
   PerfumeQuestionsEntity({
@@ -27,18 +29,31 @@ class PerfumeQuestionsEntity {
     required this.projection,
   });
 
+  PerfumeResultEntity toResultEntity() {
+    return PerfumeResultEntity(
+      code: code,
+      name: name,
+      usageTime: usageTime,
+      season: season,
+      preferredScents: preferredScents,
+      occasions: occasions,
+      projection: projection,
+      styles: styles,
+    );
+  }
+
   PerfumeQuestionsEntity copyWith({
     int? code,
     String? name,
     int? numOfAcceptance,
     String? gender,
-    List<dynamic>? ageGroups,
+    List<String>? ageGroups,
     String? usageTime,
     String? season,
-    List<dynamic>? preferredScents,
-    List<dynamic>? avoidedScents,
-    List<dynamic>? occasions,
-    List<dynamic>? styles,
+    List<String>? preferredScents,
+    List<String>? avoidedScents,
+    List<String>? occasions,
+    List<String>? styles,
     String? projection,
   }) {
     return PerfumeQuestionsEntity(

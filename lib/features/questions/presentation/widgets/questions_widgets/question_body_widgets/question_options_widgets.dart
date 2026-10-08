@@ -20,20 +20,43 @@ class QuestionOptionsWidgets {
   QuestionOptionsWidgets({required this.cubit, required this.availableHeight});
 
   Widget buildQuestionFour(BuildContext context, AppThemeColors theme) {
-    final firstOption = cubit.currentQuestion.options[0];
-    final secondOption = cubit.currentQuestion.options[1];
-    final thirdOption = cubit.currentQuestion.options[2];
-
-    final spacing = (availableHeight * 0.05).clamp(6.0, 12.h);
-    final topSpacing = (availableHeight * 0.03).clamp(4.0, 12.h);
-    final optionHeight = (availableHeight - topSpacing - spacing) / 2;
+    final options = cubit.currentQuestion.options;
+    final firstOption = options[0];
+    final secondOption = options[1];
+    final thirdOption = options[2];
     final isArabic = context.locale.languageCode == 'ar';
+
+    const crossAxisSpacing = 12.0;
+    const naturalSpacingRatio = 0.03;
+
+    final naturalOptionHeight = (availableHeight * 0.25).clamp(50.0, 85.0);
+
+    final naturalSpacing = (availableHeight * naturalSpacingRatio).clamp(
+      8.0,
+      16.0,
+    );
+
+    const rowCount = 2;
+
+    final totalNaturalHeight =
+        (rowCount * naturalOptionHeight) + naturalSpacing;
+
+    final useNatural = availableHeight > totalNaturalHeight;
+
+    final spacing = useNatural
+        ? naturalSpacing
+        : (availableHeight * naturalSpacingRatio).clamp(4.0, 16.0);
+
+    final totalSpacing = spacing;
+
+    final optionHeight = useNatural
+        ? naturalOptionHeight
+        : (availableHeight - totalSpacing) / rowCount;
 
     return Directionality(
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       child: Column(
         children: [
-          SizedBox(height: topSpacing),
           Row(
             children: [
               Expanded(
@@ -47,7 +70,7 @@ class QuestionOptionsWidgets {
                   ),
                 ),
               ),
-              horizontalSpace(12.w),
+              horizontalSpace(crossAxisSpacing.w),
               Expanded(
                 child: SizedBox(
                   height: optionHeight,
@@ -61,7 +84,7 @@ class QuestionOptionsWidgets {
               ),
             ],
           ),
-          SizedBox(height: spacing),
+          verticalSpace(spacing),
           SizedBox(
             width: double.infinity,
             height: optionHeight,
@@ -84,11 +107,29 @@ class QuestionOptionsWidgets {
     final rowCount = (optionsLength / crossAxisCount).ceil();
     final isArabic = context.locale.languageCode == 'ar';
 
-    final mainAxisSpacing = rowCount > 1
-        ? (availableHeight * 0.035).clamp(4.0, 12.h)
-        : 0.0;
+    final naturalOptionHeight = (availableHeight * 0.25).clamp(50.0, 85.0);
+    const naturalSpacingRatio = 0.03;
+    final naturalSpacing = (availableHeight * naturalSpacingRatio).clamp(
+      8.0,
+      16.0,
+    );
+
+    final totalNaturalHeight =
+        (rowCount * naturalOptionHeight) + ((rowCount - 1) * naturalSpacing);
+
+    final useNatural = availableHeight > totalNaturalHeight;
+
+    final mainAxisSpacing = useNatural
+        ? naturalSpacing
+        : (rowCount > 1
+              ? (availableHeight * naturalSpacingRatio).clamp(4.0, 16.0)
+              : 0.0);
+
     final totalSpacing = (rowCount - 1) * mainAxisSpacing;
-    final optionHeight = (availableHeight - totalSpacing) / rowCount;
+
+    final optionHeight = useNatural
+        ? naturalOptionHeight
+        : (availableHeight - totalSpacing) / rowCount;
 
     return Directionality(
       textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
