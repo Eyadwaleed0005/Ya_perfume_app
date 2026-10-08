@@ -278,6 +278,14 @@ class AppTextStyle {
       color: AppColors.textMuted,
     );
   }
+  static TextStyle font17textSecondaryRegularNoto() {
+    return TextStyle(
+      fontSize: 17.sp,
+      fontWeight: FontWeightHelper.regular,
+      fontFamily: notoSansArabic,
+      color: AppColors.textSecondary,
+    );
+  }
 
 
   static TextStyle font19textPrimaryRegularNoto() {
@@ -319,6 +327,14 @@ class AppTextStyle {
   static TextStyle font25textAccentSemiBoldNoto() {
     return TextStyle(
       fontSize: 25.sp,
+      fontWeight: FontWeightHelper.semiBold,
+      fontFamily: notoSansArabic,
+      color: AppColors.textAccent,
+    );
+  }
+  static TextStyle font24textAccentSemiBoldNoto() {
+    return TextStyle(
+      fontSize: 24.sp,
       fontWeight: FontWeightHelper.semiBold,
       fontFamily: notoSansArabic,
       color: AppColors.textAccent,

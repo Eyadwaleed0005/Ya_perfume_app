@@ -16,6 +16,7 @@ abstract class AppColors {
   static const Color darkBlue = Color(0xFF1B3550);
   static const Color redOchre = Color(0xFFA98134);
   static const Color blue = Color(0xFF0E2430);
+  static const Color mutedPlum = Color(0xFF51424C);
 
   // ===== Semantic Background Colors =====
   static const Color bgCanvas = ultraBlack;
@@ -24,7 +25,6 @@ abstract class AppColors {
   static const Color bgAccent = goldAccent;
 
   // ===== Text Color Tokens =====
-
   static const Color textPrimary = pureWhite;
   static const Color textSecondary = offWhite;
   static const Color textMuted = mutedGray;
@@ -43,7 +43,7 @@ abstract class AppColors {
   static const Color borderRedOchre = redOchre;
   static const Color borderSnow = Color(0xFF9EC7D6);
 
-  // ===== UI Specific Design Colors (From Images) =====
+  // ===== UI Specific Design Colors =====
   static const Color normalBackground = bgCanvas;
   static const Color normalCardBackground = bgSurface;
   static const Color normalCardBorder = borderDefault;
@@ -56,7 +56,15 @@ abstract class AppColors {
   static const Color lightCardBackground = pureWhite;
   static const Color lightCardBorder = borderDefault;
 
-  // ===== Snow Selection Color =====
+  // ===== Snow Selection Colors =====
   static const Color blueSnow = blue;
   static const Color whiteSnow = pureWhite;
+
+  // ===== Fragrance Percentage Liquid Colors =====
+  static final Color sweetLiquid = goldAccent.withValues(alpha: 0.35);
+  static final Color freshLiquid = borderSnow.withValues(alpha: 0.35);
+  static final Color woodyLiquid = darkAutumnBrown.withValues(alpha: 0.5);
+  static const Color floralLiquid = mutedPlum;
+  static final Color fruityLiquid = redOchre.withValues(alpha: 0.45);
+  static final Color whiteFloralJasminLiquid = offWhite.withValues(alpha: 0.35);
 }

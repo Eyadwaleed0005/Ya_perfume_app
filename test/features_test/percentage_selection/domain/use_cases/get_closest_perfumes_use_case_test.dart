@@ -17,6 +17,8 @@ void main() {
     fresh: 25,
     floral: 25,
     woody: 25,
+    fruity: 0,
+    whiteFloralJasmin: 0,
   );
 
   PerfumeEntity createPerfume({
@@ -25,16 +27,29 @@ void main() {
     double fresh = 25,
     double floral = 25,
     double woody = 25,
+    double fruity = 0,
+    double whiteFloralJasmin = 0,
   }) {
     return PerfumeEntity(
-      code: null,
+      code: 0,
       name: name,
       percentages: FragrancePercentages(
         sweet: sweet,
         fresh: fresh,
         floral: floral,
         woody: woody,
+        fruity: fruity,
+        whiteFloralJasmin: whiteFloralJasmin,
       ),
+      gender: 'رجالي',
+      ageGroups: const ['20-29', '30-39'],
+      usageTime: 'مساءً وليلاً',
+      season: 'الشتاء',
+      preferredScents: const ['خشبي', 'شرقي ودافئ'],
+      avoidedScents: const ['الزهور القوية'],
+      occasions: const ['نزهات وزيارات المقاهي'],
+      styles: const ['أنيق وراقٍ'],
+      projection: 'واضح ومتوازن',
     );
   }
 
@@ -79,8 +94,54 @@ void main() {
       final result = await useCase(selection);
 
       expect(result, orderedEquals([exact, second, third, fourth]));
+
       verify(() => repository.getPerfumes()).called(1);
       verifyNoMoreInteractions(repository);
+    });
+
+    test('includes fruity and white floral in ranking', () async {
+      const sixFamilySelection = FragrancePercentages(
+        sweet: 15,
+        fresh: 15,
+        floral: 25,
+        woody: 25,
+        fruity: 10,
+        whiteFloralJasmin: 10,
+      );
+
+      final exact = createPerfume(
+        name: 'Z Exact',
+        sweet: 15,
+        fresh: 15,
+        fruity: 10,
+        whiteFloralJasmin: 10,
+      );
+
+      final close = createPerfume(
+        name: 'M Close',
+        sweet: 15,
+        fresh: 15,
+        fruity: 12,
+        whiteFloralJasmin: 8,
+      );
+
+      final farther = createPerfume(
+        name: 'A Farther',
+        sweet: 15,
+        fresh: 15,
+        fruity: 20,
+        whiteFloralJasmin: 0,
+      );
+
+      // أول أربع نسب متطابقة؛ النسبتان الجديدتان تحددان الترتيب.
+      // الفرق: exact = 0، close = 4، farther = 20.
+      when(() => repository.getPerfumes()).thenAnswer(
+        (_) async => [farther, close, exact],
+      );
+
+      final result = await useCase(sixFamilySelection);
+
+      expect(result, orderedEquals([exact, close, farther]));
     });
 
     test('sorts equal differences alphabetically by name', () async {
@@ -184,6 +245,7 @@ void main() {
 
       expect(result, orderedEquals([full, partial]));
       expect(partial.percentages.total, 80);
+      expect(full.percentages.total, 100);
     });
 
     test('does not change the repository list order', () async {
@@ -203,6 +265,22 @@ void main() {
 
       expect(result, orderedEquals([closest, farther]));
       expect(source, orderedEquals([farther, closest]));
+    });
+
+    test('propagates exceptions from the repository', () async {
+      final error = Exception('Unable to load perfumes');
+
+      when(() => repository.getPerfumes()).thenAnswer(
+        (_) async => throw error,
+      );
+
+      await expectLater(
+        useCase(selection),
+        throwsA(same(error)),
+      );
+
+      verify(() => repository.getPerfumes()).called(1);
+      verifyNoMoreInteractions(repository);
     });
   });
 }

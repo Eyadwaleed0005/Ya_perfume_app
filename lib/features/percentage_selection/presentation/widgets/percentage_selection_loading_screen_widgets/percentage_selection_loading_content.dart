@@ -19,38 +19,44 @@ class PercentageSelectionLoadingContent extends StatelessWidget {
       fit: StackFit.expand,
       children: [
         const PercentageSelectionBackground(),
-        Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-            child: Transform.translate(
-              offset: Offset(0, 60.h),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: SizedBox(
-                  width: 1100.w,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const PercentageSelectionLoadingButterfly(),
-                      verticalSpace(70),
-                      const PercentageSelectionLoadingIntro(),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ),
         SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'app_name'.tr(),
-                textDirection: ui.TextDirection.ltr,
-                style: AppTextStyle.font18TextAccentMediumNoto(),
-              ),
+            padding: EdgeInsets.symmetric(
+              horizontal: 28.w,
+              vertical: 24.h,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'app_name'.tr(),
+                    textDirection: ui.TextDirection.ltr,
+                    style: AppTextStyle.font18TextAccentMediumNoto(),
+                  ),
+                ),
+                verticalSpace(16),
+                Expanded(
+                  child: Center(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        width: 1100.w,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const PercentageSelectionLoadingButterfly(),
+                            verticalSpace(70),
+                            const PercentageSelectionLoadingIntro(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ),

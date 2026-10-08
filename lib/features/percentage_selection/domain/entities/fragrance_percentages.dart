@@ -3,18 +3,30 @@ class FragrancePercentages {
   final double fresh;
   final double floral;
   final double woody;
+  final double fruity;
+  final double whiteFloralJasmin;
 
   const FragrancePercentages({
     required this.sweet,
     required this.fresh,
     required this.floral,
     required this.woody,
+    required this.fruity,
+    required this.whiteFloralJasmin,
   });
 
-  double get total => sweet + fresh + floral + woody;
+  double get total =>
+      sweet + fresh + floral + woody + fruity + whiteFloralJasmin;
 
   bool get isValidSelection {
-    final values = [sweet, fresh, floral, woody];
+    final values = [
+      sweet,
+      fresh,
+      floral,
+      woody,
+      fruity,
+      whiteFloralJasmin,
+    ];
 
     return values.every(
           (value) => value.isFinite && value >= 0 && value <= 100,
@@ -26,6 +38,8 @@ class FragrancePercentages {
     return (sweet - other.sweet).abs() +
         (fresh - other.fresh).abs() +
         (floral - other.floral).abs() +
-        (woody - other.woody).abs();
+        (woody - other.woody).abs() +
+        (fruity - other.fruity).abs() +
+        (whiteFloralJasmin - other.whiteFloralJasmin).abs();
   }
 }

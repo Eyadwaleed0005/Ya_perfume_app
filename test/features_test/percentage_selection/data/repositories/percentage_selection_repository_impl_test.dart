@@ -14,9 +14,7 @@ void main() {
 
   setUp(() {
     dataSource = MockPercentageSelectionDataSource();
-    repository = PercentageSelectionRepositoryImpl(
-      dataSource: dataSource,
-    );
+    repository = PercentageSelectionRepositoryImpl(dataSource: dataSource);
   });
 
   group('PercentageSelectionRepositoryImpl', () {
@@ -26,27 +24,47 @@ void main() {
           code: 101,
           name: 'First Perfume',
           percentages: FragrancePercentages(
-            sweet: 30,
-            fresh: 20,
-            floral: 25,
-            woody: 25,
+            sweet: 25,
+            fresh: 15,
+            floral: 20,
+            woody: 20,
+            fruity: 10,
+            whiteFloralJasmin: 10,
           ),
+          gender: 'رجالي',
+          ageGroups: ['20-29', '30-39'],
+          usageTime: 'مساءً وليلاً',
+          season: 'الشتاء',
+          preferredScents: ['خشبي', 'شرقي ودافئ'],
+          avoidedScents: ['الزهور القوية'],
+          occasions: ['نزهات وزيارات المقاهي'],
+          styles: ['أنيق وراقٍ'],
+          projection: 'واضح ومتوازن',
         ),
         const PerfumeModel(
-          code: null,
+          code: 0,
           name: 'Second Perfume',
           percentages: FragrancePercentages(
             sweet: 10,
-            fresh: 40,
-            floral: 20,
-            woody: 30,
+            fresh: 30,
+            floral: 15,
+            woody: 20,
+            fruity: 15,
+            whiteFloralJasmin: 10,
           ),
+          gender: 'نسائي',
+          ageGroups: ['20-29'],
+          usageTime: 'صباحاً ونهارًا',
+          season: 'الصيف',
+          preferredScents: ['زهري', 'فاكهي'],
+          avoidedScents: ['الروائح الخشبية القوية'],
+          occasions: ['استخدام يومي للعمل أو الدراسة'],
+          styles: ['ناعم ورومانسي'],
+          projection: 'قوي ولافت',
         ),
       ];
 
-      when(() => dataSource.getPerfumes()).thenAnswer(
-        (_) async => perfumes,
-      );
+      when(() => dataSource.getPerfumes()).thenAnswer((_) async => perfumes);
 
       final result = await repository.getPerfumes();
 
@@ -57,29 +75,26 @@ void main() {
     });
 
     test('returns an empty list when the data source is empty', () async {
-      when(() => dataSource.getPerfumes()).thenAnswer(
-        (_) async => <PerfumeModel>[],
-      );
+      when(() => dataSource.getPerfumes())
+          .thenAnswer((_) async => <PerfumeModel>[]);
 
       final result = await repository.getPerfumes();
 
       expect(result, isEmpty);
+
       verify(() => dataSource.getPerfumes()).called(1);
+      verifyNoMoreInteractions(dataSource);
     });
 
     test('propagates exceptions from the data source', () async {
       final error = Exception('Asset loading failed');
 
-      when(() => dataSource.getPerfumes()).thenAnswer(
-        (_) async => throw error,
-      );
+      when(() => dataSource.getPerfumes()).thenAnswer((_) async => throw error);
 
-      await expectLater(
-        repository.getPerfumes(),
-        throwsA(same(error)),
-      );
+      await expectLater(repository.getPerfumes(), throwsA(same(error)));
 
       verify(() => dataSource.getPerfumes()).called(1);
+      verifyNoMoreInteractions(dataSource);
     });
   });
 }
