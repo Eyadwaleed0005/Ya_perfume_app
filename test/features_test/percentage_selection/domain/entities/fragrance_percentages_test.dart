@@ -4,12 +4,14 @@ import 'package:ya_perfume/features/percentage_selection/domain/entities/fragran
 void main() {
   group('FragrancePercentages', () {
     group('total', () {
-      test('adds the four percentages', () {
+      test('adds all six percentages', () {
         const percentages = FragrancePercentages(
           sweet: 10,
           fresh: 20,
-          floral: 30,
-          woody: 15,
+          floral: 15,
+          woody: 10,
+          fruity: 12,
+          whiteFloralJasmin: 8,
         );
 
         expect(percentages.total, 75);
@@ -17,34 +19,54 @@ void main() {
     });
 
     group('isValidSelection', () {
-      test('accepts percentages totaling 100', () {
+      test('accepts six percentages totaling 100', () {
         const percentages = FragrancePercentages(
-          sweet: 25,
-          fresh: 25,
-          floral: 25,
-          woody: 25,
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 10,
         );
 
         expect(percentages.isValidSelection, isTrue);
       });
 
-      test('accepts one family at 100 and the others at zero', () {
-        const percentages = FragrancePercentages(
-          sweet: 100,
-          fresh: 0,
-          floral: 0,
-          woody: 0,
-        );
+      const familyNames = [
+        'sweet',
+        'fresh',
+        'floral',
+        'woody',
+        'fruity',
+        'whiteFloralJasmin',
+      ];
 
-        expect(percentages.isValidSelection, isTrue);
-      });
+      for (var index = 0; index < familyNames.length; index++) {
+        test('accepts ${familyNames[index]} at 100 and the others at zero', () {
+          final values = List<double>.filled(6, 0);
+          values[index] = 100;
+
+          final percentages = FragrancePercentages(
+            sweet: values[0],
+            fresh: values[1],
+            floral: values[2],
+            woody: values[3],
+            fruity: values[4],
+            whiteFloralJasmin: values[5],
+          );
+
+          expect(percentages.isValidSelection, isTrue);
+        });
+      }
 
       test('accepts decimal percentages totaling 100', () {
         const percentages = FragrancePercentages(
-          sweet: 25.5,
-          fresh: 24.5,
-          floral: 30.2,
-          woody: 19.8,
+          sweet: 20.5,
+          fresh: 19.5,
+          floral: 15.2,
+          woody: 14.8,
+          fruity: 20.3,
+          whiteFloralJasmin: 9.7,
         );
 
         expect(percentages.isValidSelection, isTrue);
@@ -52,10 +74,12 @@ void main() {
 
       test('accepts a small floating-point difference', () {
         const percentages = FragrancePercentages(
-          sweet: 25,
-          fresh: 25,
-          floral: 25,
-          woody: 24.9995,
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 9.9995,
         );
 
         expect(percentages.isValidSelection, isTrue);
@@ -63,69 +87,96 @@ void main() {
 
       test('rejects a total below 100', () {
         const percentages = FragrancePercentages(
-          sweet: 20,
-          fresh: 20,
-          floral: 20,
-          woody: 20,
+          sweet: 15,
+          fresh: 15,
+          floral: 15,
+          woody: 15,
+          fruity: 10,
+          whiteFloralJasmin: 10,
         );
 
+        expect(percentages.total, 80);
         expect(percentages.isValidSelection, isFalse);
       });
 
       test('rejects a total above 100', () {
         const percentages = FragrancePercentages(
-          sweet: 30,
-          fresh: 30,
-          floral: 30,
-          woody: 30,
+          sweet: 20,
+          fresh: 20,
+          floral: 20,
+          woody: 20,
+          fruity: 20,
+          whiteFloralJasmin: 20,
         );
 
+        expect(percentages.total, 120);
         expect(percentages.isValidSelection, isFalse);
       });
 
       test('rejects a total outside the tolerance', () {
         const percentages = FragrancePercentages(
-          sweet: 25,
-          fresh: 25,
-          floral: 25,
-          woody: 24.998,
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 9.998,
         );
 
         expect(percentages.isValidSelection, isFalse);
       });
 
-      test('rejects negative values even when the total is 100', () {
-        const percentages = FragrancePercentages(
-          sweet: -5,
-          fresh: 35,
-          floral: 35,
-          woody: 35,
+      for (var index = 0; index < familyNames.length; index++) {
+        test(
+          'rejects a negative ${familyNames[index]} even when the total is 100',
+          () {
+            final values = List<double>.filled(6, 21);
+            values[index] = -5;
+
+            final percentages = FragrancePercentages(
+              sweet: values[0],
+              fresh: values[1],
+              floral: values[2],
+              woody: values[3],
+              fruity: values[4],
+              whiteFloralJasmin: values[5],
+            );
+
+            expect(percentages.total, 100);
+            expect(percentages.isValidSelection, isFalse);
+          },
         );
 
-        expect(percentages.total, 100);
-        expect(percentages.isValidSelection, isFalse);
-      });
+        test(
+          'rejects ${familyNames[index]} above 100 even when the total is 100',
+          () {
+            final values = List<double>.filled(6, 0);
+            values[index] = 105;
+            values[(index + 1) % values.length] = -5;
 
-      test('rejects values above 100 even when the total is 100', () {
-        const percentages = FragrancePercentages(
-          sweet: 105,
-          fresh: -5,
-          floral: 0,
-          woody: 0,
+            final percentages = FragrancePercentages(
+              sweet: values[0],
+              fresh: values[1],
+              floral: values[2],
+              woody: values[3],
+              fruity: values[4],
+              whiteFloralJasmin: values[5],
+            );
+
+            expect(percentages.total, 100);
+            expect(percentages.isValidSelection, isFalse);
+          },
         );
-
-        expect(percentages.total, 100);
-        expect(percentages.isValidSelection, isFalse);
-      });
+      }
 
       for (final invalidValue in [
         double.nan,
         double.infinity,
         double.negativeInfinity,
       ]) {
-        for (var index = 0; index < 4; index++) {
-          test('rejects $invalidValue in family $index', () {
-            final values = [25.0, 25.0, 25.0, 25.0];
+        for (var index = 0; index < familyNames.length; index++) {
+          test('rejects $invalidValue in ${familyNames[index]}', () {
+            final values = [20.0, 20.0, 15.0, 15.0, 20.0, 10.0];
             values[index] = invalidValue;
 
             final percentages = FragrancePercentages(
@@ -133,6 +184,8 @@ void main() {
               fresh: values[1],
               floral: values[2],
               woody: values[3],
+              fruity: values[4],
+              whiteFloralJasmin: values[5],
             );
 
             expect(percentages.isValidSelection, isFalse);
@@ -144,49 +197,83 @@ void main() {
     group('differenceFrom', () {
       test('returns zero for identical percentages', () {
         const percentages = FragrancePercentages(
-          sweet: 25,
-          fresh: 25,
-          floral: 25,
-          woody: 25,
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 10,
         );
 
         expect(percentages.differenceFrom(percentages), 0);
       });
 
-      test('adds absolute differences across all four families', () {
+      test('adds absolute differences across all six families', () {
         const selection = FragrancePercentages(
-          sweet: 40,
-          fresh: 30,
-          floral: 20,
+          sweet: 30,
+          fresh: 20,
+          floral: 15,
           woody: 10,
+          fruity: 15,
+          whiteFloralJasmin: 10,
         );
 
         const perfume = FragrancePercentages(
-          sweet: 20,
-          fresh: 40,
+          sweet: 10,
+          fresh: 30,
           floral: 10,
-          woody: 30,
+          woody: 20,
+          fruity: 10,
+          whiteFloralJasmin: 20,
         );
 
+        // 20 + 10 + 5 + 10 + 5 + 10 = 60.
         expect(selection.differenceFrom(perfume), 60);
         expect(perfume.differenceFrom(selection), 60);
       });
 
-      test('compares perfume data whose total is below 100', () {
+      test('includes fruity and white floral differences', () {
         const selection = FragrancePercentages(
-          sweet: 25,
-          fresh: 25,
-          floral: 25,
-          woody: 25,
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 10,
         );
 
         const perfume = FragrancePercentages(
           sweet: 20,
-          fresh: 15,
-          floral: 10,
-          woody: 5,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 10,
+          whiteFloralJasmin: 20,
         );
 
+        expect(selection.differenceFrom(perfume), 20);
+      });
+
+      test('compares stored percentages without normalizing them', () {
+        const selection = FragrancePercentages(
+          sweet: 20,
+          fresh: 20,
+          floral: 15,
+          woody: 15,
+          fruity: 20,
+          whiteFloralJasmin: 10,
+        );
+
+        const perfume = FragrancePercentages(
+          sweet: 10,
+          fresh: 10,
+          floral: 10,
+          woody: 5,
+          fruity: 10,
+          whiteFloralJasmin: 5,
+        );
+
+        expect(perfume.total, 50);
         expect(selection.differenceFrom(perfume), 50);
       });
     });

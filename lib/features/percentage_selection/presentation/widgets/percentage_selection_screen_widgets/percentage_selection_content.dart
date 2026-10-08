@@ -19,31 +19,25 @@ class PercentageSelectionContent extends StatelessWidget {
       children: [
         const PercentageSelectionBackground(),
         SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 64.w, vertical: 16.h),
+          child: SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 16.h),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 AppAnimation.percentageSelectionEntrance(
                   child: const PercentageSelectionHeader(),
                 ),
-                verticalSpace(16),
-                Expanded(
-                  child: FractionallySizedBox(
-                    widthFactor: 0.72,
-                    heightFactor: 1,
-                    alignment: Alignment.center,
-                    child: AppAnimation.percentageSelectionEntrance(
-                      delay: const Duration(milliseconds: 180),
-                      child: const PercentageSelectionCards(),
-                    ),
-                  ),
+                verticalSpace(24),
+                AppAnimation.percentageSelectionEntrance(
+                  delay: const Duration(milliseconds: 180),
+                  child: const PercentageSelectionCards(),
                 ),
-                verticalSpace(12),
+                verticalSpace(24),
                 AppAnimation.percentageSelectionEntrance(
                   delay: const Duration(milliseconds: 360),
                   child: const PercentageSelectionTotal(),
                 ),
-                verticalSpace(12),
+                verticalSpace(20),
                 AppAnimation.percentageSelectionEntrance(
                   delay: const Duration(milliseconds: 540),
                   child: const PercentageSelectionActions(),

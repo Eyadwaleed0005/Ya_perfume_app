@@ -27,23 +27,22 @@ class PercentageSelectionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 20.h),
       decoration: BoxDecoration(
         color: AppColors.bgSurface,
         borderRadius: BorderRadius.circular(24.r),
         border: Border.all(color: AppColors.borderSubtle, width: 1),
       ),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Expanded(
-            child: Center(
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
-                child: PercentageSelectionBottle(
-                  percentage: percentage,
-                  liquidColor: liquidColor,
-                  width: 112.w,
-                ),
+          Center(
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: PercentageSelectionBottle(
+                percentage: percentage,
+                liquidColor: liquidColor,
+                width: 112.w,
               ),
             ),
           ),

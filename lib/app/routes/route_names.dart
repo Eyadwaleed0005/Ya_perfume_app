@@ -7,5 +7,7 @@ class RouteNames {
   static const String selectLanguage = '/selectLanguage';
   static const String percentageSelection = '/percentageSelection';
   static const String percentageSelectionLoading =
-    '/percentageSelectionLoading';
+      '/percentageSelectionLoading';
+  static const String result = '/result';
+  static const String perfumeDetails = '/perfumeDetails';
 }

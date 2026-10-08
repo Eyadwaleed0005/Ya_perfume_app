@@ -7,15 +7,16 @@ import 'percentage_selection_state.dart';
 class PercentageSelectionCubit extends Cubit<PercentageSelectionState> {
   final GetClosestPerfumesUseCase getClosestPerfumesUseCase;
 
-  PercentageSelectionCubit({
-    required this.getClosestPerfumesUseCase,
-  }) : super(const PercentageSelectionState());
+  PercentageSelectionCubit({required this.getClosestPerfumesUseCase})
+    : super(const PercentageSelectionState());
 
   void updatePercentages({
     double? sweet,
     double? fresh,
     double? floral,
     double? woody,
+    double? fruity,
+    double? whiteFloralJasmin,
   }) {
     if (state.status == PercentageSelectionStatus.loading) return;
 
@@ -24,6 +25,9 @@ class PercentageSelectionCubit extends Cubit<PercentageSelectionState> {
       fresh: fresh ?? state.percentages.fresh,
       floral: floral ?? state.percentages.floral,
       woody: woody ?? state.percentages.woody,
+      fruity: fruity ?? state.percentages.fruity,
+      whiteFloralJasmin:
+          whiteFloralJasmin ?? state.percentages.whiteFloralJasmin,
     );
 
     final values = [
@@ -31,6 +35,8 @@ class PercentageSelectionCubit extends Cubit<PercentageSelectionState> {
       percentages.fresh,
       percentages.floral,
       percentages.woody,
+      percentages.fruity,
+      percentages.whiteFloralJasmin,
     ];
 
     final areValuesValid = values.every(
@@ -61,7 +67,7 @@ class PercentageSelectionCubit extends Cubit<PercentageSelectionState> {
     );
 
     final minimumLoadingTime = Future<void>.delayed(
-      const Duration(seconds: 12),
+      const Duration(seconds: 8),
     );
 
     final perfumes = await getClosestPerfumesUseCase(selection);

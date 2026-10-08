@@ -24,6 +24,13 @@ class PercentageSelectionScreen extends StatelessWidget {
             if (state.status == PercentageSelectionStatus.loading) {
               Navigator.of(context)
                   .pushNamed(RouteNames.percentageSelectionLoading);
+            } else if (state.status == PercentageSelectionStatus.success) {
+              final results = state.perfumes
+                  .map((perfume) => perfume.toResultEntity())
+                  .toList(growable: false);
+
+              Navigator.of(context)
+                  .pushReplacementNamed(RouteNames.result, arguments: results);
             }
           },
           child: const Scaffold(body: PercentageSelectionContent()),

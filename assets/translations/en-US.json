@@ -124,7 +124,7 @@
   "select_language_instruction": "Choose your language, then tap Start.",
   "start": "Start",
   "percentage_selection_description": "Adjust the fragrance family percentages until the total reaches 100%",
-  "percentage_family_warm": "Warm",
+  "percentage_family_sweet": "Sweet",
 "percentage_family_fresh": "Fresh",
 "percentage_family_woody": "Woody",
 "percentage_family_floral": "Floral",
@@ -133,6 +133,23 @@
 "percentage_selection_show_suggestions": "Show suggested perfumes",
 "percentage_selection_adjust_total": "Adjust the percentages until the total reaches 100%",
 "percentage_selection_loading_title": "Preparing your perfume recommendations",
-"percentage_selection_loading_description": "We'll soon suggest four perfumes that suit your taste."
+"percentage_selection_loading_description": "We'll soon suggest four perfumes that suit your taste.",
+"results_title": "Your recommended YA perfumes",
+"results_description": "Four perfumes that match your preferences. Choose a perfume to view its details.",
+"perfume_details": "Perfume details",
+"results_start_again": "Start again",
+"results_review_selections": "Review selections",
+"perfume_product_code": "Product code",
+"perfume_matches_selections": "Matches your selections",
+"perfume_usage_time": "Time of use",
+"perfume_season": "Season",
+"perfume_fragrance_family": "Fragrance family",
+"perfume_occasion": "Occasion",
+"perfume_projection": "Projection",
+"perfume_closest_families": "Fragrance families closest to your taste",
+"perfume_details_all_perfumes": "All perfumes",
+"perfume_details_start_new_journey": "Start a new journey",
+"percentage_family_fruity": "Fruity",
+"percentage_family_white_floral_jasmin": "White floral"
 
 }

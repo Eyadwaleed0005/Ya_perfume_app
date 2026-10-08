@@ -11,6 +11,9 @@ import 'package:ya_perfume/features/questions/data/models/fragrance_family_model
 import 'package:ya_perfume/features/questions/presentation/screens/before_the_families_screen.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/discover_fragrance_families_screen.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/questions_screen.dart';
+import 'package:ya_perfume/features/results/domain/entities/perfume_result_entity.dart';
+import 'package:ya_perfume/features/results/presentation/screens/perfume_details_screen.dart';
+import 'package:ya_perfume/features/results/presentation/screens/result_screen.dart';
 
 class AppRoutes {
   const AppRoutes._();
@@ -32,6 +35,7 @@ class AppRoutes {
 
       case RouteNames.beforeTheFamilies:
         final Object? args = settings.arguments;
+
         if (args is! AppThemeType?) {
           return null;
         }
@@ -44,6 +48,7 @@ class AppRoutes {
 
       case RouteNames.fragranceFamilies:
         final Object? args = settings.arguments;
+
         if (args is! Map<String, dynamic>) {
           return null;
         }
@@ -77,12 +82,40 @@ class AppRoutes {
           settings,
           const Duration(milliseconds: 400),
         );
+
       case RouteNames.percentageSelectionLoading:
         return AppAnimation.animatedNavigation(
           const PercentageSelectionLoadingScreen(),
           settings,
           const Duration(milliseconds: 400),
         );
+
+      case RouteNames.result:
+        final args = settings.arguments;
+
+        if (args is! List<PerfumeResultEntity>) {
+          return null;
+        }
+
+        return AppAnimation.animatedNavigation(
+          ResultScreen(perfumes: args),
+          settings,
+          const Duration(milliseconds: 400),
+        );
+
+      case RouteNames.perfumeDetails:
+        final args = settings.arguments;
+
+        if (args is! PerfumeResultEntity) {
+          return null;
+        }
+
+        return AppAnimation.animatedNavigation(
+          PerfumeDetailsScreen(perfume: args),
+          settings,
+          const Duration(milliseconds: 400),
+        );
+
       default:
         return null;
     }

@@ -17,10 +17,12 @@ void main() {
   late MockGetClosestPerfumesUseCase useCase;
 
   const selection = FragrancePercentages(
-    sweet: 25,
-    fresh: 25,
-    floral: 25,
-    woody: 25,
+    sweet: 20,
+    fresh: 20,
+    floral: 15,
+    woody: 15,
+    fruity: 20,
+    whiteFloralJasmin: 10,
   );
 
   const validState = PercentageSelectionState(percentages: selection);
@@ -31,6 +33,15 @@ void main() {
       code: index + 1,
       name: 'Perfume ${index + 1}',
       percentages: selection,
+      gender: 'رجالي',
+      ageGroups: const ['20-29', '30-39'],
+      usageTime: 'مساءً وليلاً',
+      season: 'الشتاء',
+      preferredScents: const ['خشبي', 'شرقي ودافئ'],
+      avoidedScents: const ['الزهور القوية'],
+      occasions: const ['نزهات وزيارات المقاهي'],
+      styles: const ['أنيق وراقٍ'],
+      projection: 'واضح ومتوازن',
     ),
   );
 
@@ -57,7 +68,7 @@ void main() {
   });
 
   group('PercentageSelectionCubit', () {
-    test('starts with zero percentages and no results', () async {
+    test('starts with six zero percentages and no results', () async {
       final cubit = createCubit();
       addTearDown(cubit.close);
 
@@ -66,6 +77,8 @@ void main() {
       expect(cubit.state.percentages.fresh, 0);
       expect(cubit.state.percentages.floral, 0);
       expect(cubit.state.percentages.woody, 0);
+      expect(cubit.state.percentages.fruity, 0);
+      expect(cubit.state.percentages.whiteFloralJasmin, 0);
       expect(cubit.state.total, 0);
       expect(cubit.state.canSubmit, isFalse);
       expect(cubit.state.perfumes, isEmpty);
@@ -73,20 +86,29 @@ void main() {
 
     group('updatePercentages', () {
       blocTest<PercentageSelectionCubit, PercentageSelectionState>(
-        'updates all four families and enables submission at 100',
+        'updates all six families and enables submission at 100',
         build: createCubit,
         act: (cubit) => cubit.updatePercentages(
           sweet: 10,
           fresh: 20,
-          floral: 30,
-          woody: 40,
+          floral: 15,
+          woody: 15,
+          fruity: 25,
+          whiteFloralJasmin: 15,
         ),
         expect: () => [
           isA<PercentageSelectionState>()
               .having((s) => s.percentages.sweet, 'sweet', 10)
               .having((s) => s.percentages.fresh, 'fresh', 20)
-              .having((s) => s.percentages.floral, 'floral', 30)
-              .having((s) => s.percentages.woody, 'woody', 40)
+              .having((s) => s.percentages.floral, 'floral', 15)
+              .having((s) => s.percentages.woody, 'woody', 15)
+              .having((s) => s.percentages.fruity, 'fruity', 25)
+              .having(
+                (s) => s.percentages.whiteFloralJasmin,
+                'whiteFloralJasmin',
+                15,
+              )
+              .having((s) => s.total, 'total', 100)
               .having((s) => s.canSubmit, 'canSubmit', isTrue),
         ],
       );
@@ -99,28 +121,71 @@ void main() {
         expect: () => [
           isA<PercentageSelectionState>()
               .having((s) => s.percentages.sweet, 'sweet', 35)
-              .having((s) => s.percentages.fresh, 'fresh', 25)
-              .having((s) => s.percentages.floral, 'floral', 25)
-              .having((s) => s.percentages.woody, 'woody', 25)
-              .having((s) => s.total, 'total', 110)
+              .having((s) => s.percentages.fresh, 'fresh', 20)
+              .having((s) => s.percentages.floral, 'floral', 15)
+              .having((s) => s.percentages.woody, 'woody', 15)
+              .having((s) => s.percentages.fruity, 'fruity', 20)
+              .having(
+                (s) => s.percentages.whiteFloralJasmin,
+                'whiteFloralJasmin',
+                10,
+              )
+              .having((s) => s.total, 'total', 115)
               .having((s) => s.canSubmit, 'canSubmit', isFalse),
         ],
       );
 
-      blocTest<PercentageSelectionCubit, PercentageSelectionState>(
-        'accepts zero and 100 as valid family values',
-        build: createCubit,
-        act: (cubit) =>
-            cubit.updatePercentages(sweet: 100, fresh: 0, floral: 0, woody: 0),
-        expect: () => [
-          isA<PercentageSelectionState>()
-              .having((s) => s.percentages.sweet, 'sweet', 100)
-              .having((s) => s.canSubmit, 'canSubmit', isTrue),
-        ],
-      );
+      const familyNames = [
+        'sweet',
+        'fresh',
+        'floral',
+        'woody',
+        'fruity',
+        'whiteFloralJasmin',
+      ];
 
-      final familyNames = ['sweet', 'fresh', 'floral', 'woody'];
-      final invalidValues = [
+      for (var index = 0; index < familyNames.length; index++) {
+        blocTest<PercentageSelectionCubit, PercentageSelectionState>(
+          'accepts ${familyNames[index]} at 100 and the others at zero',
+          build: createCubit,
+          seed: () => validState,
+          act: (cubit) {
+            final values = List<double>.filled(6, 0);
+            values[index] = 100;
+
+            cubit.updatePercentages(
+              sweet: values[0],
+              fresh: values[1],
+              floral: values[2],
+              woody: values[3],
+              fruity: values[4],
+              whiteFloralJasmin: values[5],
+            );
+          },
+          expect: () => [
+            isA<PercentageSelectionState>()
+                .having((s) => s.total, 'total', 100)
+                .having((s) => s.canSubmit, 'canSubmit', isTrue),
+          ],
+          verify: (cubit) {
+            final actualValues = [
+              cubit.state.percentages.sweet,
+              cubit.state.percentages.fresh,
+              cubit.state.percentages.floral,
+              cubit.state.percentages.woody,
+              cubit.state.percentages.fruity,
+              cubit.state.percentages.whiteFloralJasmin,
+            ];
+
+            final expectedValues = List<double>.filled(6, 0);
+            expectedValues[index] = 100;
+
+            expect(actualValues, orderedEquals(expectedValues));
+          },
+        );
+      }
+
+      const invalidValues = [
         -1.0,
         101.0,
         double.nan,
@@ -135,7 +200,7 @@ void main() {
             build: createCubit,
             seed: () => validState,
             act: (cubit) {
-              final values = [25.0, 25.0, 25.0, 25.0];
+              final values = [20.0, 20.0, 15.0, 15.0, 20.0, 10.0];
               values[index] = invalidValue;
 
               cubit.updatePercentages(
@@ -143,6 +208,8 @@ void main() {
                 fresh: values[1],
                 floral: values[2],
                 woody: values[3],
+                fruity: values[4],
+                whiteFloralJasmin: values[5],
               );
             },
             expect: () => <PercentageSelectionState>[],
@@ -160,7 +227,14 @@ void main() {
           percentages: selection,
           status: PercentageSelectionStatus.loading,
         ),
-        act: (cubit) => cubit.updatePercentages(sweet: 50),
+        act: (cubit) => cubit.updatePercentages(
+          sweet: 50,
+          fresh: 10,
+          floral: 10,
+          woody: 10,
+          fruity: 10,
+          whiteFloralJasmin: 10,
+        ),
         expect: () => <PercentageSelectionState>[],
         verify: (cubit) {
           expect(cubit.state.percentages, same(selection));
@@ -175,7 +249,7 @@ void main() {
           status: PercentageSelectionStatus.success,
           perfumes: perfumes,
         ),
-        act: (cubit) => cubit.updatePercentages(sweet: 30),
+        act: (cubit) => cubit.updatePercentages(fruity: 30),
         expect: () => [
           isA<PercentageSelectionState>()
               .having(
@@ -184,7 +258,7 @@ void main() {
                 PercentageSelectionStatus.initial,
               )
               .having((s) => s.perfumes, 'perfumes', isEmpty)
-              .having((s) => s.percentages.sweet, 'sweet', 30),
+              .having((s) => s.percentages.fruity, 'fruity', 30),
         ],
       );
     });
@@ -196,10 +270,12 @@ void main() {
           build: createCubit,
           seed: () => PercentageSelectionState(
             percentages: FragrancePercentages(
-              sweet: total / 4,
-              fresh: total / 4,
-              floral: total / 4,
-              woody: total / 4,
+              sweet: total / 6,
+              fresh: total / 6,
+              floral: total / 6,
+              woody: total / 6,
+              fruity: total / 6,
+              whiteFloralJasmin: total / 6,
             ),
           ),
           act: (cubit) => cubit.findClosestPerfumes(),
@@ -276,6 +352,7 @@ void main() {
             async.flushMicrotasks();
 
             expect(cubit.state.status, PercentageSelectionStatus.success);
+            expect(cubit.state.perfumes, orderedEquals(perfumes));
             expect(async.pendingTimers, isEmpty);
           });
         },
@@ -346,7 +423,14 @@ void main() {
         fakeAsync((async) {
           final cubit = createCubit();
 
-          cubit.updatePercentages(sweet: 25, fresh: 25, floral: 25, woody: 25);
+          cubit.updatePercentages(
+            sweet: selection.sweet,
+            fresh: selection.fresh,
+            floral: selection.floral,
+            woody: selection.woody,
+            fruity: selection.fruity,
+            whiteFloralJasmin: selection.whiteFloralJasmin,
+          );
 
           var completed = false;
 

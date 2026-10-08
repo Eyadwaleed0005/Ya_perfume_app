@@ -18,38 +18,28 @@ class ChoosePerfumeMethodContent extends StatelessWidget {
       children: [
         const SplashBackground(),
         SafeArea(
-          child: Padding(
+          child: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 24.h),
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Align(
-                  alignment: Alignment.topCenter,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 12.h),
-                    child: SizedBox(
-                      width: 1100.w,
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const ChoosePerfumeMethodIntro(),
-                          verticalSpace(60),
-                          const ChoosePerfumeMethodCards(),
-                        ],
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: 1100.w),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: AppAnimation.appStartupEntrance(
+                        child: const ChoosePerfumeMethodBackButton(),
                       ),
                     ),
-                  ),
+                    verticalSpace(16),
+                    const ChoosePerfumeMethodIntro(),
+                    verticalSpace(60),
+                    const ChoosePerfumeMethodCards(),
+                  ],
                 ),
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: 80.w, top: 12.h),
-                    child: AppAnimation.appStartupEntrance(
-                      child: const ChoosePerfumeMethodBackButton(),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

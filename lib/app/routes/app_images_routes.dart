@@ -25,6 +25,7 @@ class AppImage {
   // ===== images =====
   late final String butterflyCircleImg = '${baseImages}butterfly_circle.svg';
   late final String butterflyImg = '${baseImages}butterfly.svg';
+  late final String perfumeBottle = '${baseImages}perfume_bottle.svg';
   late final String butterflySplash = '${baseImages}splash_butterfly.svg';
   late final String goldButterfly = '${baseImages}gold_butterfly.svg';
   late final String splashLogo = '${baseImages}ya_perfume_logo.png';
@@ -36,6 +37,8 @@ class AppImage {
   late final String twoGenderOffImgQ1 = '${baseImagesQ1}two_gender_off.svg';
   late final String perfumeQuestionsCard =
       '${baseImages}perfume_questions_card.svg';
+  late final String perfumeSignature =
+    '${baseImages}perfume_signature.svg';
 
   late final String perfumeRatiosCard = '${baseImages}perfume_ratios_card.svg';
   late final String mothWingTrail =

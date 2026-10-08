@@ -14,6 +14,8 @@ class PercentageSelectionState {
       fresh: 0,
       floral: 0,
       woody: 0,
+      fruity: 0,
+      whiteFloralJasmin: 0,
     ),
     this.status = PercentageSelectionStatus.initial,
     this.perfumes = const [],
