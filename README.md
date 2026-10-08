@@ -90,9 +90,9 @@ The results feature displays prepared results supplied by the discovery flows. S
 
 ## Testing
 
-Tests cover percentage validation, matching calculations, model parsing, asset loading, repositories, recommendation ranking, and Cubit behavior.
+Unit tests cover percentage validation, matching calculations, model parsing, asset loading, repositories, recommendation ranking, and Cubit behavior.
 
-Results integration tests cover displaying recommendations, navigation to perfume details, product code formatting, and starting a new journey.
+Integration tests cover the complete user journey, from choosing a discovery method and entering preferences to viewing recommendations, opening perfume details, and starting a new journey.
 
 ## CI/CD
 
