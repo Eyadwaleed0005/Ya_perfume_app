@@ -7,18 +7,18 @@ void main() {
       final json = <String, dynamic>{
         'code': 1,
         'name': 'sexy boy',
-        "gender": "نسائي",
-        "ageGroups": ["20-29", "30-39"],
-        "usageTime": "صباحاً ونهارًا",
-        "season": "طول العام",
-        "preferredScents": ["زهري", "نظيف ومسكي وبروائح البودرة"],
-        "avoidedScents": ["الزهور القوية", "المسك وروائح البودرة"],
-        "occasions": [
-          "استخدام يومي للعمل أو الدراسة",
-          "موعد رومانسي أو عشاء هادئ",
+        'gender': 'نسائي',
+        'ageGroups': ['20-29', '30-39'],
+        'usageTime': 'صباحاً ونهارًا',
+        'season': 'طول العام',
+        'preferredScents': ['زهري', 'نظيف ومسكي وبروائح البودرة'],
+        'avoidedScents': ['الزهور القوية', 'المسك وروائح البودرة'],
+        'occasions': [
+          'استخدام يومي للعمل أو الدراسة',
+          'موعد رومانسي أو عشاء هادئ',
         ],
-        "styles": ["أنيق وراقٍ", "ناعم ورومانسي"],
-        "projection": "واضح ومتوازن",
+        'styles': ['أنيق وراقٍ', 'ناعم ورومانسي'],
+        'projection': 'واضح ومتوازن',
       };
 
       final model = PerfumeQuestionsModel.fromJson(json);
@@ -39,25 +39,25 @@ void main() {
       expect(model.projection, 'واضح ومتوازن');
     });
 
-    test('accepts a null code', () {
+    test('uses zero as the default when code is null', () {
       final model = PerfumeQuestionsModel.fromJson({
         'code': null,
         'name': 'sexy boy',
-        "gender": "نسائي",
-        "ageGroups": ["20-29", "30-39"],
-        "usageTime": "صباحاً ونهارًا",
-        "season": "طول العام",
-        "preferredScents": ["زهري", "نظيف ومسكي وبروائح البودرة"],
-        "avoidedScents": ["الزهور القوية", "المسك وروائح البودرة"],
-        "occasions": [
-          "استخدام يومي للعمل أو الدراسة",
-          "موعد رومانسي أو عشاء هادئ",
+        'gender': 'نسائي',
+        'ageGroups': ['20-29', '30-39'],
+        'usageTime': 'صباحاً ونهارًا',
+        'season': 'طول العام',
+        'preferredScents': ['زهري', 'نظيف ومسكي وبروائح البودرة'],
+        'avoidedScents': ['الزهور القوية', 'المسك وروائح البودرة'],
+        'occasions': [
+          'استخدام يومي للعمل أو الدراسة',
+          'موعد رومانسي أو عشاء هادئ',
         ],
-        "styles": ["أنيق وراقٍ", "ناعم ورومانسي"],
-        "projection": "واضح ومتوازن",
+        'styles': ['أنيق وراقٍ', 'ناعم ورومانسي'],
+        'projection': 'واضح ومتوازن',
       });
 
-      expect(model.code, isNull);
+      expect(model.code, 0);
     });
   });
 
@@ -66,18 +66,18 @@ void main() {
       'code': null,
       'name': 'sexy boy',
       'numOfAcceptance': 0,
-      "gender": "نسائي",
-      "ageGroups": ["20-29", "30-39"],
-      "usageTime": "صباحاً ونهارًا",
-      "season": "طول العام",
-      "preferredScents": ["زهري", "نظيف ومسكي وبروائح البودرة"],
-      "avoidedScents": ["الزهور القوية", "المسك وروائح البودرة"],
-      "occasions": [
-        "استخدام يومي للعمل أو الدراسة",
-        "موعد رومانسي أو عشاء هادئ",
+      'gender': 'نسائي',
+      'ageGroups': ['20-29', '30-39'],
+      'usageTime': 'صباحاً ونهارًا',
+      'season': 'طول العام',
+      'preferredScents': ['زهري', 'نظيف ومسكي وبروائح البودرة'],
+      'avoidedScents': ['الزهور القوية', 'المسك وروائح البودرة'],
+      'occasions': [
+        'استخدام يومي للعمل أو الدراسة',
+        'موعد رومانسي أو عشاء هادئ',
       ],
-      "styles": ["أنيق وراقٍ", "ناعم ورومانسي"],
-      "projection": "واضح ومتوازن",
+      'styles': ['أنيق وراقٍ', 'ناعم ورومانسي'],
+      'projection': 'واضح ومتوازن',
     });
 
     expect(model.numOfAcceptance, 0);
