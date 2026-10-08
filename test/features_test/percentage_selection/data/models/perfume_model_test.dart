@@ -23,15 +23,17 @@ void main() {
       };
     });
 
-    test('reads code, name, and the four fragrance percentages', () {
+    test('reads code, name, and all six fragrance percentages', () {
       final json = <String, dynamic>{
         PerfumePercentagesJsonKeys.code: 101,
         PerfumePercentagesJsonKeys.name: 'Test Perfume',
         PerfumePercentagesJsonKeys.percentages: <String, dynamic>{
-          PerfumePercentagesJsonKeys.sweet: 30.5,
-          PerfumePercentagesJsonKeys.fresh: 20.5,
-          PerfumePercentagesJsonKeys.floral: 25,
+          PerfumePercentagesJsonKeys.sweet: 20.5,
+          PerfumePercentagesJsonKeys.fresh: 15.5,
+          PerfumePercentagesJsonKeys.floral: 20,
           PerfumePercentagesJsonKeys.woody: 24,
+          PerfumePercentagesJsonKeys.fruity: 12,
+          PerfumePercentagesJsonKeys.whiteFloralJasmin: 8,
         },
       };
 
@@ -39,10 +41,13 @@ void main() {
 
       expect(model.code, 101);
       expect(model.name, 'Test Perfume');
-      expect(model.percentages.sweet, 30.5);
-      expect(model.percentages.fresh, 20.5);
-      expect(model.percentages.floral, 25.0);
+      expect(model.percentages.sweet, 20.5);
+      expect(model.percentages.fresh, 15.5);
+      expect(model.percentages.floral, 20.0);
       expect(model.percentages.woody, 24.0);
+      expect(model.percentages.fruity, 12.0);
+      expect(model.percentages.whiteFloralJasmin, 8.0);
+      expect(model.percentages.total, 100.0);
     });
 
     test('uses zero as the default when code is null', () {
@@ -54,6 +59,8 @@ void main() {
           PerfumePercentagesJsonKeys.fresh: 25,
           PerfumePercentagesJsonKeys.floral: 25,
           PerfumePercentagesJsonKeys.woody: 25,
+          PerfumePercentagesJsonKeys.fruity: 0,
+          PerfumePercentagesJsonKeys.whiteFloralJasmin: 0,
         },
       }, detailsJson: detailsJson);
 
@@ -68,8 +75,10 @@ void main() {
         PerfumePercentagesJsonKeys.percentages: {
           PerfumePercentagesJsonKeys.sweet: 10,
           PerfumePercentagesJsonKeys.fresh: 20,
-          PerfumePercentagesJsonKeys.floral: 30,
-          PerfumePercentagesJsonKeys.woody: 40,
+          PerfumePercentagesJsonKeys.floral: 15,
+          PerfumePercentagesJsonKeys.woody: 25,
+          PerfumePercentagesJsonKeys.fruity: 18,
+          PerfumePercentagesJsonKeys.whiteFloralJasmin: 12,
         },
       }, detailsJson: detailsJson);
 
@@ -77,11 +86,15 @@ void main() {
       expect(model.percentages.fresh, isA<double>());
       expect(model.percentages.floral, isA<double>());
       expect(model.percentages.woody, isA<double>());
+      expect(model.percentages.fruity, isA<double>());
+      expect(model.percentages.whiteFloralJasmin, isA<double>());
 
       expect(model.percentages.sweet, 10.0);
       expect(model.percentages.fresh, 20.0);
-      expect(model.percentages.floral, 30.0);
-      expect(model.percentages.woody, 40.0);
+      expect(model.percentages.floral, 15.0);
+      expect(model.percentages.woody, 25.0);
+      expect(model.percentages.fruity, 18.0);
+      expect(model.percentages.whiteFloralJasmin, 12.0);
     });
 
     test('preserves stored values when their total is below 100', () {
@@ -93,6 +106,8 @@ void main() {
           PerfumePercentagesJsonKeys.fresh: 12,
           PerfumePercentagesJsonKeys.floral: 10,
           PerfumePercentagesJsonKeys.woody: 8.5,
+          PerfumePercentagesJsonKeys.fruity: 4,
+          PerfumePercentagesJsonKeys.whiteFloralJasmin: 2,
         },
       }, detailsJson: detailsJson);
 
@@ -100,13 +115,15 @@ void main() {
       expect(model.percentages.fresh, 12.0);
       expect(model.percentages.floral, 10.0);
       expect(model.percentages.woody, 8.5);
-      expect(model.percentages.total, 46);
+      expect(model.percentages.fruity, 4.0);
+      expect(model.percentages.whiteFloralJasmin, 2.0);
+      expect(model.percentages.total, 52.0);
     });
 
-    test('ignores additional fragrance families', () {
+    test('includes fruity and white floral in the total', () {
       final model = PerfumeModel.fromJson({
         PerfumePercentagesJsonKeys.code: 104,
-        PerfumePercentagesJsonKeys.name: 'Additional Families',
+        PerfumePercentagesJsonKeys.name: 'All Families',
         PerfumePercentagesJsonKeys.percentages: {
           PerfumePercentagesJsonKeys.sweet: 10,
           PerfumePercentagesJsonKeys.fresh: 20,
@@ -121,7 +138,9 @@ void main() {
       expect(model.percentages.fresh, 20.0);
       expect(model.percentages.floral, 15.0);
       expect(model.percentages.woody, 25.0);
-      expect(model.percentages.total, 70);
+      expect(model.percentages.fruity, 18.0);
+      expect(model.percentages.whiteFloralJasmin, 12.0);
+      expect(model.percentages.total, 100.0);
     });
 
     test('reads perfume details from detailsJson', () {
@@ -133,6 +152,8 @@ void main() {
           PerfumePercentagesJsonKeys.fresh: 25,
           PerfumePercentagesJsonKeys.floral: 25,
           PerfumePercentagesJsonKeys.woody: 25,
+          PerfumePercentagesJsonKeys.fruity: 0,
+          PerfumePercentagesJsonKeys.whiteFloralJasmin: 0,
         },
       }, detailsJson: detailsJson);
 
