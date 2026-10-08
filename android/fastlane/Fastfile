@@ -20,4 +20,23 @@ platform :android do
       release_notes: "Ya Perfume development build for team testing"
     )
   end
+
+  desc "Send Ya Perfume main APK to the client"
+  lane :firebase_client_distribution do
+    apk_path = File.expand_path(
+      "../../build/app/outputs/flutter-apk/app-release.apk",
+      __dir__
+    )
+
+    firebase_app_distribution(
+      app: ENV.fetch("FIREBASE_ANDROID_APP_ID"),
+      service_credentials_file: ENV.fetch(
+        "GOOGLE_APPLICATION_CREDENTIALS"
+      ),
+      android_artifact_type: "APK",
+      android_artifact_path: apk_path,
+      groups: "client",
+      release_notes: "Ya Perfume main build for client testing"
+    )
+  end
 end
