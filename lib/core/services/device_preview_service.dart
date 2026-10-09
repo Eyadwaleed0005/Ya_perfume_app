@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 abstract final class DevicePreviewService {
   DevicePreviewService._();
   static const bool enabled =
-      false; // Set to true to enable Device Preview in debug mode
+      true; // Set to true to enable Device Preview in debug mode
 
   static bool get isEnabled {
     return enabled && kDebugMode;

@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
@@ -6,7 +7,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
-import 'package:ya_perfume/core/theme/app_theme_colors.dart';
 import 'package:ya_perfume/core/widgets/custom_button.dart';
 import 'package:ya_perfume/core/widgets/circular_butter_fly.dart';
 import 'package:ya_perfume/core/widgets/custom_background.dart';
@@ -18,90 +18,117 @@ class BeforeTheFamiliesScreenContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppThemeType effectiveThemeType = themeType ?? AppThemeType.normal;
-    AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
+    final effectiveThemeType = themeType ?? AppThemeType.normal;
+    final theme = AppTheme.fromType(effectiveThemeType);
     final isArabic = context.locale.languageCode == 'ar';
 
-    final size = MediaQuery.sizeOf(context);
-    final sw = size.width;
-    final sh = size.height;
+    final textDirection = isArabic
+        ? ui.TextDirection.rtl
+        : ui.TextDirection.ltr;
 
     return Stack(
+      fit: StackFit.expand,
       children: [
         CustomBackground(
           backGroundColor: theme.background,
           primaryColor: theme.primary.withValues(alpha: 0.14),
           secondaryColor: theme.secondary,
         ),
+        SafeArea(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              final horizontalPadding = math.min(
+                32.w,
+                constraints.maxWidth * 0.06,
+              );
+              final verticalPadding = 16.h;
 
-        Positioned(
-          top: sh * 0.03,
-          left: sw * 0.05,
-          child: Text(
-            'app_name'.tr(),
+              final butterflySize = (constraints.maxHeight * 0.20).clamp(
+                64.0,
+                140.0,
+              );
 
-            style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
-              color: theme.title,
-            ),
-          ),
-        ),
+              final buttonWidth = math.min(
+                280.w,
+                constraints.maxWidth - horizontalPadding * 2,
+              );
 
-        Center(
-          child: Column(
-            textDirection: isArabic
-                ? ui.TextDirection.rtl
-                : ui.TextDirection.ltr,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              CircularButterFly(
-                height: sh * 0.20,
-                width: sh * 0.20,
-                background: theme.background,
-              ),
-
-              SizedBox(height: sh * 0.02),
-
-              Text(
-                'discover_your_preferred_scents'.tr(),
-                textDirection: isArabic
-                    ? ui.TextDirection.rtl
-                    : ui.TextDirection.ltr,
-                style: AppTextStyle.font36textPrimarySemiBoldNoto().copyWith(
-                  color: theme.textPrimary,
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              SizedBox(height: sh * 0.015),
-
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 80.w),
-                child: Text(
-                  'choose_up_to_two_families'.tr(),
-                  textDirection: isArabic
-                      ? ui.TextDirection.rtl
-                      : ui.TextDirection.ltr,
-                  style: AppTextStyle.font21textPrimaryRegularNoto().copyWith(
-                    color: theme.textPrimary,
+              return SingleChildScrollView(
+                physics: const BouncingScrollPhysics(),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                    vertical: verticalPadding,
                   ),
-                  textAlign: TextAlign.center,
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: math.max(
+                        0.0,
+                        constraints.maxHeight - verticalPadding * 2,
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Text(
+                            'app_name'.tr(),
+                            style: AppTextStyle.font18TextAccentMediumNoto()
+                                .copyWith(color: theme.title),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 24.h),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CircularButterFly(
+                                height: butterflySize,
+                                width: butterflySize,
+                                background: theme.background,
+                              ),
+                              SizedBox(height: 16.h),
+                              Text(
+                                'discover_your_preferred_scents'.tr(),
+                                textDirection: textDirection,
+                                textAlign: TextAlign.center,
+                                style:
+                                    AppTextStyle.font36textPrimarySemiBoldNoto()
+                                        .copyWith(color: theme.textPrimary),
+                              ),
+                              SizedBox(height: 12.h),
+                              Text(
+                                'choose_up_to_two_families'.tr(),
+                                textDirection: textDirection,
+                                textAlign: TextAlign.center,
+                                style:
+                                    AppTextStyle.font21textPrimaryRegularNoto()
+                                        .copyWith(color: theme.textPrimary),
+                              ),
+                              SizedBox(height: 28.h),
+                              CustomButton(
+                                text: 'choose_preferred_scents'.tr(),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                width: buttonWidth,
+                                height: math.max(44.0, 40.h),
+                                background: theme.primaryButton,
+                                foreground: AppColors.textUltraBlack,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                      ],
+                    ),
+                  ),
                 ),
-              ),
-
-              SizedBox(height: sh * 0.07),
-
-              CustomButton(
-                text: 'choose_preferred_scents'.tr(),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                width: 280.w,
-                height: 40.h,
-                background: theme.primaryButton,
-                foreground: AppColors.textUltraBlack,
-              ),
-            ],
+              );
+            },
           ),
         ),
       ],

@@ -1,7 +1,8 @@
+import 'dart:ui' as ui;
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:snowfall_or_anythings/snowfall_or_anythings.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
@@ -14,8 +15,6 @@ import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_body.dart';
 import 'package:ya_perfume/features/questions/presentation/widgets/questions_widgets/question_header.dart';
 
-import 'dart:ui' as ui;
-
 class QuestionsScreenContent extends StatelessWidget {
   const QuestionsScreenContent({super.key});
 
@@ -23,13 +22,16 @@ class QuestionsScreenContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<QuestionsCubit, QuestionsState>(
       builder: (context, state) {
-        AppThemeType effectiveThemeType =
+        final effectiveThemeType =
             state.selectedThemeType ?? AppThemeType.normal;
-        AppThemeColors theme = AppTheme.fromType(effectiveThemeType);
+
+        final theme = AppTheme.fromType(effectiveThemeType);
         final cubit = context.read<QuestionsCubit>();
+
         final showSnow =
             cubit.currentQuestion.id == '4' &&
             state.selectedOptions.contains('2');
+
         return Stack(
           fit: StackFit.expand,
           children: [
@@ -44,7 +46,7 @@ class QuestionsScreenContent extends StatelessWidget {
                 child: IgnorePointer(
                   child: RepaintBoundary(
                     child: SnowfallOrAnythings(
-                      key: const ValueKey('question-3-option-2-snow'),
+                      key: const ValueKey('question-4-option-2-snow'),
                       numberOfParticles: 50,
                       particleSize: 1,
                       particleSpeed: 0.40,
@@ -58,34 +60,63 @@ class QuestionsScreenContent extends StatelessWidget {
                 ),
               ),
 
-            Column(
-              children: [
-                verticalSpace(16.h),
-                QuestionHeader(
-                  currentIndex: state.currentIndex + 1,
-                  totalQuestions: state.questions.length,
-                  state: state,
-                ),
-
-                Expanded(
-                  child: QuestionBody(cubit: cubit, state: state),
-                ),
-                CustomFooter(
-                  numberSelected: state.selectedOptions.length,
-                  questionId: cubit.currentQuestion.id,
-                  canGoNext: cubit.canContinue,
-                  onNext: () => cubit.next(),
-                  onPrevious: () => cubit.previous(),
-                  onSkip: () => cubit.skip(),
-                  cubit: cubit,
-                  centerWidget: _buildCenterWidget(
-                    cubit.currentQuestion.id,
-                    state.selectedOptions.length,
-                    cubit.skip,
-                    theme,
-                  ),
-                ),
-              ],
+            SafeArea(
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  return SingleChildScrollView(
+                    physics: const ClampingScrollPhysics(),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: constraints.maxHeight,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              verticalSpace(16),
+                              QuestionHeader(
+                                currentIndex: state.currentIndex + 1,
+                                totalQuestions: state.questions.length,
+                                state: state,
+                              ),
+                              verticalSpace(16),
+                              QuestionBody(cubit: cubit, state: state),
+                              verticalSpace(24),
+                            ],
+                          ),
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              CustomFooter(
+                                numberSelected: state.selectedOptions.length,
+                                questionId: cubit.currentQuestion.id,
+                                canGoNext: cubit.canContinue,
+                                onNext: () => cubit.next(),
+                                onPrevious: () => cubit.previous(),
+                                onSkip: () => cubit.skip(),
+                                cubit: cubit,
+                                centerWidget: _buildCenterWidget(
+                                  context: context,
+                                  questionId: cubit.currentQuestion.id,
+                                  numberSelected: state.selectedOptions.length,
+                                  onSkip: cubit.skip,
+                                  theme: theme,
+                                ),
+                              ),
+                              verticalSpace(16),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         );
@@ -93,12 +124,15 @@ class QuestionsScreenContent extends StatelessWidget {
     );
   }
 
-  Widget _buildCenterWidget(
-    String questionId,
-    int numberSelected,
-    Function() onSkip,
-    AppThemeColors theme,
-  ) {
+  Widget _buildCenterWidget({
+    required BuildContext context,
+    required String questionId,
+    required int numberSelected,
+    required VoidCallback onSkip,
+    required AppThemeColors theme,
+  }) {
+    final isArabic = context.locale.languageCode == 'ar';
+
     if (questionId == '5') {
       return Text(
         'selected_families_count'.tr(args: ['$numberSelected']),
@@ -106,21 +140,24 @@ class QuestionsScreenContent extends StatelessWidget {
           color: theme.textSecondary,
         ),
         textAlign: TextAlign.center,
-        textDirection: ui.TextDirection.rtl,
+        textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
       );
     }
+
     if (questionId == '6') {
       return InkWell(
         onTap: onSkip,
         child: Text(
           'skip_question'.tr(),
-          style: AppTextStyle.font17textAccentUnderLineMediumNoto()
-              .copyWith(color: theme.title, decorationColor: theme.title)
-              .copyWith(color: theme.title, decorationColor: theme.title),
-          textAlign: TextAlign.right,
+          style: AppTextStyle.font17textAccentUnderLineMediumNoto().copyWith(
+            color: theme.title,
+            decorationColor: theme.title,
+          ),
+          textAlign: TextAlign.center,
         ),
       );
     }
+
     return const SizedBox.shrink();
   }
 }
