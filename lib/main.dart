@@ -14,11 +14,8 @@ import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
   setupServiceLocator();
-
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.landscapeLeft,
   ]);
@@ -46,7 +43,6 @@ Future<void> main() async {
 
 class YaPerfumeApp extends StatelessWidget {
   const YaPerfumeApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
