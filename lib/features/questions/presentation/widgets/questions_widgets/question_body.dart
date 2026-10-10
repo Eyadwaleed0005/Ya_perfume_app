@@ -33,7 +33,7 @@ class QuestionBody extends StatelessWidget {
               : MediaQuery.sizeOf(context).height;
 
           return Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               QuestionImage(
                 imagePath: imagePath,

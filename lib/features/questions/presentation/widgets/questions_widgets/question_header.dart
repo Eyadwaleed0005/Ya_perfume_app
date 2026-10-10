@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
 import 'package:ya_perfume/features/questions/presentation/cubit/questions_cubit.dart';
@@ -25,44 +26,32 @@ class QuestionHeader extends StatelessWidget {
 
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 24.w),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                child: Text(
-                  'app_name'.tr(),
-                  textAlign: TextAlign.start,
-                  style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
-                    color: theme.title,
-                  ),
-                ),
-              ),
-              SizedBox(width: 12.w),
-              Flexible(
-                child: Text(
-                  'question_progress'.tr(
-                    args: ['$currentIndex', '$totalQuestions'],
-                  ),
-                  textAlign: TextAlign.end,
-                  style: AppTextStyle.font16textMutedMediumNoto().copyWith(
-                    color: theme.textSecondary,
-                  ),
-                ),
-              ),
-            ],
+          Text(
+            'app_name'.tr(),
+            style: AppTextStyle.font18TextAccentMediumNoto().copyWith(
+              color: theme.title,
+            ),
           ),
-          SizedBox(height: 10.h),
-          SizedBox(
-            width: double.infinity,
+          horizontalSpace(12),
+          Expanded(
             child: FittedBox(
               fit: BoxFit.scaleDown,
+              alignment: Alignment.center,
               child: QuestionProgress(
                 currentIndex: currentIndex - 1,
                 totalQuestions: totalQuestions,
               ),
+            ),
+          ),
+          horizontalSpace(12),
+          Text(
+            'question_progress'.tr(args: ['$currentIndex', '$totalQuestions']),
+            textAlign: TextAlign.end,
+            style: AppTextStyle.font16textMutedMediumNoto().copyWith(
+              color: theme.textSecondary,
             ),
           ),
         ],

@@ -11,5 +11,5 @@ abstract class PerfumeQuestionsJsonKeys {
   static const String avoidedScents = 'avoidedScents';
   static const String occasions = 'occasions';
   static const String styles = 'styles';
-  static const String projection = 'projection';
+  static const String sillage = 'sillage';
 }

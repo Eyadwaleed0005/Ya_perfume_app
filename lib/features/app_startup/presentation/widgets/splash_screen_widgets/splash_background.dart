@@ -8,38 +8,41 @@ class SplashBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.bgCanvas,
-      child: LayoutBuilder(
-        builder: (context, constraints) {
-          final shortestSide = constraints.biggest.shortestSide;
+    final butterflyPath = AppImage().butterflySplash;
 
-          return Stack(
-            fit: StackFit.expand,
-            clipBehavior: Clip.hardEdge,
-            children: [
-              for (final butterfly in _butterflies)
-                Align(
-                  alignment: butterfly.alignment,
-                  child: Opacity(
-                    opacity: butterfly.opacity,
+    return RepaintBoundary(
+      child: ColoredBox(
+        color: AppColors.bgCanvas,
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final shortestSide = constraints.biggest.shortestSide;
+
+            return Stack(
+              fit: StackFit.expand,
+              clipBehavior: Clip.hardEdge,
+              children: [
+                for (final butterfly in _butterflies)
+                  Align(
+                    alignment: butterfly.alignment,
                     child: Transform.rotate(
                       angle: butterfly.rotation,
                       child: SvgPicture.asset(
-                        AppImage().butterflySplash,
+                        butterflyPath,
                         width: shortestSide * butterfly.size,
                         fit: BoxFit.contain,
-                        colorFilter: const ColorFilter.mode(
-                          AppColors.goldAccent,
+                        colorFilter: ColorFilter.mode(
+                          AppColors.goldAccent.withValues(
+                            alpha: butterfly.opacity,
+                          ),
                           BlendMode.srcIn,
                         ),
                       ),
                     ),
                   ),
-                ),
-            ],
-          );
-        },
+              ],
+            );
+          },
+        ),
       ),
     );
   }

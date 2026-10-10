@@ -12,44 +12,15 @@ class AppStartupAnimationWidget extends StatelessWidget {
   final Widget child;
   final Duration delay;
 
-  Duration _remainingRouteTransition(BuildContext context) {
-    final route = ModalRoute.of(context);
-
-    if (route is! PageRoute) {
-      return Duration.zero;
-    }
-
-    final animation = route.animation;
-
-    if (animation == null || animation.status == AnimationStatus.completed) {
-      return Duration.zero;
-    }
-
-    final remaining = (1 - animation.value).clamp(0.0, 1.0);
-
-    return Duration(
-      microseconds: (route.transitionDuration.inMicroseconds * remaining)
-          .round(),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    final entranceDelay = _remainingRouteTransition(context) + delay;
-
-    return child
-        .animate(delay: entranceDelay)
-        .fadeIn(duration: 400.ms, curve: Curves.easeOut)
+    return RepaintBoundary(child: child)
+        .animate(delay: delay)
+        .fadeIn(duration: 250.ms, curve: Curves.easeOut)
         .moveY(
-          begin: 28.h,
+          begin: 12.h,
           end: 0,
-          duration: 400.ms,
-          curve: Curves.easeOutCubic,
-        )
-        .scale(
-          begin: const Offset(0.96, 0.96),
-          end: const Offset(1, 1),
-          duration: 400.ms,
+          duration: 250.ms,
           curve: Curves.easeOutCubic,
         );
   }
