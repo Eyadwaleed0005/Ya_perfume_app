@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ya_perfume/app/routes/route_names.dart';
-import 'package:ya_perfume/core/animation/app_animation.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
@@ -22,83 +21,84 @@ class QuestionContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final question = cubit.currentQuestion;
+    final note = question.note.tr();
+    final isArabic = context.locale.languageCode == 'ar';
+
+    final textAlign = isArabic ? TextAlign.right : TextAlign.left;
+
     return Expanded(
       flex: 2,
-      child: AppAnimation.animatedContentSwitcher(
-        child: Column(
-          key: ValueKey(cubit.currentQuestion.id),
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: isArabic
+            ? CrossAxisAlignment.end
+            : CrossAxisAlignment.start,
+        children: [
+          Text(
+            question.title.tr(),
+            style: AppTextStyle.font15textAccentRegularNoto().copyWith(
+              color: theme.title,
+            ),
+            textAlign: textAlign,
+          ),
+          verticalSpace(8),
+          Text(
+            question.questionText.tr(),
+            style: AppTextStyle.font34textPrimarySemiBoldNoto().copyWith(
+              color: theme.textPrimary,
+            ),
+            textAlign: textAlign,
+          ),
+          if (note.trim().isNotEmpty) ...[
             verticalSpace(8),
             Text(
-              cubit.currentQuestion.title.tr(),
-              style: AppTextStyle.font15textAccentRegularNoto().copyWith(
-                color: theme.title,
-              ),
-              textAlign: TextAlign.right,
-            ),
-            verticalSpace(16),
-            Text(
-              cubit.currentQuestion.questionText.tr(),
-              style: AppTextStyle.font34textPrimarySemiBoldNoto().copyWith(
-                color: theme.textPrimary,
-              ),
-              textAlign: TextAlign.right,
-            ),
-            verticalSpace(8),
-            Text(
-              cubit.currentQuestion.note.tr(),
+              note,
               style: AppTextStyle.font17textMutedRegularNoto().copyWith(
                 color: theme.textSecondary,
               ),
-              textAlign: TextAlign.right,
+              textAlign: textAlign,
             ),
-            verticalSpace(8),
-            Expanded(
-              child: QuestionOptions(
-                cubit: cubit,
-                availableHeight: availableHeight,
-              ),
-            ),
+          ],
+          verticalSpace(16),
+
+          QuestionOptions(cubit: cubit, availableHeight: availableHeight),
+
+          if (question.id == '5') ...[
             verticalSpace(12),
-            if (cubit.currentQuestion.id == '5') ...[
-              InkWell(
-                onTap: () {
-                  if (cubit.state.families.isEmpty) {
-                    return;
-                  }
-                  Navigator.of(context).pushNamed(
-                    RouteNames.fragranceFamilies,
-                    arguments: {
-                      'families': cubit.state.families,
-                      'themeType': cubit.state.selectedThemeType,
-                    },
-                  );
-                },
-                child: Text(
-                  'learn_family_differences'.tr(),
-                  style: AppTextStyle.font16textAccentUnderLineMediumNoto()
-                      .copyWith(
-                        color: theme.title,
-                        decorationColor: theme.title,
-                      ),
-                  textAlign: TextAlign.right,
-                ),
+            InkWell(
+              onTap: () {
+                if (cubit.state.families.isEmpty) {
+                  return;
+                }
+
+                Navigator.of(context).pushNamed(
+                  RouteNames.fragranceFamilies,
+                  arguments: {
+                    'families': cubit.state.families,
+                    'themeType': cubit.state.selectedThemeType,
+                  },
+                );
+              },
+              child: Text(
+                'learn_family_differences'.tr(),
+                style: AppTextStyle.font16textAccentUnderLineMediumNoto()
+                    .copyWith(color: theme.title, decorationColor: theme.title),
+                textAlign: textAlign,
               ),
+            ),
+            if (cubit.state.showInfo) ...[
               verticalSpace(8),
-              cubit.state.showInfo
-                  ? Text(
-                      'maximum_two_families_message'.tr(),
-                      style: AppTextStyle.font16textAccentMediumNoto().copyWith(
-                        color: theme.title,
-                      ),
-                      textAlign: TextAlign.right,
-                    )
-                  : const SizedBox.shrink(),
-              verticalSpace(12),
+              Text(
+                'maximum_two_families_message'.tr(),
+                style: AppTextStyle.font16textAccentMediumNoto().copyWith(
+                  color: theme.title,
+                ),
+                textAlign: textAlign,
+              ),
             ],
           ],
-        ),
+        ],
       ),
     );
   }

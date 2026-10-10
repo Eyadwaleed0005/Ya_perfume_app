@@ -28,7 +28,14 @@ class QuestionsScreen extends StatelessWidget {
           if (state.status == QuestionsStatus.loading) {
             Navigator.of(context)
                 .pushNamed(RouteNames.percentageSelectionLoading);
-          }
+          }else if (state.status == QuestionsStatus.loaded) {
+              final results = state.perfumes
+                  .map((perfume) => perfume.toResultEntity())
+                  .toList(growable: false);
+
+              Navigator.of(context)
+                  .pushReplacementNamed(RouteNames.result, arguments: results);
+            }
         },
         child: AnnotatedRegion<SystemUiOverlayStyle>(
           value: AppSystemUi.dark(),

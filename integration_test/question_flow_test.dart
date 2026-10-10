@@ -7,6 +7,7 @@ import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/features/percentage_selection/presentation/screens/percentage_selection_loading_screen.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/before_the_families_screen.dart';
 import 'package:ya_perfume/features/questions/presentation/screens/questions_screen.dart';
+import 'package:ya_perfume/features/results/presentation/screens/result_screen.dart';
 import 'package:ya_perfume/main.dart';
 
 Widget _app() {
@@ -198,5 +199,10 @@ void main() {
       find.text('percentage_selection_loading_title'.tr()),
       findsOneWidget,
     );
+
+    await tester.pumpAndSettle();
+    expect(find.byType(ResultScreen), findsOneWidget);
+
+    expect(find.text('results_title'.tr()), findsOneWidget);
   });
 }

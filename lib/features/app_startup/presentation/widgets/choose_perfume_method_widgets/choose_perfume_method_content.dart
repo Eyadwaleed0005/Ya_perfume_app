@@ -30,11 +30,15 @@ class ChoosePerfumeMethodContent extends StatelessWidget {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: AppAnimation.appStartupEntrance(
+                        delay: const Duration(milliseconds: 100),
                         child: const ChoosePerfumeMethodBackButton(),
                       ),
                     ),
                     verticalSpace(16),
-                    const ChoosePerfumeMethodIntro(),
+                    AppAnimation.appStartupEntrance(
+                      delay: const Duration(milliseconds: 250),
+                      child: const ChoosePerfumeMethodIntro(),
+                    ),
                     verticalSpace(60),
                     const ChoosePerfumeMethodCards(),
                   ],

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:ya_perfume/core/constants/app_asset_paths.dart';
 import 'package:ya_perfume/core/constants/perfume_percentages_json_keys.dart';
 import 'package:ya_perfume/features/percentage_selection/data/models/perfume_model.dart';
+
 import 'percentage_selection_data_source.dart';
 
 class LocalPercentageSelectionDataSource
@@ -20,34 +21,52 @@ class LocalPercentageSelectionDataSource
     ]);
 
     final percentagesList = jsonDecode(jsonStrings[0]) as List<dynamic>;
-
     final detailsList = jsonDecode(jsonStrings[1]) as List<dynamic>;
 
-    // TODO: Replace name-based matching with code-based matching
-    // once perfume codes are populated consistently in both data files.
-    final detailsByName = <String, Map<String, dynamic>>{};
+    final detailsByCode = <int, Map<String, dynamic>>{};
 
     for (final item in detailsList) {
       final details = item as Map<String, dynamic>;
-      final name = details[PerfumePercentagesJsonKeys.name] as String;
+      final code = details[PerfumePercentagesJsonKeys.code] as int;
 
-      if (detailsByName.containsKey(name)) {
-        throw StateError('Duplicate perfume details for "$name".');
+      if (detailsByCode.containsKey(code)) {
+        throw StateError('Duplicate perfume details for code $code.');
       }
-      detailsByName[name] = details;
+
+      detailsByCode[code] = details;
     }
 
-    return percentagesList
-        .map((item) {
-          final json = item as Map<String, dynamic>;
-          final name = json[PerfumePercentagesJsonKeys.name] as String;
-          final details = detailsByName[name];
+    final perfumes = <PerfumeModel>[];
+    final percentageCodes = <int>{};
 
-          if (details == null) {
-            throw StateError('Perfume details not found for "$name".');
-          }
-          return PerfumeModel.fromJson(json, detailsJson: details);
-        })
-        .toList(growable: false);
+    for (final item in percentagesList) {
+      final json = item as Map<String, dynamic>;
+      final code = json[PerfumePercentagesJsonKeys.code] as int;
+
+      if (!percentageCodes.add(code)) {
+        throw StateError('Duplicate perfume percentages for code $code.');
+      }
+
+      final details = detailsByCode[code];
+
+      if (details == null) {
+        throw StateError('Perfume details not found for code $code.');
+      }
+
+      perfumes.add(PerfumeModel.fromJson(json, detailsJson: details));
+    }
+
+    final missingPercentageCodes = detailsByCode.keys.toSet().difference(
+      percentageCodes,
+    );
+
+    if (missingPercentageCodes.isNotEmpty) {
+      throw StateError(
+        'Perfume percentages not found for codes: '
+        '${missingPercentageCodes.join(', ')}.',
+      );
+    }
+
+    return perfumes.toList(growable: false);
   }
 }

@@ -23,10 +23,11 @@ class PerfumeModel extends PerfumeEntity {
     required Map<String, dynamic> detailsJson,
   }) {
     final percentages =
-        json[PerfumePercentagesJsonKeys.percentages] as Map<String, dynamic>;
+        (json[PerfumePercentagesJsonKeys.percentages] ?? json)
+            as Map<String, dynamic>;
 
     return PerfumeModel(
-      code: (json[PerfumePercentagesJsonKeys.code] as int?) ?? 0,
+      code: json[PerfumePercentagesJsonKeys.code] as int,
       name: json[PerfumePercentagesJsonKeys.name] as String,
       percentages: FragrancePercentages(
         sweet: (percentages[PerfumePercentagesJsonKeys.sweet] as num)
@@ -62,7 +63,7 @@ class PerfumeModel extends PerfumeEntity {
       styles: List<String>.unmodifiable(
         detailsJson[PerfumePercentagesJsonKeys.styles] as List<dynamic>,
       ),
-      projection: detailsJson[PerfumePercentagesJsonKeys.projection] as String,
+      projection: detailsJson[PerfumePercentagesJsonKeys.sillage] as String,
     );
   }
 }

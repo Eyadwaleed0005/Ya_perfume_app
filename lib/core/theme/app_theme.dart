@@ -36,9 +36,9 @@ class AppTheme {
   static const AppThemeColors normal = AppThemeColors(
     background: AppColors.normalBackground,
     surfaceOn: AppColors.bgAccent,
-    primary: AppColors.bgAccent,
+    primary: AppColors.goldAccent,
     surfaceOff: AppColors.bgSurface,
-    secondary: AppColors.bgAccent,
+    secondary: AppColors.goldAccent,
     title: AppColors.textAccent,
     textPrimary: AppColors.pureWhite,
     textSecondary: AppColors.offWhite,

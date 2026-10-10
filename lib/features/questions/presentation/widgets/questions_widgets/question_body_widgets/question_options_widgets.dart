@@ -6,7 +6,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ya_perfume/app/routes/app_images_routes.dart';
 import 'package:ya_perfume/core/animation/app_animation.dart';
-import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
 import 'package:ya_perfume/core/theme/app_theme_colors.dart';
@@ -20,58 +19,25 @@ class QuestionOptionsWidgets {
   QuestionOptionsWidgets({required this.cubit, required this.availableHeight});
 
   Widget buildQuestionFour(BuildContext context, AppThemeColors theme) {
-    final firstOption = cubit.currentQuestion.options[0];
-    final secondOption = cubit.currentQuestion.options[1];
-    final thirdOption = cubit.currentQuestion.options[2];
+    final options = cubit.currentQuestion.options;
 
-    final spacing = (availableHeight * 0.05).clamp(6.0, 12.h);
-    final topSpacing = (availableHeight * 0.03).clamp(4.0, 12.h);
-    final optionHeight = (availableHeight - topSpacing - spacing) / 2;
-    final isArabic = context.locale.languageCode == 'ar';
+    if (options.length != 3) {
+      return buildDefaultOptions(context, theme);
+    }
 
     return Directionality(
-      textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
+      textDirection: _textDirection(context),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: topSpacing),
-          Row(
-            children: [
-              Expanded(
-                child: SizedBox(
-                  height: optionHeight,
-                  child: buildOption(
-                    context: context,
-                    option: firstOption,
-                    theme: theme,
-                    optionHeight: optionHeight,
-                  ),
-                ),
-              ),
-              horizontalSpace(12.w),
-              Expanded(
-                child: SizedBox(
-                  height: optionHeight,
-                  child: buildOption(
-                    context: context,
-                    option: secondOption,
-                    theme: theme,
-                    optionHeight: optionHeight,
-                  ),
-                ),
-              ),
-            ],
+          _buildRow(
+            context: context,
+            theme: theme,
+            options: options.take(2).toList(),
           ),
-          SizedBox(height: spacing),
-          SizedBox(
-            width: double.infinity,
-            height: optionHeight,
-            child: buildOption(
-              context: context,
-              option: thirdOption,
-              theme: theme,
-              optionHeight: optionHeight,
-            ),
-          ),
+          SizedBox(height: 12.h),
+          buildOption(context: context, option: options[2], theme: theme),
         ],
       ),
     );
@@ -79,38 +45,88 @@ class QuestionOptionsWidgets {
 
   Widget buildDefaultOptions(BuildContext context, AppThemeColors theme) {
     final options = cubit.currentQuestion.options;
-    final optionsLength = options.length;
-    final crossAxisCount = optionsLength >= 4 ? 2 : 1;
-    final rowCount = (optionsLength / crossAxisCount).ceil();
-    final isArabic = context.locale.languageCode == 'ar';
 
-    final mainAxisSpacing = rowCount > 1
-        ? (availableHeight * 0.035).clamp(4.0, 12.h)
-        : 0.0;
-    final totalSpacing = (rowCount - 1) * mainAxisSpacing;
-    final optionHeight = (availableHeight - totalSpacing) / rowCount;
+    if (options.isEmpty) {
+      return const SizedBox.shrink();
+    }
 
     return Directionality(
-      textDirection: isArabic ? ui.TextDirection.rtl : ui.TextDirection.ltr,
-      child: GridView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        padding: EdgeInsets.zero,
-        itemCount: optionsLength,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          crossAxisSpacing: 12.w,
-          mainAxisSpacing: mainAxisSpacing,
-          mainAxisExtent: optionHeight,
-        ),
-        itemBuilder: (context, index) {
-          final option = options[index];
-          return buildOption(
-            context: context,
-            option: option,
-            theme: theme,
-            optionHeight: optionHeight,
+      textDirection: _textDirection(context),
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          final columns = options.length >= 4 && constraints.maxWidth >= 320
+              ? 2
+              : 1;
+
+          final rows = <Widget>[];
+
+          for (var index = 0; index < options.length; index += columns) {
+            if (rows.isNotEmpty) {
+              rows.add(SizedBox(height: 12.h));
+            }
+
+            final end = index + columns > options.length
+                ? options.length
+                : index + columns;
+
+            rows.add(
+              _buildRow(
+                context: context,
+                theme: theme,
+                options: options.sublist(index, end),
+                columns: columns,
+              ),
+            );
+          }
+
+          return Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: rows,
           );
         },
+      ),
+    );
+  }
+
+  ui.TextDirection _textDirection(BuildContext context) {
+    return context.locale.languageCode == 'ar'
+        ? ui.TextDirection.rtl
+        : ui.TextDirection.ltr;
+  }
+
+  Widget _buildRow({
+    required BuildContext context,
+    required AppThemeColors theme,
+    required List<QuestionOption> options,
+    int columns = 2,
+  }) {
+    if (columns == 1) {
+      return buildOption(context: context, option: options.first, theme: theme);
+    }
+
+    return IntrinsicHeight(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Expanded(
+            child: buildOption(
+              context: context,
+              option: options.first,
+              theme: theme,
+            ),
+          ),
+          SizedBox(width: 12.w),
+          Expanded(
+            child: options.length > 1
+                ? buildOption(
+                    context: context,
+                    option: options[1],
+                    theme: theme,
+                  )
+                : const SizedBox.shrink(),
+          ),
+        ],
       ),
     );
   }
@@ -123,120 +139,87 @@ class QuestionOptionsWidgets {
   }) {
     final isSelected = cubit.state.selectedOptions.contains(option.id);
     final isArabic = context.locale.languageCode == 'ar';
+    final textDirection = _textDirection(context);
+
     final isOptionTwo = option.id == '2' && cubit.currentQuestion.id == '4';
     final showFrostCover = isOptionTwo && isSelected;
-    final verticalPadding = optionHeight != null
-        ? (optionHeight * 0.08).clamp(2.0, 6.h)
-        : 6.h;
-    final indicatorSize = optionHeight != null
-        ? (optionHeight * 0.35).clamp(14.r, 20.r)
-        : 20.r;
+
+    final subtitle = option.subtitle?.tr();
+    final hasSubtitle = subtitle != null && subtitle.trim().isNotEmpty;
 
     return InkWell(
-      onTap: () {
-        cubit.toggleOption(option.id);
-      },
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 4.w),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 300),
-          curve: Curves.easeInOut,
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: showFrostCover
-                  ? AppColors.borderSnow.withValues(alpha: 0.68)
-                  : isSelected
-                  ? theme.borderOn
-                  : theme.borderOff.withValues(alpha: 0.28),
-              width: 0.5.w,
-            ),
-            borderRadius: BorderRadius.circular(16.r),
+      borderRadius: BorderRadius.circular(16.r),
+      onTap: () => cubit.toggleOption(option.id),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeInOut,
+        constraints: BoxConstraints(minHeight: 64.h),
+        clipBehavior: Clip.antiAlias,
+        decoration: BoxDecoration(
+          border: Border.all(
             color: showFrostCover
-                ? AppColors.blueSnow
+                ? AppColors.borderSnow.withValues(alpha: 0.68)
                 : isSelected
-                ? theme.surfaceOn.withValues(alpha: 0.28)
-                : theme.surfaceOff,
+                ? theme.borderOn
+                : theme.borderOff.withValues(alpha: 0.28),
+            width: 0.5.w,
           ),
-          child: Stack(
-            children: [
-              if (isOptionTwo) FrostCover(isVisible: showFrostCover),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 8.w,
-                  vertical: verticalPadding,
-                ),
-                child: Column(
-                  textDirection: isArabic
-                      ? ui.TextDirection.rtl
-                      : ui.TextDirection.ltr,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Row(
-                      textDirection: isArabic
-                          ? ui.TextDirection.rtl
-                          : ui.TextDirection.ltr,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
+          borderRadius: BorderRadius.circular(16.r),
+          color: showFrostCover
+              ? AppColors.blueSnow
+              : isSelected
+              ? theme.surfaceOn.withValues(alpha: 0.28)
+              : theme.surfaceOff,
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            if (isOptionTwo) FrostCover(isVisible: showFrostCover),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+              child: Row(
+                textDirection: textDirection,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  buildSelectionIndicator(isSelected, theme, size: 20.r),
+                  SizedBox(width: 10.w),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        buildSelectionIndicator(
-                          isSelected,
-                          theme,
-                          size: indicatorSize,
+                        Text(
+                          option.text.tr(),
+                          textDirection: textDirection,
+                          textAlign: isArabic
+                              ? TextAlign.right
+                              : TextAlign.left,
+                          style: AppTextStyle.font18textPrimaryMediumNoto()
+                              .copyWith(
+                                color: showFrostCover
+                                    ? AppColors.textSecondary
+                                    : theme.textPrimary,
+                              ),
                         ),
-                        horizontalSpace(8.w),
-                        Expanded(
-                          child: FittedBox(
-                            fit: BoxFit.scaleDown,
-                            alignment: isArabic
-                                ? Alignment.centerRight
-                                : Alignment.centerLeft,
-                            child: Text(
-                              option.text.tr(),
-                              textDirection: isArabic
-                                  ? ui.TextDirection.rtl
-                                  : ui.TextDirection.ltr,
-                              style: AppTextStyle.font18textPrimaryMediumNoto()
-                                  .copyWith(
-                                    color: showFrostCover
-                                        ? AppColors.textSecondary
-                                        : theme.textPrimary,
-                                  ),
-                              maxLines: 1,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    if (option.subtitle != null) ...[
-                      SizedBox(
-                        height: optionHeight != null
-                            ? (optionHeight * 0.04).clamp(1.0, 4.h)
-                            : 2.h,
-                      ),
-                      Expanded(
-                        child: FittedBox(
-                          fit: BoxFit.scaleDown,
-                          alignment: isArabic
-                              ? Alignment.centerRight
-                              : Alignment.centerLeft,
-                          child: Text(
-                            option.subtitle!.tr(),
-                            textDirection: isArabic
-                                ? ui.TextDirection.rtl
-                                : ui.TextDirection.ltr,
+                        if (hasSubtitle) ...[
+                          SizedBox(height: 4.h),
+                          Text(
+                            subtitle,
+                            textDirection: textDirection,
+                            textAlign: isArabic
+                                ? TextAlign.right
+                                : TextAlign.left,
                             style: AppTextStyle.font15textMutedRegularNoto()
                                 .copyWith(color: theme.textSecondary),
-                            maxLines: 1,
                           ),
-                        ),
-                      ),
-                    ],
-                  ],
-                ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -248,6 +231,7 @@ class QuestionOptionsWidgets {
     double? size,
   }) {
     final iconSize = size ?? 20.r;
+
     return AppAnimation.animatedSelectionIndicator(
       isSelected: isSelected,
       selectedWidget: Icon(
@@ -272,13 +256,18 @@ class FrostCover extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Positioned.fill(
-      child: AnimatedOpacity(
-        opacity: isVisible ? 1.0 : 0.0,
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16.r),
-          child: SvgPicture.asset(AppImage().naturalFrostQ4, fit: BoxFit.fill),
+      child: IgnorePointer(
+        child: AnimatedOpacity(
+          opacity: isVisible ? 1.0 : 0.0,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(16.r),
+            child: SvgPicture.asset(
+              AppImage().naturalFrostQ4,
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
       ),
     );

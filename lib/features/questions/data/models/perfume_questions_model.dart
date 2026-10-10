@@ -19,22 +19,28 @@ class PerfumeQuestionsModel extends PerfumeQuestionsEntity {
 
   factory PerfumeQuestionsModel.fromJson(Map<String, dynamic> json) {
     return PerfumeQuestionsModel(
-      code: json[PerfumeQuestionsJsonKeys.code] ?? 0,
-      name: json[PerfumeQuestionsJsonKeys.name] ?? 'none name',
+      code: json[PerfumeQuestionsJsonKeys.code] as int,
+      name: json[PerfumeQuestionsJsonKeys.name] as String,
       numOfAcceptance: 0,
-      gender: json[PerfumeQuestionsJsonKeys.gender] ?? 'none gender',
-      ageGroups: json[PerfumeQuestionsJsonKeys.ageGroups] ?? 'none ageGroups',
-      usageTime: json[PerfumeQuestionsJsonKeys.usageTime] ?? 'none usageTime',
-      season: json[PerfumeQuestionsJsonKeys.season] ?? 'none season',
-      preferredScents:
-          json[PerfumeQuestionsJsonKeys.preferredScents] ??
-          'none preferredScents',
-      avoidedScents:
-          json[PerfumeQuestionsJsonKeys.avoidedScents] ?? 'none avoidedScents',
-      occasions: json[PerfumeQuestionsJsonKeys.occasions] ?? 'none occasions',
-      styles: json[PerfumeQuestionsJsonKeys.styles] ?? 'none styles',
-      projection:
-          json[PerfumeQuestionsJsonKeys.projection] ?? 'none projection',
+      gender: json[PerfumeQuestionsJsonKeys.gender] as String,
+      ageGroups: List<String>.unmodifiable(
+        json[PerfumeQuestionsJsonKeys.ageGroups] as List<dynamic>,
+      ),
+      usageTime: json[PerfumeQuestionsJsonKeys.usageTime] as String,
+      season: json[PerfumeQuestionsJsonKeys.season] as String,
+      preferredScents: List<String>.unmodifiable(
+        json[PerfumeQuestionsJsonKeys.preferredScents] as List<dynamic>,
+      ),
+      avoidedScents: List<String>.unmodifiable(
+        json[PerfumeQuestionsJsonKeys.avoidedScents] as List<dynamic>,
+      ),
+      occasions: List<String>.unmodifiable(
+        json[PerfumeQuestionsJsonKeys.occasions] as List<dynamic>,
+      ),
+      styles: List<String>.unmodifiable(
+        json[PerfumeQuestionsJsonKeys.styles] as List<dynamic>,
+      ),
+      projection: json[PerfumeQuestionsJsonKeys.sillage] as String,
     );
   }
 
@@ -51,7 +57,7 @@ class PerfumeQuestionsModel extends PerfumeQuestionsEntity {
       PerfumeQuestionsJsonKeys.avoidedScents: avoidedScents,
       PerfumeQuestionsJsonKeys.occasions: occasions,
       PerfumeQuestionsJsonKeys.styles: styles,
-      PerfumeQuestionsJsonKeys.projection: projection,
+      PerfumeQuestionsJsonKeys.sillage: projection,
     };
   }
 }

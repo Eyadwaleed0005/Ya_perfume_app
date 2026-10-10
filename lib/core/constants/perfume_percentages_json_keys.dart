@@ -3,12 +3,12 @@ abstract final class PerfumePercentagesJsonKeys {
   static const String name = 'name';
   static const String percentages = 'percentages';
 
-  static const String sweet = 'Sweet';
-  static const String fresh = 'Fresh';
-  static const String floral = 'Floral';
-  static const String woody = 'Woody';
-  static const String fruity = 'Fruity';
-  static const String whiteFloralJasmin = 'White Floral/Jasmin';
+  static const String sweet = 'sweet';
+  static const String fresh = 'fresh';
+  static const String floral = 'floral';
+  static const String woody = 'woody';
+  static const String fruity = 'fruity';
+  static const String whiteFloralJasmin = 'whiteFloralJasmin';
 
   static const String gender = 'gender';
   static const String ageGroups = 'ageGroups';
@@ -18,5 +18,5 @@ abstract final class PerfumePercentagesJsonKeys {
   static const String avoidedScents = 'avoidedScents';
   static const String occasions = 'occasions';
   static const String styles = 'styles';
-  static const String projection = 'projection';
+  static const String sillage = 'sillage';
 }

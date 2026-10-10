@@ -27,10 +27,9 @@ class AppRoutes {
         );
 
       case RouteNames.choosePerfumeMethod:
-        return AppAnimation.animatedNavigation(
-          const ChoosePerfumeMethodScreen(),
-          settings,
-          const Duration(milliseconds: 400),
+        return MaterialPageRoute<void>(
+          settings: settings,
+          builder: (_) => const ChoosePerfumeMethodScreen(),
         );
 
       case RouteNames.beforeTheFamilies:
