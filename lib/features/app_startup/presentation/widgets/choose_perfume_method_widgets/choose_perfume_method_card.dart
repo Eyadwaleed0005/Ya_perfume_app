@@ -33,7 +33,9 @@ class _ChoosePerfumeMethodCardState extends State<ChoosePerfumeMethodCard> {
   bool _isPressed = false;
 
   void _onHighlightChanged(bool isPressed) {
-    if (_isPressed == isPressed) return;
+    if (_isPressed == isPressed) {
+      return;
+    }
 
     setState(() {
       _isPressed = isPressed;
@@ -43,6 +45,7 @@ class _ChoosePerfumeMethodCardState extends State<ChoosePerfumeMethodCard> {
   @override
   Widget build(BuildContext context) {
     final borderRadius = BorderRadius.circular(22.r);
+
     final textDirection = context.locale.languageCode == 'ar'
         ? TextDirection.rtl
         : TextDirection.ltr;
@@ -99,9 +102,7 @@ class _ChoosePerfumeMethodCardState extends State<ChoosePerfumeMethodCard> {
                     textAlign: TextAlign.center,
                     style: AppTextStyle.font15textMutedRegularNoto(),
                   ),
-
-                  // المساحة الزايدة فوق الـfooter لتثبيته تحت.
-                  if (widget.height != null) const Spacer(),
+                  const Spacer(),
 
                   verticalSpace(12),
                   Row(
