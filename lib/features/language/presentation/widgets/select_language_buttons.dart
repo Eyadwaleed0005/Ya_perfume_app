@@ -6,7 +6,9 @@ import 'package:ya_perfume/core/helper/spacer.dart';
 import 'select_language_button.dart';
 
 class SelectLanguageButtons extends StatelessWidget {
-  const SelectLanguageButtons({super.key});
+  const SelectLanguageButtons({super.key, required this.onLanguageSelected});
+
+  final ValueChanged<String> onLanguageSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +21,7 @@ class SelectLanguageButtons extends StatelessWidget {
           child: SelectLanguageButton(
             imagePath: AppImage().frenchLanguageFlag,
             languageCode: 'fr',
+            onTap: () => onLanguageSelected('fr'),
           ),
         ),
         horizontalSpace(16),
@@ -27,6 +30,7 @@ class SelectLanguageButtons extends StatelessWidget {
           child: SelectLanguageButton(
             imagePath: AppImage().englishLanguageFlag,
             languageCode: 'en',
+            onTap: () => onLanguageSelected('en'),
           ),
         ),
         horizontalSpace(16),
@@ -35,6 +39,7 @@ class SelectLanguageButtons extends StatelessWidget {
           child: SelectLanguageButton(
             imagePath: AppImage().arabicLanguageFlag,
             languageCode: 'ar',
+            onTap: () => onLanguageSelected('ar'),
           ),
         ),
         horizontalSpace(16),
@@ -43,6 +48,7 @@ class SelectLanguageButtons extends StatelessWidget {
           child: SelectLanguageButton(
             imagePath: AppImage().russianLanguageFlag,
             languageCode: 'ru',
+            onTap: () => onLanguageSelected('ru'),
           ),
         ),
         horizontalSpace(16),
@@ -51,6 +57,7 @@ class SelectLanguageButtons extends StatelessWidget {
           child: SelectLanguageButton(
             imagePath: AppImage().italianLanguageFlag,
             languageCode: 'it',
+            onTap: () => onLanguageSelected('it'),
           ),
         ),
       ],

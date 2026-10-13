@@ -21,7 +21,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
 
   Future<void> getPerfumes() async {
     emit(state.copyWith(status: QuestionsStatus.loading));
-    //ِAdapter Design Pattern for converting state to perfume questions entity
     final perfumeQuestions = perfumeQuestionsAdapter.adapt(state);
     final perfumes = await getPerfumesUseCase(perfumeQuestions);
     await Future<void>.delayed(const Duration(seconds: 8));
@@ -153,7 +152,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: 'question_5_title',
             questionText: 'question_5_text',
             note: 'question_5_note',
-
             options: [
               QuestionOption(
                 id: '1',
@@ -225,7 +223,6 @@ class QuestionsCubit extends Cubit<QuestionsState> {
             title: 'question_7_title',
             questionText: 'question_7_text',
             note: 'question_7_note',
-
             options: [
               QuestionOption(
                 id: '1',
@@ -381,49 +378,53 @@ class QuestionsCubit extends Cubit<QuestionsState> {
   }
 
   void toggleOption(String optionId) {
-    final questionId = currentQuestion.id;
-    final selected = state.selectedOptions;
+    final question = currentQuestion;
+    final questionId = question.id;
+
+    final selected = Set<String>.from(state.selectedOptions);
 
     if (selected.contains(optionId)) {
-      if (currentQuestion.selectionType == QuestionSelectionType.multiple &&
-          selected.length == currentQuestion.maxSelections) {
-        emit(state.copyWith(showInfo: false));
-      }
       selected.remove(optionId);
     } else {
-      if (currentQuestion.selectionType == QuestionSelectionType.single &&
-          selected.length >= currentQuestion.maxSelections) {
-        selected.clear();
-      } else if (currentQuestion.selectionType ==
-              QuestionSelectionType.multiple &&
-          selected.length >= currentQuestion.maxSelections) {
-        emit(state.copyWith(showInfo: true));
-        return;
-      } else if (currentQuestion.selectionType ==
-              QuestionSelectionType.multiple &&
-          selected.length < currentQuestion.maxSelections) {
-        emit(state.copyWith(showInfo: false));
+      if (question.selectionType == QuestionSelectionType.single) {
+        selected
+          ..clear()
+          ..add(optionId);
+      } else {
+        if (selected.length >= question.maxSelections) {
+          emit(state.copyWith(showInfo: true));
+          return;
+        }
+
+        selected.add(optionId);
       }
-      selected.add(optionId);
     }
 
     final updatedAnswers = Map<String, Set<String>>.from(state.allAnswers);
+
     updatedAnswers[questionId] = selected;
 
     final updatedImages = Map<String, String?>.from(state.accumulatedImages);
 
     saveImage(questionId, updatedImages, selected);
 
-    toggleTheme(updatedAnswers, state.selectedThemeType, updatedImages);
+    toggleTheme(
+      updatedAnswers,
+      state.selectedThemeType,
+      updatedImages,
+      showInfo: false,
+    );
   }
 
   void toggleTheme(
     Map<String, Set<String>> allAnswers,
     AppThemeType? themeType,
-    Map<String, String?> accumulatedImages,
-  ) {
+    Map<String, String?> accumulatedImages, {
+    bool? showInfo,
+  }) {
     if (currentQuestion.id == '3') {
-      final selected = allAnswers[currentQuestion.id] ?? {};
+      final selected = allAnswers[currentQuestion.id] ?? <String>{};
+
       if (selected.contains('1')) {
         themeType = AppThemeType.light;
       } else if (selected.contains('2')) {
@@ -432,11 +433,13 @@ class QuestionsCubit extends Cubit<QuestionsState> {
         themeType = AppThemeType.normal;
       }
     }
+
     emit(
       state.copyWith(
         allAnswers: allAnswers,
         selectedThemeType: themeType,
         accumulatedImages: accumulatedImages,
+        showInfo: showInfo,
       ),
     );
   }

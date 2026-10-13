@@ -3,7 +3,6 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:ya_perfume/app/routes/route_names.dart';
 import 'package:ya_perfume/core/helper/spacer.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/theme/app_theme.dart';
@@ -15,6 +14,7 @@ class CustomFooter extends StatelessWidget {
   final VoidCallback onNext;
   final VoidCallback onPrevious;
   final bool canGoNext;
+  final bool showNextButton;
   final int numberSelected;
   final String? questionId;
   final VoidCallback? onSkip;
@@ -27,30 +27,12 @@ class CustomFooter extends StatelessWidget {
     required this.onPrevious,
     required this.canGoNext,
     required this.numberSelected,
+    this.showNextButton = true,
     this.questionId,
     this.onSkip,
     required this.cubit,
     this.centerWidget,
   });
-
-  void _handleNext(BuildContext context) {
-    if (questionId == '4') {
-      Navigator.of(context).pushNamed(
-        RouteNames.beforeTheFamilies,
-        arguments: cubit.state.selectedThemeType,
-      );
-
-      cubit.next();
-      return;
-    }
-
-    if (questionId == '9') {
-      cubit.getPerfumes();
-      return;
-    }
-
-    onNext();
-  }
 
   Widget _previousButton({
     required BuildContext context,
@@ -71,14 +53,10 @@ class CustomFooter extends StatelessWidget {
     );
   }
 
-  Widget _nextButton({
-    required BuildContext context,
-    required AppThemeColors theme,
-    required double width,
-  }) {
+  Widget _nextButton({required AppThemeColors theme, required double width}) {
     return CustomButton(
       text: 'continue'.tr(),
-      onPressed: canGoNext ? () => _handleNext(context) : null,
+      onPressed: canGoNext ? onNext : null,
       width: width,
       height: math.max(44.0, 40.h),
       background: canGoNext
@@ -100,7 +78,9 @@ class CustomFooter extends StatelessWidget {
           final availableWidth = constraints.maxWidth;
 
           if (availableWidth < 600) {
-            final buttonWidth = (availableWidth - 12.w) / 2;
+            final buttonWidth = showNextButton
+                ? (availableWidth - 12.w) / 2
+                : availableWidth;
 
             return Column(
               mainAxisSize: MainAxisSize.min,
@@ -118,12 +98,10 @@ class CustomFooter extends StatelessWidget {
                       theme: theme,
                       width: buttonWidth,
                     ),
-                    horizontalSpace(12),
-                    _nextButton(
-                      context: context,
-                      theme: theme,
-                      width: buttonWidth,
-                    ),
+                    if (showNextButton) ...[
+                      horizontalSpace(12),
+                      _nextButton(theme: theme, width: buttonWidth),
+                    ],
                   ],
                 ),
               ],
@@ -144,8 +122,10 @@ class CustomFooter extends StatelessWidget {
               Expanded(
                 child: Center(child: centerWidget ?? const SizedBox.shrink()),
               ),
-              horizontalSpace(16),
-              _nextButton(context: context, theme: theme, width: buttonWidth),
+              if (showNextButton) ...[
+                horizontalSpace(16),
+                _nextButton(theme: theme, width: buttonWidth),
+              ],
             ],
           );
         },
