@@ -95,7 +95,7 @@ class _SelectLanguageContentState extends State<SelectLanguageContent> {
                           ),
                         ),
                       ),
-                      verticalSpace(38.w / 1.h),
+                      verticalSpace(20.w / 1.h),
                       IgnorePointer(
                         ignoring: _isNavigating,
                         child: SelectLanguageButtons(

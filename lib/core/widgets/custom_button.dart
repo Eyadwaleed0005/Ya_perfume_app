@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:ya_perfume/core/style/app_color.dart';
 import 'package:ya_perfume/core/style/textstyles.dart';
+import 'package:ya_perfume/core/widgets/app_loading_indicator.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({
@@ -14,6 +15,7 @@ class CustomButton extends StatelessWidget {
     this.background,
     this.borderColor,
     this.borderWidth,
+    this.isLoading = false,
   });
 
   final String text;
@@ -24,18 +26,18 @@ class CustomButton extends StatelessWidget {
   final Color? background;
   final Color? borderColor;
   final double? borderWidth;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
-    final Color buttonBackground = background ?? AppColors.bgAccent;
-
-    final Color buttonForeground = foreground ?? AppColors.bgSurface;
+    final buttonBackground = background ?? AppColors.bgAccent;
+    final buttonForeground = foreground ?? AppColors.bgSurface;
 
     return SizedBox(
       width: width ?? double.infinity,
       height: height ?? 52.h,
       child: ElevatedButton(
-        onPressed: onPressed,
+        onPressed: isLoading ? null : onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: buttonBackground,
           foregroundColor: buttonForeground,
@@ -49,16 +51,18 @@ class CustomButton extends StatelessWidget {
                 : BorderSide.none,
           ),
         ),
-        child: FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            text,
-            maxLines: 1,
-            style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
-              color: buttonForeground,
-            ),
-          ),
-        ),
+        child: isLoading
+            ? AppLoadingIndicator(color: buttonForeground, size: 20)
+            : FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  text,
+                  maxLines: 1,
+                  style: AppTextStyle.font18textPrimarySemiBoldNoto().copyWith(
+                    color: buttonForeground,
+                  ),
+                ),
+              ),
       ),
     );
   }
