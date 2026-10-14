@@ -33,7 +33,6 @@ class SplashLoadingBar extends StatelessWidget {
         builder: (context, constraints) {
           final width = constraints.maxWidth;
           final markerCenter = inset + (width - inset * 2) * value;
-
           return Stack(
             clipBehavior: Clip.none,
             children: [
