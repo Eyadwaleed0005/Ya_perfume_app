@@ -2,7 +2,6 @@ default_platform(:android)
 
 platform :android do
   desc "Send Ya Perfume development APK to the team"
-
   lane :firebase_distribution do
     apk_path = File.expand_path(
       "../../build/app/outputs/flutter-apk/app-release.apk",
@@ -37,6 +36,24 @@ platform :android do
       android_artifact_path: apk_path,
       groups: "client",
       release_notes: "Ya Perfume main build for client testing"
+    )
+  end
+
+  desc "Upload Ya Perfume bundle to Google Play production"
+  lane :google_play_distribution do
+    upload_to_play_store(
+      package_name: "com.famex.yaperfume",
+      json_key: ENV.fetch("GOOGLE_PLAY_SERVICE_ACCOUNT_FILE"),
+      aab: File.expand_path(
+        "../../build/app/outputs/bundle/release/app-release.aab",
+        __dir__
+      ),
+      track: "production",
+      release_status: "completed",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true
     )
   end
 end
