@@ -76,7 +76,10 @@ Records are currently matched by perfume name. Code-based matching is planned on
 - Flutter SVG
 - Firebase Core
 - Local JSON assets
-- GitHub Actions and Fastlane
+- GitHub Actions
+- Fastlane
+- Firebase App Distribution
+- Google Play Developer API
 
 ## Architecture
 
@@ -96,17 +99,56 @@ Integration tests cover the complete user journey, from choosing a discovery met
 
 ## CI/CD
 
-GitHub Actions handles code checks and Android APK distribution through Fastlane and Firebase App Distribution.
+GitHub Actions handles code checks, Firebase APK distribution, and Google Play production uploads through Fastlane.
 
-| Workflow | Trigger | Actions | Distribution |
+| Workflow | Trigger | Actions | Destination |
 | --- | --- | --- | --- |
 | Development CI | Pull requests from any branch targeting `development` | Install dependencies, analyze code, and run tests | — |
-| Development Firebase Distribution | Manual run on `development` | Analyze code, run tests, build a signed release APK, and upload it to Firebase | `team` group |
-| Main Firebase Distribution | Merge a pull request from `development` into `main` within the same repository | Analyze code, run tests, build a signed release APK, and upload it to Firebase | `client` group |
+| Development Firebase Distribution | Manual run on `development` | Analyze code, run tests, build a signed release APK, and upload it to Firebase | Firebase `team` group |
+| Main Firebase Distribution | Merge a pull request from `development` into `main` within the same repository | Analyze code, run tests, build a signed release APK, and upload it to Firebase | Firebase `client` group |
+| Google Play Production | Merge a pull request from `main` into `google-play-production` within the same repository | Analyze code, run tests, build a signed release AAB, and upload it to Google Play | Google Play production track |
 
-Signing credentials and the Firebase service account key are stored in GitHub Actions Secrets. Temporary credential files are removed after each distribution run.
+### Google Play Production
 
-The current distribution workflows build Android APKs. iOS distribution is not yet configured.
+The production workflow is defined in:
+
+` .github/workflows/google-play-production.yml `
+
+It runs only after a pull request from `main` into `google-play-production` is merged. Opening a pull request or closing it without merging does not start production deployment.
+
+The workflow checks out the merged commit and uses:
+
+- Flutter `3.47.7`
+- Java `17`
+- Ruby `3.3`
+- Fastlane lane: `google_play_distribution`
+- Android application ID: `com.famex.yaperfume`
+
+The generated Android App Bundle is located at:
+
+`build/app/outputs/bundle/release/app-release.aab`
+
+Fastlane uploads the bundle to the production track with `release_status: "completed"`. Availability to users remains subject to Google Play review and publishing settings.
+
+Each upload must use a version code greater than any previously uploaded version code for the application. Flutter reads this value from the number after `+` in the `pubspec.yaml` version field.
+
+### GitHub Actions Secrets
+
+| Secret | Purpose |
+| --- | --- |
+| `ANDROID_KEYSTORE_BASE64` | Base64-encoded Android upload keystore |
+| `ANDROID_KEYSTORE_PASSWORD` | Keystore password |
+| `ANDROID_KEY_ALIAS` | Signing key alias |
+| `ANDROID_KEY_PASSWORD` | Signing key password |
+| `FIREBASE_ANDROID_APP_ID` | Firebase Android application ID |
+| `FIREBASE_SERVICE_ACCOUNT_JSON` | Service account credentials for Firebase distribution |
+| `GOOGLE_PLAY_SERVICE_ACCOUNT_JSON` | Service account credentials with production release access to Ya Perfume in Google Play Console |
+
+Signing credentials and service account keys are stored in GitHub Actions Secrets. Temporary credential files are removed by cleanup steps that run even if deployment fails.
+
+Firebase distribution workflows build Android APKs. The Google Play production workflow builds an Android App Bundle.
+
+iOS distribution is not yet configured.
 
 ## Platforms
 
