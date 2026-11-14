@@ -96,17 +96,18 @@ Integration tests cover the complete user journey, from choosing a discovery met
 
 ## CI/CD
 
-GitHub Actions handles code checks and Android APK distribution through Fastlane and Firebase App Distribution.
+GitHub Actions handles code checks and Android distribution through Fastlane, Firebase App Distribution, and Google Play.
 
 | Workflow | Trigger | Actions | Distribution |
 | --- | --- | --- | --- |
 | Development CI | Pull requests from any branch targeting `development` | Install dependencies, analyze code, and run tests | — |
 | Development Firebase Distribution | Manual run on `development` | Analyze code, run tests, build a signed release APK, and upload it to Firebase | `team` group |
 | Main Firebase Distribution | Merge a pull request from `development` into `main` within the same repository | Analyze code, run tests, build a signed release APK, and upload it to Firebase | `client` group |
+| Google Play Production | Merge a pull request from `main` into `google-play-production` within the same repository | Analyze code, run tests, build a signed release AAB, and upload it to Google Play | Production track |
 
-Signing credentials and the Firebase service account key are stored in GitHub Actions Secrets. Temporary credential files are removed after each distribution run.
+Signing credentials and service account keys are stored in GitHub Actions Secrets. Temporary credential files are removed after each distribution run.
 
-The current distribution workflows build Android APKs. iOS distribution is not yet configured.
+Firebase workflows build Android APKs, while the Google Play workflow builds an Android App Bundle. iOS distribution is not yet configured.
 
 ## Platforms
 
